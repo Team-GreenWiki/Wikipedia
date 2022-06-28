@@ -1,0 +1,159 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li{
+    list-style: none;
+}
+
+body{
+    background-color: #4b2b3010;
+}
+
+/* #container */
+#container{
+    width: 1200px;
+    height: auto;
+    margin: 0 auto;
+}
+
+ /* #mainLogo */
+ #mainLogo{
+    width: 400px;
+    height: 100px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 70px;
+}
+
+#mainLogo img{
+    width: 100%;
+    height: 100%;
+}
+
+/* 아이디 / 비밀번호 찾기 */
+#text {
+    font-size: 15px;
+    text-align: center;
+    margin-right: 50%;
+    margin-top: 40px;
+}
+
+/* 아이디 찾기 */
+#search_yourId {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-left: -40px;
+    margin-bottom: 20px;
+}
+
+/* 닉네임 / 이메일을 담고 있는 form */
+.search_Id {
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 30%;
+}
+
+.input_nickName {
+    margin-left: 70px;
+    border-radius: 25px;
+    width: 280px;
+    height: 40px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* 이메일 input 상자 */
+.input_Email {
+    margin-left: 70px;
+    border-radius: 25px;
+    width: 280px;
+    height: 40px;
+    text-align: center;
+}
+
+/* 닉네임 td */
+.Nick {
+    padding-bottom: 50px;
+    line-height: 50px;
+}
+
+/* 저장 / 취소를 담고 있는 텍스트 */
+.value {
+    text-align: center;
+    padding-top: 50px;
+}  
+
+/* 저장 */
+.commit {
+    width: 100px;
+    height: 50px;
+    margin-left: 150px;
+}
+
+/* 취소 */
+.cancel {
+    width: 100px;
+    height: 50px;   
+}
+
+/* 비밀번호 찾기 */
+#search_yourPw {
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: -40px;
+    margin-bottom: 30px;
+}
+
+/* 비밀번호 */
+.search_Pw {
+    margin-top: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 30%;
+}
+
+
+.user_id {
+    width: 290px;
+    height: 40px;
+    border-radius: 25px;
+    text-align: center;
+    margin-bottom: 15px;
+    margin-left: 50px;
+}
+
+.user_email {
+    width: 290px;
+    height: 40px;
+    border-radius: 25px;
+    text-align: center;
+    margin-bottom: 15px;
+    margin-left: 50px;
+}
+
+.user_num {
+    width: 290px;
+    height: 40px;
+    border-radius: 25px;
+    text-align: center;
+    margin-left: 50px;
+    margin-bottom: 40px;
+}
+
+
+.comm {
+    width: 100px;
+    height: 50px;
+    margin-left: 180px;
+}
+
+.can {
+    width: 100px;
+    height: 50px;
+}
