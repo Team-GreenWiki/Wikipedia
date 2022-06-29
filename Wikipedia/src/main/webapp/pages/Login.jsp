@@ -125,7 +125,7 @@
 
         <div id="loginArea">
             <h2>로그인</h2>
-            <form action="#">
+            <form action="../process/LoginProcess.jsp" onsubmit="loginDataCheck(this)">
                 <table>
                     <tr>
                         <th>아이디</th>
@@ -147,5 +147,18 @@
             </ul>
         </div>
     </div><!-- #container -->
+    
+    <script>
+    	function loginDataCheck(form){
+    		if(!form.input_userId.value){
+    			alert("ID를 입력하세요.");
+    			return false;
+    		}
+    		if(!form.input_userPw.value){
+    			alert("PW를 입력하세요.");
+    			return false;
+    		}
+    	}
+    </script>
 </body>
 </html>
