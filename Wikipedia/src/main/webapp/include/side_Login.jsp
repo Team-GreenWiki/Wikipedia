@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -54,26 +54,26 @@
   </style>
 </head>
 <body>
-        <!-- ·Î±×ÀÎ ÇÑ ÈÄ »çÀÌµå ¸Þ´º -->
+        <!-- ë¡œê·¸ì¸ í•œ í›„ ì‚¬ì´ë“œ ë©”ë‰´ -->
 <div class="side_whole">
     <div class="side_above">
 
-      <h4>´Ô ¹Ý°©½À´Ï´Ù!</h4>
-      <!-- h4ÅÂ±× ÁÂÃø¿¡ ³ªÁß¿¡ À¯Àú ´Ð³×ÀÓ Ç¥½ÃµÇ¾ßÇÔ -->
-      <a href="./my_info">³» Á¤º¸</a>
-      <a href="">·Î±×¾Æ¿ô</a>
-      <!-- jsp·Î ·Î±×¾Æ¿ô ½ÃÅ°´Â ±â´É ³ªÁß¿¡ Ãß°¡ÇØ¾ßÇÔ -->
+      <h4>ë‹˜ ë°˜ê°‘ìŠµë‹ˆë‹¤!</h4>
+      <!-- h4íƒœê·¸ ì¢Œì¸¡ì— ë‚˜ì¤‘ì— ìœ ì € ë‹‰ë„¤ìž„ í‘œì‹œë˜ì•¼í•¨ -->
+      <a href="./my_info">ë‚´ ì •ë³´</a>
+      <a href="">ë¡œê·¸ì•„ì›ƒ</a>
+      <!-- jspë¡œ ë¡œê·¸ì•„ì›ƒ ì‹œí‚¤ëŠ” ê¸°ëŠ¥ ë‚˜ì¤‘ì— ì¶”ê°€í•´ì•¼í•¨ -->
     </div>
 
     <!-- 
-      ÃßÈÄ¿¡ ³ª¸ÓÁö ÆäÀÌÁö ¿Ï¼º½Ã href¿¡ °æ·Î ±âÀÔÇÒ °Í.
+      ì¶”í›„ì— ë‚˜ë¨¸ì§€ íŽ˜ì´ì§€ ì™„ì„±ì‹œ hrefì— ê²½ë¡œ ê¸°ìž…í•  ê²ƒ.
      -->
     <div class="side_middle">
-      <a href="">Á¤º¸ ¹®¼­</a>
-      <a href="">µµ¿ò¸»</a>
-      <a href="">ÀÓÀÇÀÇ ¹®¼­·Î</a>
-      <a href="">³»°¡ ¾´ ±Û</a>
-      <a href="">³»°¡ ¾´ ´ñ±Û</a>
+      <a href="">ì •ë³´ ë¬¸ì„œ</a>
+      <a href="">ë„ì›€ë§</a>
+      <a href="">ìž„ì˜ì˜ ë¬¸ì„œë¡œ</a>
+      <a href="">ë‚´ê°€ ì“´ ê¸€</a>
+      <a href="">ë‚´ê°€ ì“´ ëŒ“ê¸€</a>
     </div>
   </div>
 </body>

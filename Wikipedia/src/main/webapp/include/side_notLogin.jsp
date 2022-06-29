@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -55,23 +55,23 @@
 </head>
 <body>
 
-   <!-- ·Î±×ÀÎ ÇÏ±â Àü »çÀÌµå ¸Þ´º -->
+   <!-- ë¡œê·¸ì¸ í•˜ê¸° ì „ ì‚¬ì´ë“œ ë©”ë‰´ -->
   <div> 
     <div class="side_whole">
     <div class="side_above">
 
-      <h4>·Î±×ÀÎ ÇÏ¼¼¿ä</h4>
+      <h4>ë¡œê·¸ì¸ í•˜ì„¸ìš”</h4>
     </div>
 
     <!-- 
-      ÃßÈÄ¿¡ ³ª¸ÓÁö ÆäÀÌÁö ¿Ï¼º½Ã href¿¡ °æ·Î ±âÀÔÇÒ °Í.
+      ì¶”í›„ì— ë‚˜ë¨¸ì§€ íŽ˜ì´ì§€ ì™„ì„±ì‹œ hrefì— ê²½ë¡œ ê¸°ìž…í•  ê²ƒ.
     -->
 	    <div class="side_middle">
-	      <a href="">Á¤º¸ ¹®¼­</a>
-	      <a href="">µµ¿ò¸»</a>
-	      <a href="">ÀÓÀÇÀÇ ¹®¼­·Î</a>
-	      <a href="./login.html">³»°¡ ¾´ ±Û</a>
-	      <a href="./login.html">³»°¡ ¾´ ´ñ±Û</a>
+	      <a href="">ì •ë³´ ë¬¸ì„œ</a>
+	      <a href="">ë„ì›€ë§</a>
+	      <a href="">ìž„ì˜ì˜ ë¬¸ì„œë¡œ</a>
+	      <a href="./login.html">ë‚´ê°€ ì“´ ê¸€</a>
+	      <a href="./login.html">ë‚´ê°€ ì“´ ëŒ“ê¸€</a>
 	    </div>
 	  </div>
  </div>

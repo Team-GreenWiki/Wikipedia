@@ -1,108 +1,208 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wikipedia ¿ì¸® ¸ğµÎÀÇ ¹é°ú»çÀü</title>
-    <link rel="stylesheet" href="../search_Info.css" type="text/css">
+    <title>Document</title>
+    <style>
+         * {
+            margin: 0 auto;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ë©”ì¸ë¡œê³  */
+        .mainLogo {
+            width: 400px;
+            height: 120px;
+            margin-top: 50px;
+            margin-left: 40%;
+        }
+
+        /* ì•„ì´ë”” / ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° */
+        #text {
+            padding: 50px;
+            text-align: center;
+        }
+
+        /* ì•„ì´ë”” ì°¾ê¸° */
+        .search_userId {
+            display: block;
+            font-size: 25px;
+            font-weight: bold;
+            padding-bottom: 30px;
+        }
+
+        /* ì•„ì´ë””ì°¾ê¸° - ë‹‰ë„¤ì„ */
+        .user_nickName_Info {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* ì•„ì´ë”” ì°¾ê¸° - ë‹‰ë„¤ì„ text */
+        .user_nickName_Info input {
+            height: 40px;
+            width: 200px;
+            border : 2px solid rgb(70, 44, 48);
+            border-radius: 25px;
+            margin-bottom: 10px;
+        }
+
+        /* ì•„ì´ë”” ì°¾ê¸° - ì´ë©”ì¼ */
+        .user_email_Info {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        /* ì•„ì´ë”” ì°¾ê¸° - ì´ë©”ì¼ */
+        .user_email_Info input {
+            height: 40px;
+            width: 200px;
+            border : 2px solid rgb(70, 44, 48);
+            border-radius: 25px;
+        }
+        
+        /* ì•„ì´ë”” ì°¾ê¸° - ì €ì¥ / ì·¨ì†Œ */
+        .check {
+            height: 40px;
+            width: 70px;
+            margin-left: 180px;
+            margin-top: 20px;
+        }
+
+        /* ì•„ì´ë”” ì°¾ê¸° - ì €ì¥ / ì·¨ì†Œ */
+        .cancel {
+            height: 40px;
+            width: 70px;
+            margin-top: 20px;
+        }
     
+
+        /* ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° */
+        .search_userPw {
+            display: block;
+            font-size: 25px;
+            font-weight: bold;
+            padding-bottom: 30px;
+            padding-top: 50px;
+        }
+
+        /* ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° - ì•„ì´ë”” */
+        .user_id_Info {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° - ì•„ì´ë”” */
+        .user_id_Info input {
+            height: 40px;
+            width: 200px;
+            border : 2px solid rgb(70, 44, 48);
+            border-radius: 25px;
+            margin-bottom: 10px;
+        }
+
+
+        /* ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° - ì¸ì¦ë²ˆí˜¸ */
+        .user_check_no {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° - ì¸ì¦ë²ˆí˜¸ */
+        .user_check_no input {
+            height: 40px;
+            width: 200px;
+            border : 2px solid rgb(70, 44, 48);
+            border-radius: 25px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        /* ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° - ì €ì¥ / ì·¨ì†Œ */
+
+    </style>
 </head>
 <body>
-    <div id="container">
-        <div id="mainLogo">
-            <a href="#"><h1><img src="../img/HatchfulExport-All/MainLogoMini.png"></h1></a>
-        </div> <!-- #mainLogo -->
+    
+        <a href="#"><img src="../img/HatchfulExport-All/MainLogoMini.png" class="mainLogo"></a>
 
-        <div id="text">
-            <h1>¾ÆÀÌµğ / ºñ¹Ğ¹øÈ£ Ã£±â</h1>
-        </div> <!-- #text -->
+    <div id="text">
+        <h1>ì•„ì´ë”” / ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</h1>
+    </div>
 
-        
-
-        <form action="" name="search_Id" method="post" class="search_Id">
-
-            <div id="search_yourId">
-                <p>¾ÆÀÌµğ Ã£±â</p>
-            </div>
-            
-            <table>
-                <div class="user_Id">
-                    <tr>
-                        <td class="Nick">´Ğ³×ÀÓ</td>
-                        <td><label for="nickName">
-                                <input type="text" name="nickName" class="input_nickName" placeholder="8ÀÚ¸® ÀÌ³»·Î ÀÔ·ÂÇÏ¼¼¿ä.">
-                            </label>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class="Email">ÀÌ¸ŞÀÏ</td>
-                        <td><label for="user_Email">
-                                <input type="email" name="user_Email" class="input_Email" placeholder="ÀÌ¸ŞÀÏ Çü½Ä¿¡ ¸ÂÃçÁÖ¼¼¿ä.">
-                            </label>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td colspan="2" class="value">
-                            <input type="submit" value="ÀúÀå" class="commit">
-                            <input type="reset" value="Ãë¼Ò" class="cancel">
-                        </td>
-                    </tr>
-                </div> <!-- #user_Id -->
-            </table>
-        </form> <!-- .search_Id-->
-
-        
-
-        <form action="" name="search_Pw" method="post" class="search_Pw">
-            
-            <div id="search_yourPw">
-                <p>ºñ¹Ğ¹øÈ£ Ã£±â</p>
+    <form action="" name="search_Info" method="post">
+        <table>
+            <div>
+                <tr class="search_userId">
+                    <td><p>ì•„ì´ë””ì°¾ê¸°</p></td>
+                </tr>
             </div>
 
-            <table>
-                <div class="user_Pw">
-                    <tr>
-                        <td>¾ÆÀÌµğ</td>
-                        <td><label for="">
-                                <input type="text" name="nickName" class="user_id" placeholder="8ÀÚ¸® ÀÌ³»·Î ÀÔ·ÂÇÏ¼¼¿ä.">
-                            </label>
-                        </td>
-                    </tr>
-                </div>
-                
-                <div>
-                    <tr>
-                        <td>ÀÌ¸ŞÀÏ</td>
-                        <td><label for="user_Email">
-                                <input type="email" name="user_Email" class="user_email" placeholder="ÀÌ¸ŞÀÏ Çü½Ä¿¡ ¸ÂÃçÁÖ¼¼¿ä.">
-                            </label>
-                        </td>
-                    </tr>
-                </div>
+            <div>
+                <tr class="user_nickName_Info">
+                    <td>ë‹‰ë„¤ì„</td>
+                    <td><input type="text" name="nickName" placeholder="8ìë¦¬ ì´ë‚´ë¡œ ì…ë ¥í•˜ì„¸ìš”."></td>
+                </tr>
+            </div>
 
-                <div>
-                    <tr>
-                        <td>ÀÎÁõ¹øÈ£</td>
-                        <td><label for="call_Num">
-                                <input type="text" name="call_Num" class="user_num" placeholder="ÀÎÁõ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.">
-                            </label>
-                        </td>
-                    </tr>
+            <div>
+                <tr class="user_email_Info">
+                    <td >ì´ë©”ì¼</td>
+                    <td><input type="email" name="Email" placeholder="ì´ë©”ì¼ í˜•ì‹ì— ë§ì¶° ì‘ì„±í•˜ì„¸ìš”."></td>
+                </tr>
+            </div>
 
-                    <tr>
-                        <td colspan="2" class="value_2">
-                            <input type="submit" value="ÀúÀå" class="comm">
-                            <input type="reset" value="Ãë¼Ò" class="can">
-                        </td>
-                    </tr>
-                </div>
-            </table>
-        </form> <!-- .search_Id-->
-    </div> <!-- #container -->
+            <div>
+                <tr class="comm_1">
+                    <td colspan="2">
+                        <input type="submit" value="ì €ì¥" class="check">
+                        <input type="button" value="ì·¨ì†Œ" class="cancel">
+                    </td>
+                </tr>
+            </div> <!-- ì•„ì´ë”” ì°¾ê¸°-->
+
+            <div>
+                <tr class="search_userPw">
+                    <td><p>ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</p></td>
+                </tr>
+            </div>
+
+            <div>
+                <tr class="user_id_Info">
+                    <td>ì•„ì´ë””</td>
+                    <td><input type="text" name="user_Id"></td>
+                </tr>
+            </div>
+
+            <div>
+                <tr class="user_email_Info">
+                    <td>ì´ë©”ì¼</td>
+                    <td><input type="email" name="Email"></td>
+                </tr>
+            </div>
+
+            <div>
+                <tr class="user_check_no">
+                    <td>ì¸ì¦ë²ˆí˜¸</td>
+                    <td><input type="text" name="check_no"></td>
+                </tr>
+            </div>
+
+            <div>
+                <tr class="comm_2">
+                    <td colspan="2">
+                        <input type="submit" value="ì €ì¥" class="check">
+                        <input type="button" value="ì·¨ì†Œ" class="cancel">
+                    </td>
+                </tr>
+            </div> <!-- ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°-->
+        </table> <!-- table-->
+    </form>
+   
+    
 </body>
 </html>
