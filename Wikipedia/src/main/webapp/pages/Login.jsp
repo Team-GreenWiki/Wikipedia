@@ -125,7 +125,7 @@
 
         <div id="loginArea">
             <h2>로그인</h2>
-            <form action="../process/LoginProcess.jsp" onsubmit="loginDataCheck(this)">
+            <form action="../process/LoginProcess.jsp" onsubmit="return loginDataCheck(this)">
                 <table>
                     <tr>
                         <th>아이디</th>
@@ -139,7 +139,7 @@
                 <button type="submit" name="loginBtn" class="loginBtn">로그인</button>
             </form>
 
-            <p name="loginErrMsg" class="loginErrMsg">아이디 또는 비밀번호가 잘못되었습니다.</p>
+            <p class="loginErrMsg">${ loginErrMsg }</p>
 
             <ul class="loginMenu">
                 <li><a href="sign_up.html">회원가입</a></li>
@@ -152,10 +152,12 @@
     	function loginDataCheck(form){
     		if(!form.input_userId.value){
     			alert("ID를 입력하세요.");
+    			form.input_userId.focus();
     			return false;
     		}
     		if(!form.input_userPw.value){
     			alert("PW를 입력하세요.");
+    			form.input_userPw.focus();
     			return false;
     		}
     	}
