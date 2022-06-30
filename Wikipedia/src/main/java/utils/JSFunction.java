@@ -12,9 +12,7 @@ public class JSFunction {
 						  + "</script>";
 			out.println(script);
 		} catch (Exception e) {}
-		
-		
-		}
+	}
 	
 	public static void alertBack(String msg, JspWriter out) {
 		try {
@@ -26,4 +24,4 @@ public class JSFunction {
 			out.println(script);
 		} catch (Exception e) {}
 	}
-}
+} // class
