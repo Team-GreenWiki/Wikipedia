@@ -15,6 +15,7 @@
 	
 	if(dto.getId() != null){ // 해당 유저가 존재하는지 확인
 		System.out.printf("%s 로그인 완료\n", dto.getId());
+		session.setAttribute("userId", dto.getId());
 		session.setAttribute("loginStatus", true);
 		response.sendRedirect("../pages/Index.jsp");
 	} else { // 해당 유저가 존재하지 않을 때 = 로그인 실패
