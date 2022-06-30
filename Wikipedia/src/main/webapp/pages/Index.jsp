@@ -7,65 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wikipedia 우리 모두의 백과사전</title>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-
-        /* body */
-        body{
-            background-color: #4b2b3010;
-        }
-
-        /* .container */
-        .container{
-            width: 1200px;
-            height: auto;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* .main1 */
-        .main1{
-            margin-top: 300px;
-            text-align: center;
-        }
-
-        .main1 .mainLogo img{
-            width: 560px;
-            height: 140px;
-        }
-
-        .main1 .input_search{
-            width: 700px;
-            height: 40px;
-            line-height: 40px;
-            border: none;
-            border: 2px solid #4b2b30;
-            border-radius: 20px;
-            margin-top: 30px;
-            font-size: 20px;
-            text-indent: 15px;
-        }
-
-        /* .main2 */
-        .main2{
-            margin-top: 50px;
-            display: flex;
-            justify-content: space-around;
-            display: none;
-        }
-
-        .main2 div{
-            width: 45%;
-            height: auto;
-            padding: 10px;
-            border: 1px solid #4b2b30;
-            border-radius: 5px;
-        }
-    </style>
+    
+    <link href="./css/Index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div class="container">

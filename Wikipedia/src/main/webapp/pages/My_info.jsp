@@ -7,109 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wikipedia 우리 모두의 백과사전</title>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-
-        li{
-            list-style: none;
-        }
-
-        body{
-            background-color: #4b2b3010;
-        }
-
-        /* #container */
-        #container{
-            width: 1200px;
-            height: auto;
-            margin: 0 auto;
-            margin-top: 100px;
-        }
-        .main_text{
-          margin-left: -300px;
-          font-size: 35px;
-          font-weight: 600;
-          margin-bottom: 50px;
-        }
-        .main_logo{
-          display: block;
-          width: 300px;
-          height: 80px;
-          margin: 0 auto;
-          margin-bottom: 40px;
-        }
-        h4{
-          text-align: center;
-          font-size: larger;
-
-        }
-        .nickNameSet{
-          text-align: center;
-          padding: 20px;
-          margin: 0 auto;
-          border: 2px solid ;
-          width: 450px;
-          margin-bottom: 30px;
-        }
-        .nickNameSet>input{
-          text-align: center;
-        }
-        .pwSet{
-          padding: 20px;
-          margin: 0 auto;
-          border: 2px solid ;
-          width: 450px;
-          margin-bottom: 30px;
-        }
-        .pwSet>table{
-          margin: 0 auto;
-        }
-
-        .input_left_liter{
-          display: block;
-          margin-top: 7px;
-        }
-        
-        .input_css{
-          text-align: center;
-          border: 1px solid #4b2b30;
-          border-radius: 15px;
-          width: 250px;
-          height: 30px;
-          margin-bottom: 30px;
-          margin-left: 20px;
-        }
-        .long_bar{
-          width: 600px;
-          height: 3px;
-          background-color: #4b2b30;
-          margin: 0 auto;
-          margin-bottom: 50px;
-        }
-        .my_info_button{
-          margin-left: 20px;
-          width: 60px;
-          height: 30px;
-        }
-        .my_info_button>p{
-          font-size: 10px ;
-        }
-        .my_info_post_table{
-          margin: 0 auto;
-          margin-bottom: 30px;
-        }
-        .my_info_comment_table{
-          margin: 0 auto;
-          margin-bottom: 30px;
-        }
-    </style>
+    
+    <link href="./css/My_info.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <%@include file="../include/Header.jsp" %>
-<jsp:include page="../include/side_Login.jsp"></jsp:include>
+<jsp:include page="../include/Side_Login.jsp"></jsp:include>
     <div id="container">
       <img src="../img/HatchfulExport-All/MainLogoMini.png" alt="메인로고" class="main_logo">
       <div class="long_bar"></div>
