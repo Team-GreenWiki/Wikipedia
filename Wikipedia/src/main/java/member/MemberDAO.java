@@ -31,10 +31,10 @@ public class MemberDAO extends JDBConnect {
 				dto.setGrade(rs.getString("GRADE"));
 				dto.setSigndate(rs.getDate("SIGNDATE"));
 				
-				System.out.printf("%s의 MemberDTO 생성 완료", userId);
+				System.out.printf("%s의 MemberDTO 생성 완료\n", userId);
 			}
 		} catch(Exception e) {
-			System.out.printf("%s의 MemberDTO 생성중 예외 발생 : getMemberDTO() in MemberDAO", userId);
+			System.out.printf("%s의 MemberDTO 생성중 예외 발생 : getMemberDTO() in MemberDAO\n", userId);
 			e.printStackTrace();
 		}
 		
