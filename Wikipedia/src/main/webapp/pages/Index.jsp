@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String userId = session.getAttribute("userId").toString();
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -15,6 +19,12 @@
         <section class="main1">
             <a href="index.html" class="mainLogo"><h1><img src="../img/HatchfulExport-All/MainLogoMini.png"></h1></a>
             <input type="text" class="input_search" name="input_search">
+            <ul class="navMenu">
+            	<c:if test="${ userId == null }">
+            		<li><a href="../pages/Login.jsp">로그인</a></li>
+            	</c:if>
+            	<li><a href="">I'm Feeling Lucky</a></li>
+            </ul>
         </section>
 
         <section class="main2">

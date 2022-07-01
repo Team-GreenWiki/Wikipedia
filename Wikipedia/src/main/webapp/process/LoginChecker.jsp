@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	if((boolean)session.getAttribute("loginStatus")){
+	if(session.getAttribute("userId") != null){
 		System.out.println("LoginChecker : true");
 	} else {
 		System.out.println("LoginChecker : false");
