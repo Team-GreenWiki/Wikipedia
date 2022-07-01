@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   
-  <link href="./css/Side_Login.css" rel="stylesheet" type="text/css" />
+  <link href="../css/Side_Login.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
         <!-- 로그인 한 후 사이드 메뉴 -->
