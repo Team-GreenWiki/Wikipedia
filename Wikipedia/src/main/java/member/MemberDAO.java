@@ -5,12 +5,12 @@ import javax.servlet.ServletContext;
 import utils.JDBConnect;
 
 public class MemberDAO extends JDBConnect {
-	// »ı¼ºÀÚ(DB Á¢¼Ó)
+	// ê¸°ë³¸ìƒì„±ì(DB ì ‘ì†)
 	public MemberDAO(ServletContext application) {
 		super(application);
 	}
 	
-	// ID¿Í PW¸¦ ¹Ş¾Æ ÀÏÄ¡ÇÏ´Â MemberDTO ¹İÈ¯
+	// IDì™€ PWë¥¼ ì…ë ¥ë°›ì•„ í•´ë‹¹í•˜ëŠ” MemberDTO ë°˜í™˜
 	public MemberDTO getMemberDTO(String userId, String userPw) {
 		MemberDTO dto = new MemberDTO();
 		
@@ -31,13 +31,36 @@ public class MemberDAO extends JDBConnect {
 				dto.setGrade(rs.getString("GRADE"));
 				dto.setSigndate(rs.getDate("SIGNDATE"));
 				
-				System.out.printf("%sÀÇ MemberDTO »ı¼º ¿Ï·á\n", userId);
+				System.out.printf("%sì˜ MemberDTO ìƒì„± ì™„ë£Œ\n", userId);
 			}
 		} catch(Exception e) {
-			System.out.printf("%sÀÇ MemberDTO »ı¼ºÁß ¿¹¿Ü ¹ß»ı : getMemberDTO() in MemberDAO\n", userId);
+			System.out.printf("%sì˜ MemberDTO ìƒì„± ì¤‘ ì˜ˆì™¸ ë°œìƒ : getMemberDTO() in MemberDAO\n", userId);
 			e.printStackTrace();
 		}
 		
 		return dto;
 	} // getMemberDTO()
+	
+	// íšŒì›ê°€ì… ì²˜ë¦¬
+	public int signupMember(MemberDTO dto) {
+		int result = 0;
+		
+		try {
+			String query = "INSERT INTO MEMBER(ID, PW, NAME, EMAIL, GRADE) "
+						 + "VALUES(?, ?, ?, ?, PUBLIC)";
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getId());
+			psmt.setString(2, dto.getPw());
+			psmt.setString(3, dto.getName());
+			psmt.setString(4, dto.getEmail());
+			result = psmt.executeUpdate();
+			
+			System.out.println("íšŒì›ê°€ì… ì²˜ë¦¬ ì™„ë£Œ");
+		} catch(Exception e) {
+			System.out.println("íšŒì›ê°€ì… ì²˜ë¦¬ ì¤‘ ì˜ˆì™¸ ë°œìƒ : signupMember() in MemberDAO\n");
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 } // class
