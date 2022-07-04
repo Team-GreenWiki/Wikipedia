@@ -13,13 +13,13 @@
 </head>
 <body>
     
-        <a href="#"><img src="../img/HatchfulExport-All/MainLogoMini.png" class="mainLogo"></a>
+    <a href="#"><img src="../img/HatchfulExport-All/MainLogoMini.png" class="mainLogo"></a>
 
     <div id="text">
         <h1>아이디 / 비밀번호 찾기</h1>
     </div>
 
-    <form action="" name="search_info" method="post">
+    <form name="search_info" method="get">
         <table>
             <div>
                 <tr class="search_userId">
@@ -88,6 +88,12 @@
         </table> <!-- table-->
     </form>
    
+   <!-- 스크립트 -->
+   <script>
+   		function validateForm(form) {
+   			
+   		}
+   </script>
     
 </body>
 </html>
