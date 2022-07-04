@@ -1,3 +1,8 @@
+<%@page import="document.DocumentDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="document.DocumentDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,6 +38,25 @@
 <body>
 	
 	<!-- 댓글기능 확인을 위한 임시 문서 jsp입니다. -->
+	
+	 <%
+	   DocumentDAO dao = new DocumentDAO(application);
+	   
+	   Map<String,Object> param = new HashMap<String,Object>();
+	   
+	   String searchField = request.getParameter("searchField");
+	   String searchWord = request.getParameter("searchWord");
+	   
+	   if(searchWord !=null){
+		   param.put("searchField", searchField);
+		   param.put("searchWord", searchWord);
+	   }
+	   
+	   List<DocumentDTO> boardLists = dao.selectList(param);
+	   dao.close();
+   
+   %>
+	
 	
 	<h2>문서 1번 ( 샘플 )</h2>
 	<hr>

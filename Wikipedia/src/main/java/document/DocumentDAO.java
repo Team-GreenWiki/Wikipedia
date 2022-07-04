@@ -33,12 +33,11 @@ public class DocumentDAO extends JDBConnect {
 			while(rs.next()) {
 				DocumentDTO dto = new DocumentDTO();
 				dto.setDocnum(rs.getInt("docnum")); //번호
-				dto.setTitle(rs.getNString("title"));// 제목
-				dto.setId(rs.getNString("content")); //내용
-				dto.setGoodcount(0);//작성일
-				dto.set(rs.getNString("id"));//아이디
-				dto.set(rs.getString("visitcount"));//조회수
-				
+				dto.setTitle(rs.getNString("title"));//제목
+				dto.setId(rs.getNString("content")); // 작성자
+				dto.setGoodcount(0); // 추천수
+				dto.setWritedate(null); // 작성일
+
 				bbs.add(dto);//결과를 목록에 저장 
 			}
 		} catch (Exception e) {
