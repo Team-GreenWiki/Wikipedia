@@ -7,92 +7,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <style>
-    *{
-      margin: 0;
-      padding: 0;
-    }
-    body{
-            background-color: #4b2b3010;
-    }
-    wrap{
-      margin: 0 auto;
-    }
-    /* 회원가입 내용이 들어있는 테이블  */
-    .table_div{
-      padding: 30px;
-      display: block;
-      margin: 0 auto;
-      padding-left: 100px;
-      width: 700px;
-    } 
-    /* 입력 인풋창 공통  */
-    table tr td input{
-      display: inline-block;
-      margin-bottom: 30px;
-      border-radius: 10px;
-      border-color: #4b2b30;
-      width: 250px;
-      height: 40px;
-      text-align: center;
-      border: 2px solid #4b2b30;
-    }
-    /* 입력 인풋창에서 셀렉트만 따로  */
-    table tr td select{
-      border-color: #4b2b30;
-      border-radius: 5px;
-      width: 250px;
-      height: 40px;
-      margin-bottom: 30px;
-      border-radius: 10px;
-      color: rgb(62, 60, 60);
-      font-size: 13px;
-      text-align: center;
-      border: 2px solid #4b2b30;
-    }
-    /* 테이블 안의 글자 크기 */
-    table tr td p{
-      font-size: 18px;
-      margin-right: 25px;
-      margin-bottom: 30px;
-    }
-    /* 로고 배너 크기,위치 */    
-    .mainLogo{
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 100px;
-    margin-bottom: 60px;
-    }
-
-    .mainLogo img{
-    width: 400px;
-    height: 100px;
-    }
-
-    .mainLogo h2{
-      margin-top: 50px;
-    }
-
-    /* 가입하기 버튼  */
-    .sign_up_btn{
-      display: block;
-      background-color: rgba(141, 105, 111, 0.5);
-      margin: 0 auto;
-      width: 150px;
-      height: 50px;
-      border-radius: 5px;
-    }
-   
-  </style>
+  <link href="./css/Sign_up.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
   <wrap>
     <form action="#" method="post">
       <!-- 로고 -->
       <div class="mainLogo">
-        <a href="./index.html"><img src="./img/HatchfulExport-All/MainLogoMini.png" alt="#"></a>
+        <a href="./Index.html"><img src="../img/HatchfulExport-All/MainLogoMini.png" alt="#"></a>
         <h2>위키피디아는 당신의 것입니다!</h2>
       </div>
       
