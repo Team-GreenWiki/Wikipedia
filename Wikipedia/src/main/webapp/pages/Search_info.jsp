@@ -19,7 +19,7 @@
         <h1>아이디 / 비밀번호 찾기</h1>
     </div>
 
-    <form name="search_info" method="get">
+    <form name="search_info" method="get" onsubmit="return validateForm(this)">
         <table>
             <div>
                 <tr class="search_userId">
@@ -89,8 +89,25 @@
     </form>
    
    <!-- 스크립트 -->
-   <script>
+   <script type="text/javascript">
    		function validateForm(form) {
+   			if (form.nickName.value == "") {
+   				alert("닉네임을 입력하세요.");
+   				form.nickName.focus();
+   				return false;
+   			}
+   			
+   			if (form.Email.value == "") {
+   				alert("이메일을 입력하세요.");
+   				form.Email.focus();
+   				return false;
+   			}
+   			
+   			if (form.user_Id.value == "") {
+   				alert("아이디를 입력하세요.");
+   				form.user_Id.focus();
+   				return false;
+   			}
    			
    		}
    </script>
