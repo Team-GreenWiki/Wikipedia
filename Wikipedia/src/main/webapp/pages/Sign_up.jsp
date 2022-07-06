@@ -11,13 +11,13 @@
 </head>
 <body>
   <wrap>
-    
+    <form action="../process/SignupProcess.jsp" method="post" onsubmit="return dataCheck(this);"> 
       <!-- 로고 -->
       <div class="mainLogo">
         <a href="./Index.html"><img src="../img/HatchfulExport-All/MainLogoMini.png" alt="#"></a>
         <h2>위키피디아는 당신의 것입니다!</h2>
       </div>
-    <form action="../process/SignupProcess.jsp" method="post" onsubmit="return dataCheck(this);"> 
+    
     <div class="table_div"> <!-- 가입 테이블 감싼것  -->
       
       <table>
