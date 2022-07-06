@@ -13,7 +13,7 @@
 <body>
     <div id="container">
         <div id="mainLogo">
-            <a href="index.html"><h1><img src="../img/HatchfulExport-All/MainLogoMini.png"></h1></a>
+            <a href="../pages/Index.jsp"><h1><img src="../img/HatchfulExport-All/MainLogoMini.png"></h1></a>
         </div>
 
         <div id="loginArea">
