@@ -19,7 +19,8 @@
         <h1>아이디 / 비밀번호 찾기</h1>
     </div>
 
-    <form name="search_info" method="get" onsubmit="return validateForm(this)">
+	<!-- 아이디 찾기 form -->
+    <form name="search_info_ID" method="get" onsubmit="return validateForm_1(this)">
         <table>
             <div>
                 <tr class="search_userId">
@@ -49,7 +50,12 @@
                     </td>
                 </tr>
             </div> <!-- 아이디 찾기-->
-
+         </table>  
+	</form>
+	
+	<!-- 비밀번호 찾기 form -->
+	<form name="search_info_PW" method="post" onsubmit="return validateForm_2(this)">
+		<table>
             <div>
                 <tr class="search_userPw">
                     <td><p>비밀번호 찾기</p></td>
@@ -80,17 +86,20 @@
             <div>
                 <tr class="comm_2">
                     <td colspan="2">
-                        <input type="submit" value="저장" class="check">
+                        <input type="submit" value="저장" class="check" onclick="location.href='./Login.jsp'">
                         <input type="button" value="취소" class="cancel">
                     </td>
                 </tr>
             </div> <!-- 비밀번호 찾기-->
         </table> <!-- table-->
     </form>
+    
    
    <!-- 스크립트 -->
    <script type="text/javascript">
-   		function validateForm(form) {
+   
+   		function validateForm_1(form) {
+   			
    			if (form.nickName.value == "") {
    				alert("닉네임을 입력하세요.");
    				form.nickName.focus();
@@ -99,9 +108,13 @@
    			
    			if (form.Email.value == "") {
    				alert("이메일을 입력하세요.");
-   				form.Email.focus();
+   				form.email.focus();
    				return false;
-   			}
+   			}	
+   		}
+   		
+   		
+   		function validateForm_2(form) {
    			
    			if (form.user_Id.value == "") {
    				alert("아이디를 입력하세요.");
@@ -109,6 +122,11 @@
    				return false;
    			}
    			
+   			if (form.Email.value == "") {
+   				alert("이메일을 입력하세요.");
+   				form.email.focus();
+   				return false;
+   			}
    		}
    </script>
     
