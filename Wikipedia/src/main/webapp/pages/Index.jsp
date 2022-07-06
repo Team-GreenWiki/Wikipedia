@@ -19,7 +19,7 @@
 <body>
     <div class="container">
         <section class="main1">
-            <a href="index.jsp" class="mainLogo"><h1><img src="../img/HatchfulExport-All/MainLogoMini.png"></h1></a>
+            <a href="Index.jsp" class="mainLogo"><h1><img src="../img/HatchfulExport-All/MainLogoMini.png"></h1></a>
             <form action="" method="get">
             	<input type="text" class="input_search" name="input_search">
             	<input type="submit" name="searchBtn" class="searchBtn" />
