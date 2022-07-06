@@ -11,7 +11,14 @@ public class DocontentDTO {
 	private String content3;
 	private String content4;
 	private String content5;
+	private int docnum;
 	
+	public int getDocnum() {
+		return docnum;
+	}
+	public void setDocnum(int docnum) {
+		this.docnum = docnum;
+	}
 	public String getSubtitle1() {
 		return subtitle1;
 	}

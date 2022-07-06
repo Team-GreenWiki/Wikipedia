@@ -1,3 +1,5 @@
+<%@page import="docontent.DocontentDTO"%>
+<%@page import="docontent.DocontentDAO"%>
 <%@page import="document.DocumentDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.HashMap"%>
@@ -40,8 +42,13 @@
 <%
 	String docnum = request.getParameter("docnum");
 	DocumentDAO dao = new DocumentDAO(application);
-	DocumentDTO dto = dao.selectList();
+	DocumentDTO dto = dao.selectView(docnum);
+	
+	DocontentDAO dao2 = new DocontentDAO(application);
+	DocontentDTO dto2 = dao2.selectView(docnum);
 %>
+	
+	
 	
 	<!-- 댓글기능 확인을 위한 임시 문서 jsp입니다. -->
 	
@@ -55,37 +62,37 @@
 	<hr>
 	<table width="80%" align="center">
 		<tr>
-			<td><%= dto.title %></td>
+			<td> ${ dto.title}  </td>
 		</tr>
 		<tr>
-			<td><%= dto2.subtitle1 %></td>
+			<td>${ dto2.subtitle1}</td>
 		</tr>
 		<tr>
-			<td><%= dto2.docontent1 %></td>
+			<td>${dto2.content1 }</td>
 		</tr>
 		<tr>
-			<td><%= dto2.subtitle2 %></td>
+			<td>${ dto2.subtitle2}</td>
 		</tr>
 		<tr>
-			<td><%= dto2.docontent2 %></td>
+			<td>${dto2.content2 }</td>
 		</tr>
 		<tr>
-			<td><%= dto2.subtitle3 %></td>
+			<td>${ dto2.subtitle3}</td>
 		</tr>
 		<tr>
-			<td><%= dto2.docontent3 %></td>
+			<td>${dto2.content3 }</td>
 		</tr>
 		<tr>
-			<td><%= dto2.subtitle4 %></td>
+			<td>${ dto2.subtitle4}</td>
 		</tr>
 		<tr>
-			<td><%= dto2.docontent4 %></td>
+			<td>${dto2.content4 }</td>
 		</tr>
 		<tr>
-			<td><%= dto2.subtitle5 %></td>
+			<td>${ dto2.subtitle5}</td>
 		</tr>
 		<tr>
-			<td><%= dto2.docontent5 %></td>
+			<td>${dto2.content5 }</td>
 		</tr>
 		<br/><br/><br/>
 		<hr>
@@ -96,6 +103,7 @@
 	<form action="" method="get" name="comment_write_form">
 		<table border='1' width="40%" align="center">
 			<tr>
+				<td class="comment_Tag"><button onclick="">ALL</button></td>
 				<td class="comment_Tag"><button onclick="">PURPOSE</button></td>
 				<td class="comment_Tag"><button onclick="">USING</button></td>
 				<td class="comment_Tag"><button onclick="">MOREINFO</button></td>
@@ -103,7 +111,7 @@
 				
 			</tr>
 			<tr>
-				<td colspan='4'>
+				<td colspan='5'>
 					<div class="comment_input">
 						<textarea placeholder="댓글을 입력하세요" name="user_comment_input"></textarea>
 						<!-- 플레이스 홀더 안에 선택한 태그 표시 기능을 el등을 이용해서 표시 기능 추가해야함 -->
