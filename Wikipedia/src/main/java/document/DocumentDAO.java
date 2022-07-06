@@ -36,17 +36,17 @@ public class DocumentDAO extends JDBConnect {
 	}
 	
 	
-	//게시글 목록 반환
+	//문서 목록 반환
 	public List<DocumentDTO> selectListPage(Map<String,Object> map){
 		List<DocumentDTO> bbs= new Vector<DocumentDTO>();
 		
-		String query = "SELECT * FROM Document";
+		String query = "SELECT * FROM document";
 		
 		if(map.get("searchWord") != null){
 			query += " where " +map.get("searchField")+ " " + "like '%"+map.get("searchWord")+"%'";
 		}
 		
-		query += " ORDER BY num DESC";
+		query += " ORDER BY docnum DESC";
 		
 		try {
 			stmt = con.createStatement();
@@ -55,8 +55,8 @@ public class DocumentDAO extends JDBConnect {
 			while(rs.next()) {
 				DocumentDTO dto = new DocumentDTO();
 				dto.setDocnum(rs.getInt("docnum")); //번호
-				dto.setTitle(rs.getNString("title"));//제목
-				dto.setId(rs.getNString("content")); // 작성자
+				dto.setTitle(rs.getString("title"));//제목
+				dto.setId(rs.getString("id")); // 작성자
 				dto.setGoodcount(rs.getInt("goodcount")); // 추천수
 				dto.setWritedate(rs.getDate("writedate")); // 작성일
 
