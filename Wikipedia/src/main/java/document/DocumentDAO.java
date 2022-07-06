@@ -14,8 +14,30 @@ public class DocumentDAO extends JDBConnect {
 	}
 	//JDBC연결
 	
+	//문서 개수 세기
+	public int selectCount(Map<String,Object> map) {
+		int totalCount = 0; // 결과값(게시물 개수) 저장 
+		String query ="SELECT COUNT(*) FROM DOCUMENT ";
+		if(map.get("searchWord") != null){
+			query += " where " +map.get("searchField")+ " " + "like '%"+map.get("searchWord")+"%'";
+		}
+		
+		try {
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(query);
+			rs.next();
+			totalCount = rs.getInt(1);
+		}catch(Exception e) {
+			System.out.println("문서의 개수를 계산하는 중에 예외가 발생되었음");
+			e.printStackTrace();
+		}
+		
+		return totalCount;
+	}
+	
+	
 	//게시글 목록 반환
-	public List<DocumentDTO> selectList(Map<String,Object> map){
+	public List<DocumentDTO> selectListPage(Map<String,Object> map){
 		List<DocumentDTO> bbs= new Vector<DocumentDTO>();
 		
 		String query = "SELECT * FROM Document";
@@ -35,8 +57,8 @@ public class DocumentDAO extends JDBConnect {
 				dto.setDocnum(rs.getInt("docnum")); //번호
 				dto.setTitle(rs.getNString("title"));//제목
 				dto.setId(rs.getNString("content")); // 작성자
-				dto.setGoodcount(0); // 추천수
-				dto.setWritedate(null); // 작성일
+				dto.setGoodcount(rs.getInt("goodcount")); // 추천수
+				dto.setWritedate(rs.getDate("writedate")); // 작성일
 
 				bbs.add(dto);//결과를 목록에 저장 
 			}
@@ -46,5 +68,34 @@ public class DocumentDAO extends JDBConnect {
 		}
 		return bbs;
 	}
+	
+	//문서 상세보기
+	public DocumentDTO selectView(String docnum) {
+		DocumentDTO dto = new DocumentDTO();
+		String query = "SELECT  * FORM DOCUMENT WHERE docnum = ? ";
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1,docnum);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setDocnum(rs.getInt("docnum"));
+				dto.setId(rs.getString("id"));
+				dto.setTitle(rs.getString("title"));
+				dto.setGoodcount(rs.getInt("goodcount"));
+				dto.setWritedate(rs.getDate("writedate"));
+			}
+		}catch(Exception e) {
+			System.out.println("문서 상세보기 중 예외발생");
+			e.printStackTrace();
+		}
+		
+		return dto;
+	} 
+	
+	
+	
+	
 	
 }

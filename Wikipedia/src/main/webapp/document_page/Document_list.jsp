@@ -1,3 +1,4 @@
+<%@page import="utils.DocumentPage"%>
 <%@page import="document.DocumentDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
@@ -26,7 +27,7 @@
 		   param.put("searchWord", searchWord);
 	   }
 	   
-	   List<DocumentDTO> boardLists = dao.selectList(param);
+	   List<DocumentDTO> DocumentLists = dao.selectListPage(param);
 	   dao.close();
    
    %>
@@ -54,21 +55,33 @@
 			<td>추천수</td>
 			<td>게시일</td>
 		</tr>
-		<%if(DocumentLists.isEmpty()){
+		<%
+			if(DocumentLists.isEmpty()){
 		%>	
 			<tr>
 				<td colspan='5' align="center">게시물이 존재하지 않습니다.</td>
 			<tr>
 			
 		<%
-		else{
+		}else{
 			int virtualNum = 0;
 			int countNum = 0;
 			
 			for(DocumentDTO dto : DocumentLists){
 				virtualNum = totalCount - (((pageNum -1) * pageSize) +countNum++);
+				
+			%>
+			<tr align='center'>
+				<td align='center'><%=virtualNum %></td>
+				<td align='center'>
+					<a href='Document_1_view.jsp'><%=dto.getDocnum() %><%=dto.getTitle() %></a>
+				</td>
+				<td align='center'><%=dto.getId() %></td>
+				<td align='center'><%=dto.getGoodcount() %></td>
+				<td align='center'><%=dto.getWritedate() %></td>
+			</tr>
+		<% 
 			}
-			
 		}
 		%>
 		
