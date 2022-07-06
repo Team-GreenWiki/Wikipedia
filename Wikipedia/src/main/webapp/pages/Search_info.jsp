@@ -86,7 +86,7 @@
             <div>
                 <tr class="comm_2">
                     <td colspan="2">
-                        <input type="submit" value="저장" class="check" onclick="location.href='./Login.jsp'">
+                        <input type="submit" value="저장" class="check">
                         <input type="button" value="취소" class="cancel">
                     </td>
                 </tr>
@@ -100,13 +100,13 @@
    
    		function validateForm_1(form) {
    			
-   			if (form.nickName.value == "") {
+   			if (!form.nickName.value == "") {
    				alert("닉네임을 입력하세요.");
    				form.nickName.focus();
    				return false;
    			}
    			
-   			if (form.Email.value == "") {
+   			if (!form.Email.value == "") {
    				alert("이메일을 입력하세요.");
    				form.email.focus();
    				return false;
@@ -116,13 +116,13 @@
    		
    		function validateForm_2(form) {
    			
-   			if (form.user_Id.value == "") {
+   			if (!form.user_Id.value == "") {
    				alert("아이디를 입력하세요.");
    				form.user_Id.focus();
    				return false;
    			}
    			
-   			if (form.Email.value == "") {
+   			if (!form.Email.value == "") {
    				alert("이메일을 입력하세요.");
    				form.email.focus();
    				return false;
