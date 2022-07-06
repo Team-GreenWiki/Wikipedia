@@ -1,16 +1,17 @@
 @charset "UTF-8";
-* {
+      * {
             margin: 0 auto;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* 메인로고 */
-        .mainLogo {
-            width: 400px;
-            height: 120px;
-            margin-top: 50px;
-            margin-left: 40%;
+        body{
+            background-color: #4b2b3010;
+        }
+
+        #container{
+            width: 1200px;
+            margin: 0 auto;
         }
 
         /* 아이디 / 비밀번호 찾기 */
@@ -95,6 +96,20 @@
             border-radius: 25px;
             margin-bottom: 10px;
         }
+
+        /* 비밀번호 찾기 - 이메일 */
+        .user_email_Info {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .user_email_Info input {
+            height: 40px;
+            width: 200px;
+            border : 2px solid rgb(70, 44, 48);
+            border-radius: 25px;
+        }
+
 
 
         /* 비밀번호 찾기 - 인증번호 */
