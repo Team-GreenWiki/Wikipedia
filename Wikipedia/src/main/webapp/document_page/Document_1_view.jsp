@@ -36,6 +36,12 @@
 </style>
 </head>
 <body>
+
+<%
+	String docnum = request.getParameter("docnum");
+	DocumentDAO dao = new DocumentDAO(application);
+	DocumentDTO dto = dao.selectList();
+%>
 	
 	<!-- 댓글기능 확인을 위한 임시 문서 jsp입니다. -->
 	
