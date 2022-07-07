@@ -42,7 +42,7 @@
 <%
 	String docnum = request.getParameter("docnum");
 	DocumentDAO dao = new DocumentDAO(application);
-	DocumentDTO dto = dao.selectView(docnum);
+	DocumentDTO dto = dao.selectView(docnum); 
 	
 	DocontentDAO dao2 = new DocontentDAO(application);
 	DocontentDTO dto2 = dao2.selectView(docnum);
@@ -57,42 +57,41 @@
 	 -->
 	
 	
-	
 	<h2>문서 1번 ( 샘플 )</h2>
 	<hr>
 	<table width="80%" align="center">
 		<tr>
-			<td> ${ dto.title}  </td>
+			<td> <%=dto.getTitle() %>  </td>
 		</tr>
 		<tr>
-			<td>${ dto2.subtitle1}</td>
+			<td> <%=dto2.getSubtitle1() %></td>
 		</tr>
 		<tr>
-			<td>${dto2.content1 }</td>
+			<td> <%=dto2.getContent1() %></td>
 		</tr>
 		<tr>
-			<td>${ dto2.subtitle2}</td>
+			<td><%=dto2.getSubtitle2() %></td>
 		</tr>
 		<tr>
-			<td>${dto2.content2 }</td>
+			<td><%=dto2.getContent2() %></td>
 		</tr>
 		<tr>
-			<td>${ dto2.subtitle3}</td>
+			<td><%=dto2.getSubtitle3() %></td>
 		</tr>
 		<tr>
-			<td>${dto2.content3 }</td>
+			<td><%=dto2.getContent3() %></td>
 		</tr>
 		<tr>
-			<td>${ dto2.subtitle4}</td>
+			<td><%=dto2.getSubtitle4() %></td>
 		</tr>
 		<tr>
-			<td>${dto2.content4 }</td>
+			<td><%=dto2.getContent4() %></td>
 		</tr>
 		<tr>
-			<td>${ dto2.subtitle5}</td>
+			<td><%=dto2.getSubtitle5() %></td>
 		</tr>
 		<tr>
-			<td>${dto2.content5 }</td>
+			<td><%=dto2.getContent5() %></td>
 		</tr>
 		<br/><br/><br/>
 		<hr>
