@@ -16,7 +16,7 @@
 	
 	 <%
 	   DocumentDAO dao = new DocumentDAO(application);
-	   
+	 
 	   Map<String,Object> param = new HashMap<String,Object>();
 	   
 	   String searchField = request.getParameter("searchField");
@@ -53,6 +53,7 @@
 	   param.put("start", start);
 	   param.put("end", end);
 	   
+	   
 	   dao.close();
 	   
    %>
@@ -72,45 +73,47 @@
 		</table>
 	</form>
 	
-	<table border='1' width="60%">
-		<tr>
-			<td>번호</td>
-			<td>제목</td>
-			<td>작성자</td>
-			<td>추천수</td>
-			<td>게시일</td>
-		</tr>
-		<%
-			if(DocumentLists.isEmpty()){
-		%>	
+	<form method='post' action="./Document_1_view.jsp">
+		<table border='1' width="60%">
 			<tr>
-				<td colspan='5' align="center">게시물이 존재하지 않습니다.</td>
-			<tr>
-			
-		<%
-		}else{
-			int virtualNum = 0;
-			int countNum = 0;
-			
-			for(DocumentDTO dto : DocumentLists){
-				virtualNum = totalCount - (((pageNum -1) * pageSize) +countNum++);
-				
-			%>
-			<tr align='center'>
-				<td align='center'><%=virtualNum %></td>
-				<td align='center'>
-					<a href='Document_1_view.jsp?docnum=1'><%=dto.getDocnum() %><%=dto.getTitle() %></a>
-				</td>
-				<td align='center'><%=dto.getId() %></td>
-				<td align='center'><%=dto.getGoodcount() %></td>
-				<td align='center'><%=dto.getWritedate() %></td>
+				<td>번호</td>
+				<td>제목</td>
+				<td>작성자</td>
+				<td>추천수</td>
+				<td>게시일</td>
 			</tr>
-		<% 
+			<%
+				if(DocumentLists.isEmpty()){
+			%>	
+				<tr>
+					<td colspan='5' align="center">게시물이 존재하지 않습니다.</td>
+				<tr>
+				
+			<%
+			}else{
+				int virtualNum = 0;
+				int countNum = 0;
+				
+				for(DocumentDTO dto : DocumentLists){
+					virtualNum = totalCount - (((pageNum -1) * pageSize) +countNum++);
+					
+				%>
+				<tr align='center'>
+					<td align='center'><%=virtualNum %></td>
+					<td align='center'>
+						<a href='Document_1_view.jsp?docnum=<%=dto.getDocnum()%>'><%=dto.getDocnum() %><%=dto.getTitle() %></a>
+					</td>
+					<td align='center'><%=dto.getId() %></td>
+					<td align='center'><%=dto.getGoodcount() %></td>
+					<td align='center'><%=dto.getWritedate() %></td>
+				</tr>
+			<% 
+				}
 			}
-		}
-		%>
-		
-	</table>
+			%>
+			
+		</table>
+	</form>
    
    
    

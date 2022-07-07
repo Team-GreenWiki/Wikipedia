@@ -72,8 +72,8 @@ public class DocumentDAO extends JDBConnect {
 	//문서 상세보기
 	public DocumentDTO selectView(String docnum) {
 		DocumentDTO dto = new DocumentDTO();
-		String query = "SELECT  * FORM DOCUMENT WHERE docnum = ? ";
-		
+		String query = "SELECT  * FROM DOCUMENT WHERE docnum = ? ";
+		System.out.println("docnum = "+ docnum);
 		try {
 			psmt = con.prepareStatement(query);
 			psmt.setString(1,docnum);
@@ -87,7 +87,7 @@ public class DocumentDAO extends JDBConnect {
 				dto.setWritedate(rs.getDate("writedate"));
 			}
 		}catch(Exception e) {
-			System.out.println("문서 상세보기 중 예외발생");
+			System.out.println("문서 상세보기 중 예외발생 문서DAO");
 			e.printStackTrace();
 		}
 		
