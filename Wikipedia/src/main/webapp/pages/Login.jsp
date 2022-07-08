@@ -35,8 +35,8 @@
             <p class="loginErrMsg">${ loginErrMsg }</p>
 
             <ul class="loginMenu">
-                <li><a href="sign_up.html">회원가입</a></li>
-                <li><a href="search_info.html">아이디 / 비밀번호 찾기</a></li>
+                <li><a href="sign_up.jsp">회원가입</a></li>
+                <li><a href="search_info.jsp">아이디 / 비밀번호 찾기</a></li>
             </ul>
         </div>
     </div><!-- #container -->
