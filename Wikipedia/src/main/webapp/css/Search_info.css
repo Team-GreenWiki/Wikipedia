@@ -9,7 +9,7 @@
             background-color: #4b2b3010;
         }
 
-        #container{
+       #container{
             width: 1200px;
             margin: 0 auto;
         }
@@ -19,10 +19,11 @@
         	width: 500px;
         }
 
-        /* 아이디 / 비밀번호 찾기 */
+        아이디 / 비밀번호 찾기
         #text {
             padding: 50px;
             text-align: center;
+            margin-left: 50px;
         }
 
         /* 아이디 찾기 */

@@ -30,11 +30,11 @@
         </tr>
         <tr>
           <td><p>비밀번호</p></td>
-          <td><input type="text" placeholder="특수문자,영/대문자 포함 10자 이상" class="input_userPw" name="input_userPw"></td>
+          <td><input type="password" placeholder="특수문자,영/대문자 포함 10자 이상" class="input_userPw" name="input_userPw"></td>
         </tr>
         <tr>
           <td><p>비밀번호 확인</p></td>
-          <td><input type="text" placeholder="비밀번호를 다시 입력해주세요" class="input_userPw2" name="input_userPw2"></td>
+          <td><input type="password" placeholder="비밀번호를 다시 입력해주세요" class="input_userPw2" name="input_userPw2"></td>
         </tr>
         <tr>
           <td><p>E-mail</p></td>
@@ -85,7 +85,7 @@
     		}
     		
     		// 비밀번호 일치 확인
-    		if(form.input_userPw.value != form.input_userPw2){
+    		if(form.input_userPw.value != form.input_userPw2.value){
     			alert("비밀번호가 일치하지 않습니다");
     			form.input_userPw.focus();
     			return false;
