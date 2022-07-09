@@ -13,14 +13,45 @@ public class SearchDAO extends JDBConnect{
 		super (application);
 	}
 	
-	public SearchDTO getSearchDTO(String userId, String userPw) {
+	// 아이디 찾기
+	public SearchDTO getSearchId (String userName, String userEmail) {
+		
 		SearchDTO dto = new SearchDTO();
 		
 		try {
 			String query = "SELECT * "
 						 + " FROM MEMBER "
-						 + " WHERE ID = ? AND EMAIL = ?";
+						 + " WHERE NAME = ? AND EMAIL = ?";
 			
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, "userName");
+			psmt.setString(2, "userEmail");
+			rs = psmt.executeQuery();
+			
+			while (rs.next()) {
+				dto.setName(rs.getString("NAME"));
+				dto.setEmail(rs.getString("EMAIL"));
+			}
+			
+		} catch (Exception e) {
+			System.out.println("아이디 찾기 중 예외 발생");
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+	
+	// 비밀번호 찾기
+	public SearchDTO getSearchPw (String userId, String userEmail) {
+		
+		SearchDTO dto = new SearchDTO();
+		
+		try {
+			
+			String query = " SELECT * "
+					 + " FROM MEMBER "
+					 + " WHERE ID = ? AND EMAIL = ?";
+		
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, "userId");
 			psmt.setString(2, "userEmail");
@@ -32,13 +63,12 @@ public class SearchDAO extends JDBConnect{
 			}
 			
 		} catch (Exception e) {
-			System.out.println("객체 생성 중 예외 발생");
+			System.out.println("비밀번호 찾기 중 예외 발생");
 			e.printStackTrace();
 		}
 		
 		return dto;
 	}
-	
 	
 	
 	
