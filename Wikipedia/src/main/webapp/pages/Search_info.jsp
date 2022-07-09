@@ -20,7 +20,7 @@
     </div>
 
 	<!-- 아이디 찾기 form -->
-    <form name="search_info_ID" method="get" onsubmit="return validateForm_1(this)" action="./Login.jsp">
+    <form name="search_info_ID" method="post" action="../process/Search_Info_Process_ID.jsp">
         <table>
             <div>
                 <tr class="search_userId">
@@ -45,7 +45,8 @@
             <div>
                 <tr class="comm_1">
                     <td colspan="2">
-                        <input type="submit" value="저장" class="check" onclick="searchUserId();">
+                    	<input type="submit" value="저장" class="check" onclick= "validateForm_1(this.form);">
+                        <!-- <input type="button" value="저장" class="check" onclick= "validateForm_1(this.form);"> -->
                         <input type="button" value="취소" class="cancel">
                     </td>
                 </tr>
@@ -54,7 +55,7 @@
 	</form>
 	
 	<!-- 비밀번호 찾기 form -->
-	<form name="search_info_PW" method="post" onsubmit="return validateForm_2(this)" action="./Login.jsp">
+	<form name="search_info_PW" method="post">
 		<table>
             <div>
                 <tr class="search_userPw">
@@ -86,7 +87,7 @@
             <div>
                 <tr class="comm_2">
                     <td colspan="2">
-                        <input type="submit" value="저장" class="check" onclick="searchUserPw();">
+                        <input type="button" value="저장" class="check" onclick="validateForm_2(this.form);">
                         <input type="button" value="취소" class="cancel">
                     </td>
                 </tr>
@@ -97,22 +98,7 @@
    
    <!-- 스크립트 -->
    <script type="text/javascript">
-   
-   		function searchUserId(form) {
-   			if (form.nickName.value == "userName" && form.Email.value == "userEmail") {
-   				alert("저장되었습니다.");
-   				return;
-   			}
-   		}
-   		
-   		fucntion searchUserPw(form) {
-   			if (form.user_Id.value == "userId" && form.email.value == "userEmail") {
-   				alert("저장되었습니다.");
-   				return;
-   			}
-   		}
-   
-   		
+      		
    		function validateForm_1(form) {
    			
    			if (form.nickName.value == "") {
