@@ -18,17 +18,32 @@
 		SearchDTO dto = new SearchDTO();
 		SearchDAO dao = new SearchDAO(application);
 		
-		int result = 0;
+		dto.setName("nickName");
+		dto.setEmail("Email");
 		
 		if (name_Id.equals(dto.getName())) {
 			dto.setName(name_Id);
+			
+			dao.getSearchId(dto.getName(), dto.getEmail());
+			dao.close();
+			
 			
 		}
 		
 		
 		// 폼 값 받아오기 - 비밀번호 찾기
-		String id_Pw = request.getParameter("user_Id").toString();
+		String id_Pw = request.getParameter("userId").toString();
 		String email_Pw = request.getParameter("email").toString();
+		
+		dto.setId("userId");
+		dto.setEmail("email");
+		
+		if (id_Pw.equals(dto.getId())) {
+			dto.setId(id_Pw);
+			
+			dao.getSearchPw(dto.getId(), dto.getEmail());
+			dao.close();
+		}
 	%>
 </body>
 </html>
