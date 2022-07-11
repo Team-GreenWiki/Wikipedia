@@ -1,7 +1,9 @@
+<%@page import="utils.JSFunction"%>
 <%@page import="Search.SearchDAO"%>
 <%@page import="Search.SearchDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,39 +13,28 @@
 <body>
 	<%
 		// 폼 값 받아오기 - 아이디 찾기 (닉네임, 이메일 input 상자의 name)
-		String name_Id = request.getParameter("nickName").toString();
+		String nick = request.getParameter("nickName").toString();
 		String email_Id = request.getParameter("Email").toString();
 		
 		// DTO, DAO 객체 생성
 		SearchDTO dto = new SearchDTO();
+		
+		dto.setName(nick);
+		dto.setEmail(email_Id);
+		
 		SearchDAO dao = new SearchDAO(application);
+		String result = dao.getSearchId(dto.getName(), dto.getEmail());
 		
-		dto.setName("nickName");
-		dto.setEmail("Email");
-		
-		if (name_Id.equals(dto.getName())) {
-			dto.setName(name_Id);
-			
-			dao.getSearchId(dto.getName(), dto.getEmail());
-			dao.close();
-			
-			
-		}
-		
-		
-		// 폼 값 받아오기 - 비밀번호 찾기
-		String id_Pw = request.getParameter("userId").toString();
-		String email_Pw = request.getParameter("email").toString();
-		
-		dto.setId("userId");
-		dto.setEmail("email");
-		
-		if (id_Pw.equals(dto.getId())) {
-			dto.setId(id_Pw);
-			
-			dao.getSearchPw(dto.getId(), dto.getEmail());
-			dao.close();
+		if (result != null) {
+			JSFunction.alertBack("사용자님의 아이디는 [" + result + "]입니다.", out);
+			/* response.sendRedirect("Search_info.jsp"); */
+		} else {
+			JSFunction.alertBack("값이 저장되지 않았습니다.", out);
 		}
 	%>
+	
+	
+	
+	
 </body>
 </html>

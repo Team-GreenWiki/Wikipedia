@@ -55,7 +55,7 @@
 	</form>
 	
 	<!-- 비밀번호 찾기 form -->
-	<form name="search_info_PW" method="post">
+	<form name="search_info_PW" method="post" action="../process/Search_Info_Process_PW.jsp">
 		<table>
             <div>
                 <tr class="search_userPw">
@@ -87,7 +87,7 @@
             <div>
                 <tr class="comm_2">
                     <td colspan="2">
-                        <input type="button" value="저장" class="check" onclick="validateForm_2(this.form);">
+                        <input type="submit" value="저장" class="check" onclick="validateForm_2(this.form);">
                         <input type="button" value="취소" class="cancel">
                     </td>
                 </tr>
