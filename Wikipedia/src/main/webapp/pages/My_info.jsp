@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wikipedia 우리 모두의 백과사전</title>
     
-    <link href="./css/My_info.css" rel="stylesheet" type="text/css" />
+    <link href="../css/My_info.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <%@include file="../include/Header.jsp" %>

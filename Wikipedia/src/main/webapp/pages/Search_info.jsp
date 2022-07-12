@@ -8,18 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     
-    <link href="./css/Search_info.css" rel="stylesheet" type="text/css" />
+    <link href="../css/Search_info.css" rel="stylesheet" type="text/css" />
     
 </head>
 <body>
     
-        <a href="#"><img src="../img/HatchfulExport-All/MainLogoMini.png" class="mainLogo"></a>
+    <a href="#"><img src="../img/HatchfulExport-All/MainLogoMini.png" class="mainLogo"></a>
 
     <div id="text">
         <h1>아이디 / 비밀번호 찾기</h1>
     </div>
 
-    <form action="" name="search_info" method="post">
+	<!-- 아이디 찾기 form -->
+    <form name="search_info_ID" method="post" action="../process/Search_Info_Process_ID.jsp">
         <table>
             <div>
                 <tr class="search_userId">
@@ -44,12 +45,18 @@
             <div>
                 <tr class="comm_1">
                     <td colspan="2">
-                        <input type="submit" value="저장" class="check">
+                    	<input type="submit" value="저장" class="check" onclick= "validateForm_1(this.form);">
+                        <!-- <input type="button" value="저장" class="check" onclick= "validateForm_1(this.form);"> -->
                         <input type="button" value="취소" class="cancel">
                     </td>
                 </tr>
             </div> <!-- 아이디 찾기-->
-
+         </table>  
+	</form>
+	
+	<!-- 비밀번호 찾기 form -->
+	<form name="search_info_PW" method="post" action="../process/Search_Info_Process_PW.jsp">
+		<table>
             <div>
                 <tr class="search_userPw">
                     <td><p>비밀번호 찾기</p></td>
@@ -66,7 +73,7 @@
             <div>
                 <tr class="user_email_Info">
                     <td>이메일</td>
-                    <td><input type="email" name="Email"></td>
+                    <td><input type="email" name="email"></td>
                 </tr>
             </div>
 
@@ -80,14 +87,49 @@
             <div>
                 <tr class="comm_2">
                     <td colspan="2">
-                        <input type="submit" value="저장" class="check">
+                        <input type="submit" value="저장" class="check" onclick="validateForm_2(this.form);">
                         <input type="button" value="취소" class="cancel">
                     </td>
                 </tr>
             </div> <!-- 비밀번호 찾기-->
         </table> <!-- table-->
     </form>
+    
    
+   <!-- 스크립트 -->
+   <script type="text/javascript">
+      		
+   		function validateForm_1(form) {
+   			
+   			if (form.nickName.value == "") {
+   				alert("닉네임을 입력하세요.");
+   				form.nickName.focus();
+   				return false;
+   			}
+   			
+   			if (form.Email.value == "") {
+   				alert("이메일을 입력하세요.");
+   				form.email.focus();
+   				return false;
+   			}	
+   		}
+   		
+   		
+   		function validateForm_2(form) {
+   			
+   			if (form.user_Id.value == "") {
+   				alert("아이디를 입력하세요.");
+   				form.user_Id.focus();
+   				return false;
+   			}
+   			
+   			if (form.email.value == "") {
+   				alert("이메일을 입력하세요.");
+   				form.email.focus();
+   				return false;
+   			}
+   		}
+   </script>
     
 </body>
 </html>
