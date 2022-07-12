@@ -17,18 +17,23 @@
 </head>
 <body>
 	<header>
-	${ result }
-		<h1><a href="../pages/Index.jsp"><img src="../img/HatchfulExport-All/MainLogoMini.png"></a></h1>
-		<c:if test="${ result }">
+		<div class="header1">
+			<h1><a href="../pages/Index.jsp"><img src="../img/HatchfulExport-All/MainLogoMini.png"></a></h1>
 			<form action="../process/SearchProcess.jsp" method="get">
-            	<input type="text" class="input_search" name="input_search">
-            	<button type="submit" class="searchBtn" /></button>
-        	</form>
-		</c:if>
-		<c:choose>
-			<c:when test="${ sessionScope.userId == null }"><p><a href="../pages/Login.jsp">로그인</a></p></c:when>
-			<c:when test="${ sessionScope.userId != null }"><p><a href="../pages/My_Info.jsp">내 정보</a></p></c:when>
-		</c:choose>
+	           	<input type="text" class="input_search" name="input_search">
+	           	<button type="submit" class="searchBtn" /></button>
+	       	</form>
+			<c:choose>
+				<c:when test="${ sessionScope.userId == null }"><p><a href="../pages/Login.jsp">로그인</a></p></c:when>
+				<c:when test="${ sessionScope.userId != null }"><p><a href="../pages/My_Info.jsp">내 정보</a></p></c:when>
+			</c:choose>
+		</div>
+		<div class="header2">
+			<ul>
+				<li><a href="">I'm Feeling Lucky</a></li>
+				<li><a href="">자유게시판</a></li>
+			</ul>
+		</div>
 	</header>
 </body>
 </html>
