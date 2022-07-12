@@ -29,13 +29,19 @@ body{
 
 /* .main1 */
 .main1{
-    margin-top: 300px;
+	margin-top: 150px;
     text-align: center;
 }
 
+.main1 h1{
+	width: 560px;
+	height: 140px;
+	margin: 0 auto;
+}
+
 .main1 .mainLogo img{
-    width: 560px;
-    height: 140px;
+    width: 100%;
+    height: 100%;
 }
 
 .main1 .input_search{
@@ -51,11 +57,20 @@ body{
 }
 
 .main1 .navMenu{
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 20px;
 	display: flex;
+	justify-content: center;
 }
 
 .main1 .navMenu li{
-	margin-right: 30px;
+	width: 15%;
+	height: 50px;
+	line-height: 30px;
+	font-size: 18px;
+	font-weight: bolder;
+	color: #4b2b30;
 }
 
 /* .main2 */
@@ -63,7 +78,6 @@ body{
     margin-top: 50px;
     display: flex;
     justify-content: space-around;
-    display: none;
 }
 
 .main2 div{

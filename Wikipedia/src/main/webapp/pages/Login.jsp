@@ -11,9 +11,10 @@
     <link href="../css/Login.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+	<%@ include file="../include/Header.jsp" %>
     <div id="container">
         <div id="mainLogo">
-            <a href="../pages/Index.jsp"><h1><img src="../img/HatchfulExport-All/MainLogoMini.png"></h1></a>
+            <h1><a href="../pages/Index.jsp"><img src="../img/HatchfulExport-All/MainLogoMini.png"></a></h1>
         </div>
 
         <div id="loginArea">
