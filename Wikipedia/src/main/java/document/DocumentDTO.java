@@ -3,17 +3,17 @@ package document;
 import java.sql.Date;
 
 public class DocumentDTO {
-	private int docnum;
+	private String docnum;
 	private String title;
 	private String id;
-	private int goodcount;
+	private String goodcount;
 	private Date writedate;
 	
 	
-	public int getDocnum() {
+	public String getDocnum() {
 		return docnum;
 	}
-	public void setDocnum(int docnum) {
+	public void setDocnum(String docnum) {
 		this.docnum = docnum;
 	}
 	public String getTitle() {
@@ -28,10 +28,10 @@ public class DocumentDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public int getGoodcount() {
+	public String getGoodcount() {
 		return goodcount;
 	}
-	public void setGoodcount(int goodcount) {
+	public void setGoodcount(String goodcount) {
 		this.goodcount = goodcount;
 	}
 	public Date getWritedate() {
