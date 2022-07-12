@@ -1,17 +1,29 @@
 package comment;
 
+
+
+import java.util.List;
+
 import javax.servlet.ServletContext;
 
 import utils.JDBConnect;
 
 public class CommentDAO extends JDBConnect{
 
+	// 데이터베이스를 연결하기 위해 JDBConnect 상속
 	public CommentDAO(ServletContext application) {
 		super(application);
 	}
 
-	//현재 조회중인 글에서 태그별 댓글 개수 세기
-	
+	// 현재 조회중인 글에서 태그별 댓글 개수 세기
+//	public int commentCount(List<String> list) {
+//		
+//		int totalCount = 0;		// 결과값 (게시물 개수) 저장
+//		
+//		String query = "SELECT COUNT(*) FROM FREEBOARD ";
+//		
+//		
+//	}
 	
 	
 	
