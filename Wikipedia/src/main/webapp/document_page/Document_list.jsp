@@ -73,7 +73,7 @@
 		</table>
 	</form>
 	
-	<form method='post' action="./Document_1_view.jsp">
+	<form method='post' action="./Document_view.jsp">
 		<table border='1' width="60%">
 			<tr>
 				<td>번호</td>
@@ -101,7 +101,7 @@
 				<tr align='center'>
 					<td align='center'><%=virtualNum %></td>
 					<td align='center'>
-						<a href='Document_1_view.jsp?docnum=<%=dto.getDocnum()%>'><%=dto.getDocnum() %><%=dto.getTitle() %></a>
+						<a href='Document_view.jsp?docnum=<%=dto.getDocnum()%>'><%=dto.getTitle() %></a>
 					</td>
 					<td align='center'><%=dto.getId() %></td>
 					<td align='center'><%=dto.getGoodcount() %></td>
@@ -113,6 +113,8 @@
 			%>
 			
 		</table>
+		<button type="button" onclick="location.href='./Document_Write.jsp'">문서 작성하기</button>
+		<button>문서 수정하기</button>
 	</form>
    
    

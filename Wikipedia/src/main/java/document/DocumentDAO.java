@@ -6,6 +6,8 @@ import java.util.Vector;
 
 import javax.servlet.ServletContext;
 
+import docontent.DocontentDAO;
+import docontent.DocontentDTO;
 import utils.JDBConnect;
 
 public class DocumentDAO extends JDBConnect {
@@ -54,10 +56,10 @@ public class DocumentDAO extends JDBConnect {
 			rs = stmt.executeQuery(query);
 			while(rs.next()) {
 				DocumentDTO dto = new DocumentDTO();
-				dto.setDocnum(rs.getInt("docnum")); //번호
+				dto.setDocnum(rs.getString("docnum")); //번호
 				dto.setTitle(rs.getString("title"));//제목
 				dto.setId(rs.getString("id")); // 작성자
-				dto.setGoodcount(rs.getInt("goodcount")); // 추천수
+				dto.setGoodcount(rs.getString("goodcount")); // 추천수
 				dto.setWritedate(rs.getDate("writedate")); // 작성일
 
 				bbs.add(dto);//결과를 목록에 저장 
@@ -80,10 +82,10 @@ public class DocumentDAO extends JDBConnect {
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
-				dto.setDocnum(rs.getInt("docnum"));
+				dto.setDocnum(rs.getString("docnum"));
 				dto.setId(rs.getString("id"));
 				dto.setTitle(rs.getString("title"));
-				dto.setGoodcount(rs.getInt("goodcount"));
+				dto.setGoodcount(rs.getString("goodcount"));
 				dto.setWritedate(rs.getDate("writedate"));
 			}
 		}catch(Exception e) {
@@ -94,7 +96,80 @@ public class DocumentDAO extends JDBConnect {
 		return dto;
 	} 
 	
+	//write 폼 에서 작성한 문서객체를 DB에 저장
+	public int writeDocument(DocumentDTO dto) {
+		int result = 0;
+		String query = "INSERT INTO document (docnum,title,id) values (wiki_docnum_counter.nextval,?,?)";
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1,dto.getTitle());
+			psmt.setString(2, dto.getId());
+			result = psmt.executeUpdate();
+			
+		}catch(Exception e) {
+			System.out.println("문서객체DB저장 중 예외 발생");
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 	
+	//docnum넘겨주는용 selectview
+	public DocumentDTO selectView(DocumentDTO dto2) {
+		DocumentDTO dto = new DocumentDTO();
+		String query = "SELECT  * FROM DOCUMENT WHERE id = ? AND title = ? ";
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1,dto2.getId());
+			psmt.setString(2,dto2.getTitle());
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setDocnum(rs.getString("docnum"));
+				dto.setId(rs.getString("id"));
+				dto.setTitle(rs.getString("title"));
+				dto.setGoodcount(rs.getString("goodcount"));
+				dto.setWritedate(rs.getDate("writedate"));
+			}
+		}catch(Exception e) {
+			System.out.println("문서 상세보기 중 예외발생 문서DAO");
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+	
+	//DB에 같은 제목의 문서가 존재하는지 확인하는 메서드 
+	public int validateTitle(String title) {
+		int result = 0;
+		String query = "SELECT * from document where title = ?";
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, title);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				result = 0;
+			}else {
+				result = 1;
+			}
+		}catch(Exception e) {
+			System.out.println("같은 문서의 제목 확인중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	 public int editDocument(DocumentDTO dto) {
+		 int result= 0;
+		 String query = "UPDATE Document set title = ? where docnum = ? ";
+		 try {
+			 
+		 }catch(Exception e) {
+			 e.printStackTrace();
+		 }
+		 
+		 return result;
+	 }
 	
 	
 	
