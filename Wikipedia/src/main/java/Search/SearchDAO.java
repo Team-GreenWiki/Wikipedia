@@ -41,43 +41,42 @@ public class SearchDAO extends JDBConnect {
 			System.out.println("아이디 찾기 중 예외 발생");
 			e.printStackTrace();
 		}
+		
 		System.out.println(result);
 		return result;
 	}
 	
 	// 비밀번호 찾기
-	public SearchDTO getSearchPw (String userId, String userEmail) {
+	public String getSearchPw (String userId, String userEmail) {
 		
 		System.out.println("userId : " + userId);
 		System.out.println("userEmail : " + userEmail);
 		
-		String result1 = "";
+		String result2 = "";
 		
 		SearchDTO dto = new SearchDTO();
 		
 		try {
-			
 			String query = "SELECT * "
-					 + " FROM MEMBER "
-					 + " WHERE ID = ? AND EMAIL = ?";
-		
+						 + " FROM MEMBER "
+						 + " WHERE ID = ? AND EMAIL = ?";
+			
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, "userId");
-			psmt.setString(2, "userEmail");
+			psmt.setString(1, userId);
+			psmt.setString(2, userEmail);
 			rs = psmt.executeQuery();
 			
 			rs.next();
-			
-				dto.setId(rs.getString("ID"));
-				dto.setEmail(rs.getString("EMAIL"));
-			
+			System.out.println("PW : " + rs.getString("PW"));
+			result2 = rs.getString("PW");
 			
 		} catch (Exception e) {
 			System.out.println("비밀번호 찾기 중 예외 발생");
 			e.printStackTrace();
 		}
 		
-		return dto;
+		System.out.println(result2);
+		return result2;
 	}
 	
 	
