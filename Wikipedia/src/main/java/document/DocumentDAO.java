@@ -159,11 +159,17 @@ public class DocumentDAO extends JDBConnect {
 		return result;
 	}
 	
+	
+	//문서 dto의 title을 갱신하는 메서드 
 	 public int editDocument(DocumentDTO dto) {
 		 int result= 0;
 		 String query = "UPDATE Document set title = ? where docnum = ? ";
 		 try {
-			 
+			 psmt = con.prepareStatement(query);
+			 psmt.setString(1, dto.getTitle());
+			 psmt.setString(2, dto.getDocnum());
+			 result = psmt.executeUpdate();
+			 System.out.println("타이틀 업데이트 중");
 		 }catch(Exception e) {
 			 e.printStackTrace();
 		 }
@@ -171,6 +177,21 @@ public class DocumentDAO extends JDBConnect {
 		 return result;
 	 }
 	
+	 
+	 //문서의 객체를 DB에서 삭제하는 메서드 
+	 public int deleteDocument(DocumentDTO dto) {
+			int result=0;
+			try {
+				String query = "DELETE FROM document WHERE docnum=?";
+				psmt = con.prepareStatement(query);
+				psmt.setString(1, dto.getDocnum());
+				result = psmt.executeUpdate();
+			}catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("문서 삭제 중 예외 발생");
+			}
+			return result;
+		}
 	
 	
 }

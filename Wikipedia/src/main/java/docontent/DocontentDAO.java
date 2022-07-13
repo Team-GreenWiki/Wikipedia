@@ -75,5 +75,47 @@ public class DocontentDAO extends JDBConnect {
 			}
 			return result;
 		}
-	//
+	
+	//게시글의 내용을 갱신하는 메서드 
+	 public int editDocontent(DocontentDTO dto) {
+		 int result= 0;
+		 String query = "UPDATE Docontent set subtitle1 = ? , subtitle2 = ? ,subtitle3 = ? ,subtitle4 = ? ,subtitle5 = ?, "
+				 + "content1 = ?, content2 = ?, content3 = ?, content4 = ?, content5 = ? where docnum = ? ";
+		 try {
+			 psmt = con.prepareStatement(query);
+			 psmt.setString(1, dto.getSubtitle1());
+			 psmt.setString(2, dto.getSubtitle2());
+			 psmt.setString(3, dto.getSubtitle3());
+			 psmt.setString(4, dto.getSubtitle4());
+			 psmt.setString(5, dto.getSubtitle5());
+			 psmt.setString(6, dto.getContent1());
+			 psmt.setString(7, dto.getContent2());
+			 psmt.setString(8, dto.getContent3());
+			 psmt.setString(9, dto.getContent4());
+			 psmt.setString(10, dto.getContent5());
+			 psmt.setString(11, dto.getDocnum());
+			 result = psmt.executeUpdate();
+			 System.out.println("내용 업데이트 중");
+		 }catch(Exception e) {
+			 e.printStackTrace();
+		 }
+		 
+		 return result;
+	 }
+	 
+	 
+	 //문서내용 객체를 DB에서 삭제하는 메서드 
+	 public int deleteDocontent(DocontentDTO dto) {
+			int result=0;
+			try {
+				String query = "DELETE FROM docontent WHERE docnum=?";
+				psmt = con.prepareStatement(query);
+				psmt.setString(1, dto.getDocnum());
+				result = psmt.executeUpdate();
+			}catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("문서내용 삭제 중 예외 발생");
+			}
+			return result;
+		}
 }

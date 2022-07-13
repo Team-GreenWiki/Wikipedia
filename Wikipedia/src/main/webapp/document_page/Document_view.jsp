@@ -101,7 +101,7 @@
 	<div align="center">
 		<button type="button" onclick="location.href='./Document_Write.jsp'">새 문서 작성하기</button>
 		<button type="button" onclick="location.href='./Document_Edit.jsp?docnum=<%=dto.getDocnum()%>'">이 문서 수정하기</button>
-		<button type="button" onclick="location.href='./Document_Delete.jsp'">이 문서 삭제하기</button>
+		<button type="button" onclick="location.href='./Document_Delete_Process.jsp?docnum=<%=dto.getDocnum()%>'">이 문서 삭제하기</button>
 		<button type="button" onclick="location.href='./Document_list.jsp'">목록으로</button>
 	</div>
 	

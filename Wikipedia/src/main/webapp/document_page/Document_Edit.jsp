@@ -7,31 +7,6 @@
 <%@page import="document.DocumentDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>위키 문서 작성 페이지</title>
-<style type="text/css">
-	*{
-		margin:0;
-		padding:0;
-	}
-	.subtitle_input{
-		width:250px;
-		height:35px;
-	}
-	.content_area{
-		width:750px;
-		height:300px;
-	}
-	td{
-		display:block;
-	}
-</style>
-</head>
-<body>
-
 <%
     	String docnum = request.getParameter("docnum"); // 일련번호 받기
     	DocumentDAO dao = new DocumentDAO(application); //  DAO생성
@@ -61,8 +36,34 @@
 		
 		
 	%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>위키 문서 작성 페이지</title>
+<style type="text/css">
+	*{
+		margin:0;
+		padding:0;
+	}
+	.subtitle_input{
+		width:250px;
+		height:35px;
+	}
+	.content_area{
+		width:750px;
+		height:300px;
+	}
+	td{
+		display:block;
+	}
+</style>
+</head>
+<body>
+
+
 	
-	<form action="DocumentProcess.jsp" method="post" name="WriteFrm">
+	<form action="Document_Edit_Process.jsp?docnum=<%=docnum%>" method="post" name="WriteFrm" >
 	<b>기존의 위키 문서 수정</b> - <input type="text" placeholder="제목을 입력하세요" name="title" value="<%=dto.getTitle()%>">
 	<button type="button" onclick="addBox();" name="textBtn">내용 추가</button>
 	<button type="button" onclick="removeBox();" name="removeBtn">내용 삭제</button>
@@ -73,7 +74,6 @@
 					<textarea name='content1' placeholder="content1" class="content_area"><%=dto2.getContent1() %></textarea>
 				</td>
 			</tr>
-			
 		</table>
 		<button type="submit">내용 저장</button>
 	</form>
@@ -141,21 +141,26 @@
 	}
 	</script>
 	<%
-			Map<String,String> content_map = new HashMap();
-			content_map.put(subtitle1, content1);
-			content_map.put(subtitle2, content2);
-			content_map.put(subtitle3, content3);
-			content_map.put(subtitle4, content4);
-			content_map.put(subtitle5, content5);
+	
+	
+	
+			Map<String,String> content_map = new HashMap<>();
+			content_map.put(dto2.getSubtitle2(), dto2.getContent2());
+			content_map.put(dto2.getSubtitle3(), dto2.getContent3());
+			content_map.put(dto2.getSubtitle4(), dto2.getContent4());
+			content_map.put(dto2.getSubtitle5(), dto2.getContent5()); 
+			
+			System.out.println("get : " + content_map.get("subtitle1"));
 			for(int i =2;i<=5;i++){
-			if(content_map.get("subtitle"+i)!=""){%>
+				String content = content_map.get("subtitle" + i);
+				System.out.println("content : " + content);
+			if(content_map.get("subtitle"+i)!="null"){%>
 				<script>addBox()</script>
-				
 			<%	
 				}
 			}
 			
-			
+			dao2.close();
 			%>
 			<script>
 			let i = 2;
