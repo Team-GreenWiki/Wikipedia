@@ -46,6 +46,8 @@
 	
 	DocontentDAO dao2 = new DocontentDAO(application);
 	DocontentDTO dto2 = dao2.selectView(docnum);
+	
+	
 %>
 	
 	
@@ -57,12 +59,11 @@
 	 -->
 	
 	
-	<h2>문서 1번 ( 샘플 )</h2>
+	<h2>문서</h2>
 	<hr>
 	<table width="80%" align="center">
-		<tr>
-			<td> <%=dto.getTitle() %>  </td>
-		</tr>
+		<h2> <%=dto.getTitle() %> </h2> 
+
 		<tr>
 			<td> <%=dto2.getSubtitle1() %></td>
 		</tr>
@@ -96,10 +97,18 @@
 		<br/><br/><br/>
 		<hr>
 	</table>
+	<br>
+	<div align="center">
+		<button type="button" onclick="location.href='./Document_Write.jsp'">새 문서 작성하기</button>
+		<button type="button" onclick="location.href='./Document_Edit.jsp?docnum=<%=dto.getDocnum()%>'">이 문서 수정하기</button>
+		<button type="button" onclick="location.href='./Document_Delete_Process.jsp?docnum=<%=dto.getDocnum()%>'">이 문서 삭제하기</button>
+		<button type="button" onclick="location.href='./Document_list.jsp'">목록으로</button>
+	</div>
+	
 	
 	<br/><br/>
 	<hr>
-	<form action="" method="get" name="comment_write_form">
+	<form action="../Comment_view.jsp" method="post" name="comment_write_form">
 		<table border='1' width="40%" align="center">
 			<tr>
 				<td class="comment_Tag"><button onclick="">ALL</button></td>
