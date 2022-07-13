@@ -55,7 +55,7 @@
 	</form>
 	
 	<!-- 비밀번호 찾기 form -->
-	<form name="search_info_PW" method="post">
+	<form name="search_info_PW" method="post" action="../process/Search_Info_Process_PW.jsp">
 		<table>
             <div>
                 <tr class="search_userPw">
@@ -66,28 +66,28 @@
             <div>
                 <tr class="user_id_Info">
                     <td>아이디</td>
-                    <td><input type="text" name="user_Id"></td>
+                    <td><input type="text" name="user_Id" placeholder="아이디를 입력하세요."></td>
                 </tr>
             </div>
 
             <div>
                 <tr class="user_email_Info">
                     <td>이메일</td>
-                    <td><input type="email" name="email"></td>
+                    <td><input type="email" name="email" placeholder="이메일 형식에 맞춰 작성하세요."></td>
                 </tr>
             </div>
 
-            <div>
+            <!-- <div>
                 <tr class="user_check_no">
                     <td>인증번호</td>
                     <td><input type="text" name="check_no"></td>
                 </tr>
-            </div>
+            </div> -->
 
             <div>
                 <tr class="comm_2">
                     <td colspan="2">
-                        <input type="button" value="저장" class="check" onclick="validateForm_2(this.form);">
+                        <input type="submit" value="저장" class="check" onclick="validateForm_2(this.form);">
                         <input type="button" value="취소" class="cancel">
                     </td>
                 </tr>

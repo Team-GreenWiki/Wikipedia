@@ -1,36 +1,46 @@
 @charset "UTF-8";
-/* 헤더를 감싸는 div  */
-    .header_wrap{
-      display: flex;
-      width: 900px;
-      height: 40px;
-      margin: 0 auto;
-    }
-    /* 헤더의 메인 로고 */
-    .header_main_logo{
-      width: 90px;
-      height: 22px;
-      margin-top: 8px;
-    }
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
 
-    /* 헤더의 검색창 */
-    .head_search_input{
-      width: 450px;
-      height: 30px;
-      margin-left: 10px;
-      border-radius: 15px;
-      border: 2px solid #4b2b30;
-    }
+header{
+	width: 1200px;
+	height: 150px;
+	position: fixed;
+	top: 0;
+	left: 50%;
+	margin-left: -600px;
+	padding: 20px;
+}
 
-    /* 헤더의 계정만들기 버튼(span) */
-    .header_signup{
-      margin-left: 10px;
-      line-height: 30px;
-    }
-    /* 더보기 버튼 (p태그) */
-    .header_addition_btn{
-      width: 50px;
-      display: inline-block;
-      transform: rotate(90deg);
-      font-size: 20px;
-    }
+header .header1{
+	display: flex;
+	justify-content: space-around;
+}
+
+header .header1 *{
+	margin: auto 0;
+}
+
+header .header1 h1 img{
+	width: auto;
+	height: 100px;
+}
+
+header .header1 .input_search{
+	width: 350px;
+	height: 30px;
+}
+
+header .header2 ul{
+	display: flex;
+	justify-content: space-around;
+}
+
+header .header2 ul li{
+	height: 50px;
+	font-size: 20px;
+	line-height: 50px;
+}

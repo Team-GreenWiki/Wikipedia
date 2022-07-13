@@ -12,7 +12,7 @@
 </head>
 <body>
 <%@include file="../include/Header.jsp" %>
-<jsp:include page="../include/Side_Login.jsp"></jsp:include>
+<%-- <%@include file="../include/Side_Login.jsp" %> --%>
     <div id="container">
       <img src="../img/HatchfulExport-All/MainLogoMini.png" alt="메인로고" class="main_logo">
       <div class="long_bar"></div>

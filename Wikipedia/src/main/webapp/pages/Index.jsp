@@ -13,21 +13,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wikipedia 우리 모두의 백과사전</title>
-    
     <link href="../css/Index.css" rel="stylesheet" type="text/css" />
+    <link href="../css/Header.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+	<%@ include file="../include/Header.jsp" %>
+
     <div class="container">
         <section class="main1">
-            <a href="Index.jsp" class="mainLogo"><h1><img src="../img/HatchfulExport-All/MainLogoMini.png"></h1></a>
-            <form action="" method="get">
+            <h1><a href="Index.jsp" class="mainLogo"><img src="../img/HatchfulExport-All/MainLogoMini.png"></a></h1>
+            <form action="../process/SearchProcess.jsp" method="get">
             	<input type="text" class="input_search" name="input_search">
-            	<input type="submit" name="searchBtn" class="searchBtn" />
+            	<button type="submit" class="searchBtn" /></button>
             </form>
             <ul class="navMenu">
             	<c:choose>
             		<c:when test="${ sessionScope.userId == null }"><li><a href="../pages/Login.jsp">로그인</a></li></c:when>
-            		<c:when test="${ sessionScope.userId != null }"><li><a href="#">내 정보</a></li></c:when>
+            		<c:when test="${ sessionScope.userId != null }"><li><a href="../pages/My_info.jsp">내 정보</a></li></c:when>
             	</c:choose>
             	<li><a href="#">I'm Feeling Lucky</a></li>
             </ul>

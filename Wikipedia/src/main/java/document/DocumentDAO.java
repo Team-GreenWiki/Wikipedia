@@ -1,101 +1,120 @@
 package document;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Vector;
 
 import javax.servlet.ServletContext;
 
 import utils.JDBConnect;
 
 public class DocumentDAO extends JDBConnect {
-	public DocumentDAO (ServletContext application) {
+	public DocumentDAO(ServletContext application) {
 		super(application);
 	}
-	//JDBC연결
 	
-	//문서 개수 세기
-	public int selectCount(Map<String,Object> map) {
-		int totalCount = 0; // 결과값(게시물 개수) 저장 
-		String query ="SELECT COUNT(*) FROM DOCUMENT ";
-		if(map.get("searchWord") != null){
-			query += " where " +map.get("searchField")+ " " + "like '%"+map.get("searchWord")+"%'";
-		}
+	// 새로운 문서 저장
+	public int writeDoc(DocumentDTO dto) {
+		System.out.println("새로운 글 저장 요청 : writeDoc() in DocumentDAO");
+		
+		int result = 0;
 		
 		try {
-			stmt = con.createStatement();
-			rs = stmt.executeQuery(query);
-			rs.next();
-			totalCount = rs.getInt(1);
-		}catch(Exception e) {
-			System.out.println("문서의 개수를 계산하는 중에 예외가 발생되었음");
+			String sql = "INSERT INTO document VALUES(SEQ_DOCUMENT_NUM.NEXTVAL, ?, ?, ?, 0, SYSDATE)";
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, dto.getId());
+			psmt.setString(2, dto.getDoc_title());
+			psmt.setString(3, dto.getDoc_content());
+			result = psmt.executeUpdate();
+			
+			System.out.println("새로운 글 저장 완료 : writeDoc() in DocumentDAO");
+		} catch(Exception e) {
+			System.out.println("새로운 글 저장 중 예외 발생 : writeDoc() in DocumentDAO");
 			e.printStackTrace();
 		}
 		
-		return totalCount;
-	}
+		return result;
+	} // writeDoc()
 	
-	
-	//문서 목록 반환
-	public List<DocumentDTO> selectListPage(Map<String,Object> map){
-		List<DocumentDTO> bbs= new Vector<DocumentDTO>();
+	// 모든 DocumentDTO 반환
+	public List<DocumentDTO> getAllDocument() {
+		System.out.println("Document 목록 반환 요청 : getAllDocument() in DocumentDAO");
 		
-		String query = "SELECT * FROM document";
-		
-		if(map.get("searchWord") != null){
-			query += " where " +map.get("searchField")+ " " + "like '%"+map.get("searchWord")+"%'";
-		}
-		
-		query += " ORDER BY docnum DESC";
+		List<DocumentDTO> list = new ArrayList<>();
 		
 		try {
+			String sql = "SELECT * FROM document ORDER BY doc_num DESC";
 			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
 			
-			rs = stmt.executeQuery(query);
 			while(rs.next()) {
 				DocumentDTO dto = new DocumentDTO();
-				dto.setDocnum(rs.getInt("docnum")); //번호
-				dto.setTitle(rs.getString("title"));//제목
-				dto.setId(rs.getString("id")); // 작성자
-				dto.setGoodcount(rs.getInt("goodcount")); // 추천수
-				dto.setWritedate(rs.getDate("writedate")); // 작성일
-
-				bbs.add(dto);//결과를 목록에 저장 
-			}
-		} catch (Exception e) {
-			System.out.println("게시물 조회 중 예외 발생");
-			e.printStackTrace();
-		}
-		return bbs;
-	}
-	
-	//문서 상세보기
-	public DocumentDTO selectView(String docnum) {
-		DocumentDTO dto = new DocumentDTO();
-		String query = "SELECT  * FROM DOCUMENT WHERE docnum = ? ";
-		System.out.println("docnum = "+ docnum);
-		try {
-			psmt = con.prepareStatement(query);
-			psmt.setString(1,docnum);
-			rs = psmt.executeQuery();
-			
-			if(rs.next()) {
-				dto.setDocnum(rs.getInt("docnum"));
+				
+				dto.setDoc_num(rs.getString("doc_num"));
 				dto.setId(rs.getString("id"));
-				dto.setTitle(rs.getString("title"));
-				dto.setGoodcount(rs.getInt("goodcount"));
+				dto.setDoc_title(rs.getString("doc_title"));
+				dto.setDoc_content(rs.getString("doc_content"));
+				dto.setGoodcount(rs.getString("goodcount"));
 				dto.setWritedate(rs.getDate("writedate"));
+				
+				list.add(dto);
 			}
-		}catch(Exception e) {
-			System.out.println("문서 상세보기 중 예외발생 문서DAO");
+			
+			System.out.println("Document 목록 반환 완료 : getAllDocument() in DocumentDAO");
+		} catch(Exception e) {
+			System.out.println("Document 목록 반환 중 예외 발생 : getAllDocument() in DocumentDAO");
+		}
+		
+		return list;
+	} // getAllDocument()
+	
+	// 해당 doc_num의 DocumentDTO 반환
+	public DocumentDTO getDocumentDTO(String doc_num) {
+		System.out.printf("%s번 DocumentDTO 반환 요청 : getDocumentDTO() in DocumentDAO", doc_num);
+		
+		DocumentDTO dto = new DocumentDTO();
+		
+		try {
+			String sql = String.format("SELECT * FROM document WHERE doc_num = %s", doc_num);
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			// DocumentDTO에 해당값 저장
+			rs.next();
+			dto.setDoc_num(rs.getString("doc_num"));
+			dto.setId(rs.getString("id"));
+			dto.setDoc_title(rs.getString("doc_title"));
+			dto.setDoc_content(rs.getString("doc_content"));
+			dto.setGoodcount(rs.getString("goodcount"));
+			dto.setWritedate(rs.getDate("writedate"));
+			
+			System.out.printf("%s번 DocumentDTO 반환 완료 : getDocumentDTO() in DocumentDAO", doc_num);
+		} catch(Exception e) {
+			System.out.printf("%s번 DocumentDTO 반환 중 예외 발생 : getDocumentDTO() in DocumentDAO", doc_num);
 			e.printStackTrace();
 		}
 		
 		return dto;
-	} 
+	} // getDocumentDTO()
 	
-	
-	
-	
-	
-}
+	// 기존 문서 수정
+	public int updateDoc(DocumentDTO dto) {
+		System.out.printf("%s번 문서 DB 수정 요청 : updateDoc() in DocumentDAO", dto.getDoc_num());
+		
+		int result = 0;
+		
+		try {
+			String sql = "UPDATE document SET doc_title=?, doc_content=? WHERE doc_num=?";
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, dto.getDoc_title());
+			psmt.setString(2, dto.getDoc_content());
+			psmt.setString(3, dto.getDoc_num());
+			result = psmt.executeUpdate();
+			
+			System.out.printf("%s번 문서 DB 수정 완료 : updateDoc() in DocumentDAO", dto.getDoc_num());
+		} catch(Exception e) {
+			System.out.printf("%s번 문서 DB 수정 중 예외 발생 : updateDoc() in DocumentDAO", dto.getDoc_num());
+		}
+		
+		return result;
+	} // updateDoc()
+} // class
