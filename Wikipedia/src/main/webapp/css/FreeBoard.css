@@ -1,0 +1,109 @@
+@charset "UTF-8";
+
+* {
+	margin: 0 auto;
+	padding: 0;
+}
+
+body{
+    background-color: #4b2b3010;
+}
+
+.class {
+	border: 1px solid black;
+	margin-top: 30px;
+}
+
+
+#board>h2 {
+	font-size: 40px;
+	font-weight: bold;
+	color: dodgerblue;
+	text-align: center;
+}
+
+.src {
+	width: 20%;
+	height: 100px;
+	margin-top : 50px;
+	position: relative;
+}
+
+.need {
+	position: absolute;
+	top: 15%;
+	left: 25%;
+	font-size: 20px;
+	font-weight: bold;
+	color: green;
+}
+
+.content {
+	position: absolute;
+	top: 20%;
+	left: 25%;
+	font-size: 20px;
+	font-weight: bold;
+	color: green;
+}
+
+.dummy {
+	/* margin-top: 200px; */
+	border: 1px solid #bbb;
+	width: 800px;
+	heigh: 50px;
+}
+
+
+.addComment {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-left: 40px;
+}
+
+#comment {
+	border-radius: 10px;
+	margin-left: 40px;
+	margin-bottom: 30px;
+}
+
+.write {
+	margin-left: 40px;
+}
+
+.writer {
+	width: 200px;
+	height: 30px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.pass {
+	margin-left: 40px;
+	width: 200px;
+	height: 30px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+
+
+.bottom {
+	margin-top: 30px;
+	margin-bottom: 20px;
+	margin-left: 40px;
+}
+
+.comm {
+	width: 80px;
+	height: 30px;
+	margin-right: 20px;
+	border-radius: 10px;
+}
+
+.cancel {
+	width: 80px;
+	height: 30px;
+	border-radius: 10px;
+}

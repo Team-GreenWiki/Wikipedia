@@ -11,7 +11,7 @@
 </head>
 <body>
 	
-	<!--  -->
+	
 	
 	<form action="../CommentProcess.jsp" method="post" >
 	<table>
