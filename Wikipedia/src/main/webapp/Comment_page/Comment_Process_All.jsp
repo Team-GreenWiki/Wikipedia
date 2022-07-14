@@ -5,10 +5,10 @@
     pageEncoding="UTF-8"%>
 <%
 	String docnum = "39";
-	String Tag = "PURPOSE";
+	String Tag = "ALL";
 	CommentDAO dao = new CommentDAO(application);
 	List<CommentDTO> comment_Lists = dao.show_comment_list(docnum, Tag);
 	dao.close();
-	RequestDispatcher dispatcher = request.getRequestDispatcher("./Comment_list.jsp?Tag=PURPOSE&docnum=39"); 
+	RequestDispatcher dispatcher = request.getRequestDispatcher("./Comment_list.jsp?Tag=ALL&docnum=39"); 
 	dispatcher.forward(request, response);
 %>

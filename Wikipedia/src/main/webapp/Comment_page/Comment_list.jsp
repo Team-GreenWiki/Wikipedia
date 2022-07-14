@@ -64,24 +64,35 @@
 	
 </style>
 </head>
-<body>
+<body>	
+	<p>39번 문서</p>
 
 <%
 	String docnum = "39";
-	String Tag = "ALL";
+	String Tag = request.getParameter("Tag");
+	System.out.println("Tag  = "+Tag);
 	CommentDAO dao = new CommentDAO(application);
-	List<CommentDTO> comment_Lists = dao.show_comment_list(docnum, Tag);
+	List<CommentDTO> comment_Lists = null;
+			
+	if(Tag==null||Tag=="ALL"){
+		System.out.println("Tag가 null 이므로 모든 댓글을 불러옴");
+		comment_Lists = dao.show_comment_list(docnum, "ALL");
+	}else {
+		System.out.println("Tag가 "+Tag+"이므로 해당 태그의 댓글을 불러옴");
+		comment_Lists = dao.show_comment_list(docnum, Tag);
+	}
+	
 	dao.close();
 %>
 	<div>
 		<form action="../Comment_Process.jsp" method="post" name="comment_write_form">
 			<table border='1' width="60%" align="center">
 				<tr>
-					<td class="comment_Tag"><button onclick="load_coments_box(all)" type="button">ALL</button></td>
-					<td class="comment_Tag"><button onclick="location.href='Comment_Process_Purpose.jsp'" type="button">PURPOSE</button></td>
-					<td class="comment_Tag"><button onclick="load_coments_box(using)" type="button">USING</button></td>
-					<td class="comment_Tag"><button onclick="load_coments_box(moreinfo)" type="button">MOREINFO</button></td>
-					<td class="comment_Tag"><button onclick="load_coments_box(qna)" type="button">QNA</button></td>
+					<td class="comment_Tag"><button onclick="location.href='Comment_Process_All.jsp?'" type="button">ALL</button></td>
+					<td class="comment_Tag"><button onclick="location.href='Comment_Process_Purpose.jsp?'" type="button">PURPOSE</button></td>
+					<td class="comment_Tag"><button onclick="location.href='Comment_Process_Using.jsp?'" type="button">USING</button></td>
+					<td class="comment_Tag"><button onclick="location.href='Comment_Process_Moreinfo.jsp?'" type="button">MOREINFO</button></td>
+					<td class="comment_Tag"><button onclick="location.href='Comment_Process_Qna.jsp?'" type="button">QNA</button></td>
 					
 				</tr>
 				<tr>
@@ -123,23 +134,6 @@
 	</div>
 	
 	<script>
-	/* 	function load_coments_box(tag){
-			if(tag==purpose){
-				window.location("Comment_Process_Purpose.jsp");
-			}
-			else if(tag == "using"){
-			
-			}
-			else if(tag == "moreinfo"){
-			
-			}
-			else if(tag=="qna"){
-			
-			}
-			else if(tag=="all"){
-			
-			} 
-		} */
 	
 	</script>
 </body>
