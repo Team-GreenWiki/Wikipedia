@@ -1,33 +1,23 @@
 package comment;
 
-<<<<<<< HEAD
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
-=======
->>>>>>> branch 'main' of https://github.com/Team-GreenWiki/Wikipedia.git
 
+import javax.servlet.ServletContext;
 
-<<<<<<< HEAD
 import oracle.net.nt.ConnectDescription;
 import utils.JDBConnect;
 
 public class CommentDAO extends JDBConnect{
-=======
-public class CommentDAO {
->>>>>>> branch 'main' of https://github.com/Team-GreenWiki/Wikipedia.git
+	public CommentDAO(ServletContext application) {
+		super(application);
+		// TODO Auto-generated constructor stub
+	}
 
 	// 데이터베이스를 연결하기 위해 JDBConnect 상속
-	
-<<<<<<< HEAD
 	// 현재 조회중인(보고있는) 글에서 태그별 댓글 개수 세기
-=======
-	
->>>>>>> branch 'main' of https://github.com/Team-GreenWiki/Wikipedia.git
-	
-	
-	
-	
+
 	// 태그를 누르면 해당 태그의 댓글 불러오기
 	//리스트를 오버로딩 해서 태그에 따라 그 태그를 불러오는 쿼리문을 별개로 작성해놓고 댓글을 불러와야함.
 	public List<CommentDTO> show_comment_list(String docnum, String Tag) {
@@ -44,7 +34,7 @@ public class CommentDAO {
 			
 			while(rs.next()) {
 				CommentDTO dto = new CommentDTO(); 
-				dto.setDocnum(rs.getString("docnum"));
+				dto.setDoc_num(rs.getString("docnum"));
 				dto.setComnum(rs.getString("comnum"));
 				dto.setTag(rs.getString("tagname"));
 				dto.setId(rs.getString("id"));

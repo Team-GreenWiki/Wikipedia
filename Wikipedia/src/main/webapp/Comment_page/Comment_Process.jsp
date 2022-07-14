@@ -4,11 +4,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String docnum = "39";
-	String Tag = "QNA";
+	String Tag = request.getParameter("Tag");
+	String doc_num = request.getParameter("doc_num");
 	CommentDAO dao = new CommentDAO(application);
-	List<CommentDTO> comment_Lists = dao.show_comment_list(docnum, Tag);
+	List<CommentDTO> comment_Lists = dao.show_comment_list(doc_num, Tag);
 	dao.close();
-	RequestDispatcher dispatcher = request.getRequestDispatcher("./Comment_list.jsp?Tag=QNA&docnum=39"); 
-	dispatcher.forward(request, response);
+	response.sendRedirect("./Comment_list.jsp?Tag="+Tag+"&doc_num="+doc_num);
+
 %>
