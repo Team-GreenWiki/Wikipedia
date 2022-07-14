@@ -28,7 +28,7 @@
 			<form name="frm" method="post" action="">
 				<section class="dummy">
 					<p class="addComment">댓글 쓰기</p>
-					<textarea rows="10" cols="100" id="comment" placeholder="로그인 후 입력 가능합니다." onclick="commentForm();"></textarea>
+					<textarea rows="10" cols="100" id="comment" placeholder="자유롭게 작성하세요."></textarea>
 					<p class="write"><input type="text" name="writer" class="writer" placeholder="작성자"></p>
 					<p><input type="text" name="pass" class="pass" placeholder="비밀번호"></p>
 					
@@ -43,10 +43,10 @@
 	
 	<script type="text/javascript">
 	
-		function commentForm() {
+		/* function commentForm() {
 			document.getElementById("comment").addEventListener('click',commentForm);
 			alert("로그인 후 이용하세요.");
-		}
+		} */
 	
 	
 		function validateForm(form) {
