@@ -15,6 +15,9 @@
         }
         
         .mainLogo {
+        	margin-left: 650px;
+        	width: 300px;
+        	align-content: center;
         	margin-left: 800px;
         	width: 400px;
         	margin-top: 50px;
@@ -22,6 +25,10 @@
 
         /* 아이디 / 비밀번호 찾기 */
         #text {
+            padding: 50px;
+            text-align: center;
+            margin-left: 30px;
+
             margin-left: 30%;
             margin-top: 100px;
         }

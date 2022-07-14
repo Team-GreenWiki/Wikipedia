@@ -1,22 +1,29 @@
 package comment;
 
+<<<<<<< HEAD
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
+=======
+>>>>>>> branch 'main' of https://github.com/Team-GreenWiki/Wikipedia.git
 
-import javax.servlet.ServletContext;
 
+<<<<<<< HEAD
 import oracle.net.nt.ConnectDescription;
 import utils.JDBConnect;
 
 public class CommentDAO extends JDBConnect{
+=======
+public class CommentDAO {
+>>>>>>> branch 'main' of https://github.com/Team-GreenWiki/Wikipedia.git
 
 	// 데이터베이스를 연결하기 위해 JDBConnect 상속
-	public CommentDAO(ServletContext application) {
-		super(application);
-	}
 	
+<<<<<<< HEAD
 	// 현재 조회중인(보고있는) 글에서 태그별 댓글 개수 세기
+=======
+	
+>>>>>>> branch 'main' of https://github.com/Team-GreenWiki/Wikipedia.git
 	
 	
 	
@@ -58,6 +65,16 @@ public class CommentDAO extends JDBConnect{
 	
 	
 	// 해당 댓글을 불러온 상태에서 댓글을 작성하고 버튼을 누르면 해당 태그의 댓글이 작성됨
+	
+	
+
+	
+	
+	
+	//태그를 누르면 해당 태그의 댓글 불러오기
+	
+	//해당 댓글을 불러온 상태에서 댓글을 작성하고 버튼을 누르면 해당 태그의 댓글이 작성됨 
+	
 	
 
 	
