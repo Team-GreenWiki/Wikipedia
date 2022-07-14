@@ -87,8 +87,7 @@
 					<tr align="center">
 						<td align="center"><%=virtualNum %></td> <!-- 게시물번호 -->
 						<td align="center"> <!-- 제목(하이퍼링크) -->
-							<a href="FreeBoard.jsp?bnum=<%=dto.getBnum() %>"><%=dto.getBtitle() %></a>
-							<!-- FreeBoard 대신 FreeBoardView로 보내야함 -->
+							<a href="FreeBoardView.jsp?bnum=<%=dto.getBnum() %>"><%=dto.getBtitle() %></a>
 						</td>
 						<td align="center"> <%=dto.getId() %></td>
 						<td align="center"> <%=dto.getBwritedate() %></td>

@@ -155,4 +155,50 @@ public class FreeBoardDAO extends JDBConnect {
 			return dto;
 		}
 	 
+	 
+	// 선택한 게시글 수정하기
+		public int updateEdit(FreeBoardDTO dto) {
+			int result = 0;
+			
+			try {
+				String query = " UPDATE FREEBOARD "
+						 	+  " SET btitle =?, bcontent=? "
+						 	+  " Where bnum=?";
+				
+				psmt = con.prepareStatement(query);
+				psmt.setString(1, dto.getBtitle());
+				psmt.setString(2, dto.getBcontent());
+				psmt.setString(3, dto.getBnum());
+				
+				result = psmt.executeUpdate();
+				
+			} catch (Exception e) {
+				System.out.println("게시글 수정 중 예외 발생");
+				e.printStackTrace();
+			}
+			
+			return result;
+		}
+		
+		
+		// 지정한 게시글 삭제하기
+		public int deletePost(FreeBoardDTO dto) {
+			int result = 0;
+			
+			try {
+				String query = "DELETE FROM FREEBOARD WHERE bnum=?";
+				
+				psmt = con.prepareStatement(query);
+				psmt.setString(1, dto.getBnum());
+				
+				result = psmt.executeUpdate();
+				
+			} catch(Exception e) {
+				System.out.println("게시글 삭제 중 예외 발생");
+				e.printStackTrace();
+			}
+			
+			return result;
+		}
+	 
 }

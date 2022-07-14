@@ -47,7 +47,7 @@
 				<td colspan="2" align="center">
 					<button type="submit"> 작성 완료</button>
 					<button type="reset">초기화</button>
-					<button type="button" onclick="location.href='FreeBoardList.jsp'">목록 보기</button>
+					<button type="button" onclick="location.href='./FreeBoardList.jsp'">목록 보기</button>
 				</td>				
 			</tr>
 		</table>
