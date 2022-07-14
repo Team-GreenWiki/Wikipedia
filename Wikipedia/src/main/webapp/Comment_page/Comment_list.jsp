@@ -68,7 +68,7 @@
 	<p>39번 문서</p>
 
 <%
-	String docnum = "39";
+	String doc_num = "39";
 	String Tag = request.getParameter("Tag");
 	System.out.println("Tag  = "+Tag);
 	CommentDAO dao = new CommentDAO(application);
@@ -76,10 +76,10 @@
 			
 	if(Tag==null||Tag=="ALL"){
 		System.out.println("Tag가 null 이므로 모든 댓글을 불러옴");
-		comment_Lists = dao.show_comment_list(docnum, "ALL");
+		comment_Lists = dao.show_comment_list(doc_num, "ALL");
 	}else {
 		System.out.println("Tag가 "+Tag+"이므로 해당 태그의 댓글을 불러옴");
-		comment_Lists = dao.show_comment_list(docnum, Tag);
+		comment_Lists = dao.show_comment_list(doc_num, Tag);
 	}
 	
 	dao.close();
@@ -88,11 +88,12 @@
 		<form action="../Comment_Process.jsp" method="post" name="comment_write_form">
 			<table border='1' width="60%" align="center">
 				<tr>
-					<td class="comment_Tag"><button onclick="location.href='Comment_Process_All.jsp?'" type="button">ALL</button></td>
-					<td class="comment_Tag"><button onclick="location.href='Comment_Process_Purpose.jsp?'" type="button">PURPOSE</button></td>
-					<td class="comment_Tag"><button onclick="location.href='Comment_Process_Using.jsp?'" type="button">USING</button></td>
-					<td class="comment_Tag"><button onclick="location.href='Comment_Process_Moreinfo.jsp?'" type="button">MOREINFO</button></td>
-					<td class="comment_Tag"><button onclick="location.href='Comment_Process_Qna.jsp?'" type="button">QNA</button></td>
+					<td class="comment_Tag"><button onclick="location.href='Comment_Process.jsp?Tag=ALL&doc_num=<%=doc_num %>'" type="button">ALL</button></td>
+					<td class="comment_Tag"><button onclick="location.href='Comment_Process.jsp?Tag=PURPOSE&doc_num=<%=doc_num %>'" type="button">PURPOSE</button></td>
+					<td class="comment_Tag"><button onclick="location.href='Comment_Process.jsp?Tag=USING&doc_num=<%=doc_num %>'" type="button">USING</button></td>
+					<td class="comment_Tag"><button onclick="location.href='Comment_Process.jsp?Tag=MOREINFO&doc_num=<%=doc_num %>'" type="button">MOREINFO</button></td>
+					<td class="comment_Tag"><button onclick="location.href='Comment_Process.jsp?Tag=QNA&doc_num=<%=doc_num %>'" type="button">QNA</button></td>
+					
 					
 				</tr>
 				<tr>

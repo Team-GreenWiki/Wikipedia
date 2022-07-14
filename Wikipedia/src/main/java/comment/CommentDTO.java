@@ -3,7 +3,7 @@ package comment;
 import java.sql.Date;
 
 public class CommentDTO {
-	private String docnum;
+	private String doc_num;
 	private String comnum;
 	private String tag;
 	private String id;
@@ -11,12 +11,12 @@ public class CommentDTO {
 	private Date writedate;
 	
 	
-	public String getDocnum() {
-		return docnum;
+	public String getDoc_num() {
+		return doc_num;
 	}
 	
-	public void setDocnum(String docnum) {
-		this.docnum = docnum;
+	public void setDoc_num(String docnum) {
+		this.doc_num = docnum;
 	}
 	
 	public String getComnum() {
