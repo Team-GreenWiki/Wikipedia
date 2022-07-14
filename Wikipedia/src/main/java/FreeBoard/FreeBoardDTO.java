@@ -4,11 +4,11 @@ import java.util.Date;
 
 public class FreeBoardDTO {
 
-	public String bnum;
-	public String id;
-	public String btitle;
-	public String bcontent;
-	public Date bwritedate;
+	public String bnum;			// 번호
+	public String id;			// 아이디 (작성자)
+	public String btitle;		// 제목
+	public String bcontent;		// 내용
+	public Date bwritedate;		// 작성일
 	
 	public String getBnum() {
 		return bnum;
