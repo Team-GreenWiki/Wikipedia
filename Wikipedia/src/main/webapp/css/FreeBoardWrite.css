@@ -4,14 +4,15 @@ body{
     background-color: #4b2b3010;
 }
 
-.FreeBoardView h2 {
+.FreeBoardWrite h2 {
 	font-size: 30px;
 	margin-top: 100px;
 	margin-left: 100px;
 	color: rgb(70,44,48);
 }
 
-.FreeBoardView table {
+
+.FreeBoardWrite table {
 	position: fixed;
 	top: 220px;
 	left: 50%;
@@ -21,13 +22,26 @@ body{
 	border: 2px solid gray;
 }
 
-.FreeBoardView tr td {
-	font-size: 20px;
-	font-weight: bold;
+.FreeBoardWrite td {
+	font-size: 23px;
 	text-align: center;
 }
 
-.FreeBoardView tr td button {
+.FreeBoardWrite td input {
+	margin: auto;
+	height: 30px;
+	border: 2px solid gray;
+	border-radius: 10px;
+}
+
+.FreeBoardWrite tr td textarea {
+	margin: auto;
+	height: 30px;
+	border: 2px solid gray;
+	border-radius: 10px;
+}
+
+.FreeBoardWrite tr td button {
 	width: 120px;
 	height: 40px;
 	margin-right: 40px;

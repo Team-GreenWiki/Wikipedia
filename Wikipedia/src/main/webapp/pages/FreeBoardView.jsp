@@ -15,6 +15,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link href="../css/FreeBoardView.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
@@ -33,41 +35,42 @@
 	</script>
 
 
+	<section class="FreeBoardView">
+		<h2>자유 게시판 - 상세보기</h2>
 	
-	<h2>자유 게시판 - 상세보기</h2>
-
-	<form name ="writeFrm">
-	
-		<input type="hidden" name="bnum" value="<%=num%>">
+		<form name ="writeFrm">
 		
-		<table border="1" width ="90%">
-			<tr>
-				<td>번호</td>
-				<td><%=dto.getBnum() %></td>
-				<td>작성자</td>
-				<td><%=dto.getId() %></td>
-			</tr>
+			<input type="hidden" name="bnum" value="<%=num%>">
 			
-			<tr>
-				<td>작성일</td>
-				<td><%=dto.getBwritedate() %></td>
-			</tr>
-			<tr>
-				<td>제목</td>
-				<td colspan="3"> <%=dto.getBtitle() %></td>
-			</tr>
-			<tr>
-				<td>내용</td>
-				<td colspan="3"> <%=dto.getBcontent().replace("\r\n", "<br>") %></td>
-			</tr>
-			<tr>
-				<td colspan="4" align="center"> 
-					<button type="button" onclick="location.href='FreeBoardEdit.jsp?bnum=<%=dto.getBnum()%>';">수정 하기</button>
-					<button type="button" onclick="deletePost();">삭제 하기</button>
-					<button type="button" onclick="location.href='FreeBoardList.jsp';">목록 보기</button>
-				</td>
-			</tr>
-		</table>	
-	</form>
+			<table border="1" width ="90%">
+				<tr>
+					<td>번호</td>
+					<td><%=dto.getBnum() %></td>
+					<td>작성자</td>
+					<td><%=dto.getId() %></td>
+				</tr>
+				
+				<tr>
+					<td>작성일</td>
+					<td><%=dto.getBwritedate() %></td>
+				</tr>
+				<tr>
+					<td>제목</td>
+					<td colspan="3"> <%=dto.getBtitle() %></td>
+				</tr>
+				<tr>
+					<td>내용</td>
+					<td colspan="3"> <%=dto.getBcontent().replace("\r\n", "<br>") %></td>
+				</tr>
+				<tr>
+					<td colspan="4" align="center"> 
+						<button type="button" onclick="location.href='FreeBoardEdit.jsp?bnum=<%=dto.getBnum()%>';">수정 하기</button>
+						<button type="button" onclick="deletePost();">삭제 하기</button>
+						<button type="button" onclick="location.href='FreeBoardList.jsp';">목록 보기</button>
+					</td>
+				</tr>
+			</table>	
+		</form>
+	</section>
 </body>
 </html>

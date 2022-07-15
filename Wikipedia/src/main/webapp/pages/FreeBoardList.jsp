@@ -45,7 +45,7 @@
 <body>
 	<jsp:include page="../include/Header.jsp"></jsp:include>
 	
-	<section class="FreeBoardList">
+	<section class="FreeBoardList_1">
 		<h2> 목록 보기</h2>
 		<form method="get">
 			<table border ="1" width="90%">
@@ -57,14 +57,14 @@
 							<option value="content">내용</option>
 						</select>
 						<input type="text" name="searchWord">
-						<input type="submit" value="검색하기">
+						<input type="submit" value="검색하기" id="search">
 					</td>
 				</tr>
 			</table>
 		</form>
+	</section>
 	
-	
-	
+	<section class="FreeBoardList_2">
 		<!-- 게시물 목록 테이블  -->
 		<table border="1" width="90%">
 			<tr>
@@ -104,9 +104,9 @@
 				}
 			%>
 		</table>
+	</section>
 	
-	
-	
+	<section class="FreeBoardList_3">
 		<table>
 			<tr>
 				<td>
