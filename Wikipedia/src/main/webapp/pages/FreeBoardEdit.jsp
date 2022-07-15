@@ -4,19 +4,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%-- <%@include file="./IsLoggedIn.jsp" %> --%>
+
 
 <%
 	String bnum = request.getParameter("bnum");			// 일련번호 받기
 	FreeBoardDAO dao = new FreeBoardDAO(application); 	// DAO 생성
 	FreeBoardDTO dto = dao.selectView(bnum); 			// 게시글 가져오기
-	
+	System.out.print(dto.getBtitle());	
 	String sessionId = session.getAttribute("userId").toString();
 	
-	if(!sessionId.equals(dto.getId())){
+	/* if(!sessionId.equals(dto.getId())){
 		JSFunction.alertBack("작성자만 수정할 수 있습니다.", out);
 		return;
-	}
+	} */
 	
 	dao.close();
 	
@@ -47,7 +47,7 @@
 	
 	<h2>자유 게시판 - 수정하기</h2>
 	
-	<form action ="FreeBoardEditProcess.jsp" name="writeFrm" method="post" onsubmit="return validateForm(this);">
+	<form action ="../process/FreeBoardEditProcess.jsp" name="writeFrm" method="post" onsubmit="return validateForm(this);">
 		<input type="hidden" name="bnum" value="<%=dto.getBnum() %>">
 		
 		<table border="1" width="90%">
