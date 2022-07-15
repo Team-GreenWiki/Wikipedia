@@ -1,3 +1,4 @@
+<%@page import="oracle.net.jdbc.nl.NVNavigator"%>
 <%@page import="FreeBoard.FreeBoardDTO"%>
 <%@page import="FreeBoard.FreeBoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -25,7 +26,7 @@
 			if (confirmed) {
 				let form = document.writeFrm;
 				form.method="post";
-				form.action="FreeBoardDeleteProcess.jsp";
+				form.action="../process/FreeBoardDeleteProcess.jsp";
 				form.submit();
 			}
 		}
@@ -37,7 +38,7 @@
 
 	<form name ="writeFrm">
 	
-		<input type="hidden" name="num" value="<%=num%>">
+		<input type="hidden" name="bnum" value="<%=num%>">
 		
 		<table border="1" width ="90%">
 			<tr>
@@ -61,7 +62,7 @@
 			</tr>
 			<tr>
 				<td colspan="4" align="center"> 
-					<button type="button" onclick="location.href='FreeBoardEdit.jsp?num=<%=dto.getBnum()%>';">수정 하기</button>
+					<button type="button" onclick="location.href='FreeBoardEdit.jsp?bnum=<%=dto.getBnum()%>';">수정 하기</button>
 					<button type="button" onclick="deletePost();">삭제 하기</button>
 					<button type="button" onclick="location.href='FreeBoardList.jsp';">목록 보기</button>
 				</td>
