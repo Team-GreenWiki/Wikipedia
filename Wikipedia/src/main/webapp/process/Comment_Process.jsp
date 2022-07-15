@@ -9,6 +9,6 @@
 	CommentDAO dao = new CommentDAO(application);
 	List<CommentDTO> comment_Lists = dao.show_comment_list(doc_num, Tag);
 	dao.close();
-	response.sendRedirect("./Comment_list.jsp?Tag="+Tag+"&doc_num="+doc_num);
+	response.sendRedirect("../pages/Doc_view.jsp?Tag="+Tag+"&doc_num="+doc_num);
 
 %>
