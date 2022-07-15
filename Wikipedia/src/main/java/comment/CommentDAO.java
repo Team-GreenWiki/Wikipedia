@@ -25,6 +25,7 @@ public class CommentDAO extends JDBConnect{
 		
 		String query = "SELECT * FROM comments where docnum = ? ";
 		try {
+			
 			if(!Tag.equals("ALL")) {
 				query += " AND TAGNAME = " + "'"+Tag+"'";
 			}
@@ -54,19 +55,29 @@ public class CommentDAO extends JDBConnect{
 	
 	
 	
-	// 해당 댓글을 불러온 상태에서 댓글을 작성하고 버튼을 누르면 해당 태그의 댓글이 작성됨
-	
-	
-
-	
-	
-	
-	//태그를 누르면 해당 태그의 댓글 불러오기
-	
-	//해당 댓글을 불러온 상태에서 댓글을 작성하고 버튼을 누르면 해당 태그의 댓글이 작성됨 
-	
-	
-
+	// 해당 태그를 셀렉트에서 선택하고 내용을 작성한뒤, 버튼을 누르면 해당 태그의 댓글이 작성됨
+	public int write_comment(CommentDTO dto) {
+		if(dto.getTag().equals("태그를 선택하세요.")){
+			System.out.println("태그를 선택해야 댓글 작성이 가능합니다.");
+			return -2;
+		}else {
+			int result =0;
+			String query = " INSERT INTO comments( docnum, tagname, comnum ,cocontent, id ,writedate ) "
+					+ " values ( ? , ?, SEQ_COMMENTS_COMNUM.nextval, ?, ?, sysdate )";
+			try {
+				psmt = con.prepareStatement(query);
+				psmt.setString(1, dto.getDoc_num());
+				psmt.setString(2, dto.getTag());
+				psmt.setString(3, dto.getCocontent());
+				psmt.setString(4, dto.getId());
+				result= psmt.executeUpdate();
+			}catch(Exception e) {
+				System.out.println("댓글 작성중 예외 발생");
+				e.printStackTrace();
+			}
+			return result;
+		}
+	}
 	
 
 }
