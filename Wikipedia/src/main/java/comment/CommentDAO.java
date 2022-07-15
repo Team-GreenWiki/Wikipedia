@@ -13,9 +13,10 @@ public class CommentDAO extends JDBConnect{
 	public CommentDAO(ServletContext application) {
 		super(application);
 		// TODO Auto-generated constructor stub
-	}
-
-	// 데이터베이스를 연결하기 위해 JDBConnect 상속
+	}// 데이터베이스를 연결하기 위해 JDBConnect 상속
+	
+	
+	
 	// 현재 조회중인(보고있는) 글에서 태그별 댓글 개수 세기
 
 	// 태그를 누르면 해당 태그의 댓글 불러오기
@@ -77,6 +78,25 @@ public class CommentDAO extends JDBConnect{
 			}
 			return result;
 		}
+	}
+	
+	
+	//댓글을 수정하는 메서드 
+	public int edit_comment(CommentDTO dto) {
+		int result = 0;
+		String query = " UPDATE comments SET tagname= ? , cocontent = ? , writedate = sysdate "
+				+ " where comnum = ?";
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1,dto.getTag() );
+			psmt.setString(2, dto.getCocontent());
+			psmt.setString(3,dto.getComnum());
+			result = psmt.executeUpdate();
+		}catch(Exception e) {
+			System.out.println("댓글 수정 중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
 

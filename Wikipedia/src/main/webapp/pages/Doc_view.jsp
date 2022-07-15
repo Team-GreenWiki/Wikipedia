@@ -117,8 +117,11 @@
 	</section>
 	<%
 		String Tag = request.getParameter("Tag");
+		String edit_controller = request.getParameter("edit");
+		
 		CommentDAO comment_dao = new CommentDAO(application);
 		List<CommentDTO> comment_Lists = null;
+		CommentDTO comment_dto_edit = null;
 				
 		if(Tag==null||Tag=="ALL"){
 			System.out.println("Tag가 null 이므로 모든 댓글을 불러옴");
@@ -127,8 +130,20 @@
 			System.out.println("Tag가 "+Tag+"이므로 해당 태그의 댓글을 불러옴");
 			comment_Lists = comment_dao.show_comment_list(doc_num, Tag);
 		}
+		// 처음 로딩할때 all 불러오기 위한 if문 
+		
+		
+		if(edit_controller!=""){
+			comment_dto_edit  = new CommentDTO();
+			//수정하기 프로세스를 거쳐왔다는뜻 
+		}
+
+		
+		
 		
 		comment_dao.close();
+		
+		
 	%>
 	<div class="comment_div">
 		<form action="../process/Comment_Write_Process.jsp?doc_num=<%=doc_num %>" method="post" name="comment_write_form">
@@ -167,10 +182,30 @@
 		%>
 			<div class="comment_list_content">
 				<div class="comment_list_content_info">
-					<p> [<%=comment_dto.getTag() %>]  <%=comment_dto.getId() %>  <%= comment_dto.getWritedate() %></p>
+					<p> [<%=comment_dto.getTag() %>]  <%=comment_dto.getId() %>  <%= comment_dto.getWritedate() %>
+					<%if(comment_dto.getId().equals(session.getAttribute("userId"))) { %>
+					<button class="edit_delete_btn" onclick="location.href='../process/Comment_Delete_Process.jsp?comnum=<%=comment_dto.getComnum()%>'">x</button>
+					<button class="edit_delete_btn" onclick="location.href='../process/Comment_Edit_Process.jsp?comnum=<%=comment_dto.getComnum()%>&edit_controller=true'">수정하기</button>
+					</p>
+					<%} %>
 				</div>
 				<div class="comment_list_content_text">
+				<%if(edit_controller==null) {%>
 					<p><%= comment_dto.getCocontent() %></p>
+				<%}else{ %>
+				<form action="../process/Comment_Edit_Process.jsp?doc_num=<%=doc_num%>&Tag=choiced_Tag&edit_controller=false">
+					<select name="choiced_Tag">
+									<option>태그를 선택하세요.</option>
+									<option>PURPOSE</option>
+									<option>USING</option>
+									<option>MOREINFO</option>
+									<option>QNA</option>
+					</select>
+					<textarea class="comment_textarea" placeholder="댓글을 입력하세요" name="edit_textarea"><%=comment_dto_edit.getCocontent() %></textarea>
+					<button type="submit">수정완료</button>
+					<button type="reset">취소</button>
+				</form>
+				<% }%>
 				</div>
 			</div>
 		<%		} 
@@ -183,6 +218,7 @@
 		for(i = 0; i < contentArea.children.length; i++){
 			contentArea.children[i].setAttribute("readonly", "true");
 		}
+		
 	</script>
 </body>
 </html>
