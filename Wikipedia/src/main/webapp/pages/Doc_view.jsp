@@ -83,6 +83,22 @@
 	.comment_list_content_text{
 		font-size:14px;
 	}
+	.edit_modal{
+		background-color: gray;
+		width:600px;
+		text-align: center;
+		color:white;
+		z-index: 1000;
+		position:fixed;
+		top: 40%;
+		left:30%;
+		border:3px solid black;
+		border-radius:10px;
+	}
+	.edit_modal>choiced_Tag{
+		heigth:70px;
+		
+	}
 </style>
 <body>
 	<section>
@@ -117,7 +133,9 @@
 	</section>
 	<%
 		String Tag = request.getParameter("Tag");
-		String edit_controller = request.getParameter("edit");
+		String edit_controller = request.getParameter("edit_controller");
+		String comnum = request.getParameter("comnum");
+		System.out.println("comnum : "+comnum);
 		
 		CommentDAO comment_dao = new CommentDAO(application);
 		List<CommentDTO> comment_Lists = null;
@@ -132,9 +150,10 @@
 		}
 		// 처음 로딩할때 all 불러오기 위한 if문 
 		
-		
-		if(edit_controller!=""){
-			comment_dto_edit  = new CommentDTO();
+		System.out.println("edit_controller : "+edit_controller);
+		if(edit_controller!=null){
+			System.out.println("컨트롤러 호출");
+			comment_dto_edit  = comment_dao.bring_origin_comment(comnum);
 			//수정하기 프로세스를 거쳐왔다는뜻 
 		}
 
@@ -185,27 +204,12 @@
 					<p> [<%=comment_dto.getTag() %>]  <%=comment_dto.getId() %>  <%= comment_dto.getWritedate() %>
 					<%if(comment_dto.getId().equals(session.getAttribute("userId"))) { %>
 					<button class="edit_delete_btn" onclick="location.href='../process/Comment_Delete_Process.jsp?comnum=<%=comment_dto.getComnum()%>'">x</button>
-					<button class="edit_delete_btn" onclick="location.href='../process/Comment_Edit_Process.jsp?comnum=<%=comment_dto.getComnum()%>&edit_controller=true'">수정하기</button>
+					<button class="edit_delete_btn" onclick="location.href='../process/Comment_Edit_Process.jsp?comnum=<%=comment_dto.getComnum()%>&edit_controller=true&doc_num=<%=doc_num%>'">수정하기</button>
 					</p>
 					<%} %>
 				</div>
 				<div class="comment_list_content_text">
-				<%if(edit_controller==null) {%>
 					<p><%= comment_dto.getCocontent() %></p>
-				<%}else{ %>
-				<form action="../process/Comment_Edit_Process.jsp?doc_num=<%=doc_num%>&Tag=choiced_Tag&edit_controller=false">
-					<select name="choiced_Tag">
-									<option>태그를 선택하세요.</option>
-									<option>PURPOSE</option>
-									<option>USING</option>
-									<option>MOREINFO</option>
-									<option>QNA</option>
-					</select>
-					<textarea class="comment_textarea" placeholder="댓글을 입력하세요" name="edit_textarea"><%=comment_dto_edit.getCocontent() %></textarea>
-					<button type="submit">수정완료</button>
-					<button type="reset">취소</button>
-				</form>
-				<% }%>
 				</div>
 			</div>
 		<%		} 
@@ -213,11 +217,43 @@
 		%>
 	</div>
 	
+	<!-- 댓글 수정하기 버튼을 누르면 만들어지는 댓글 수정 창 입니다. -->
+	<%if(edit_controller!=null){ 
+	System.out.println("edit_modal이 생성된 후 doc_num"+doc_num);
+	System.out.println("edit_modal이 생성된 후 comnum"+comnum);
+	%>
+	<div class="edit_modal">
+		<form action="../process/Comment_Edit_Process.jsp?doc_num=<%=doc_num%>&Tag=choiced_Tag&edit_controller=false&comnum=<%=comnum%>">
+			<p>댓글 수정 창</p>
+			<hr>
+			<p>[<%=comment_dto_edit.getTag() %>] <%=comment_dto_edit.getId() %>  <%= comment_dto_edit.getWritedate() %></p>
+			<hr>
+			<select name="choiced_Tag">
+				<option>태그를 선택하세요.</option>
+				<option>PURPOSE</option>
+				<option>USING</option>
+				<option>MOREINFO</option>
+				<option>QNA</option>
+			</select>
+			<textarea class="comment_textarea" placeholder="댓글을 입력하세요" name="edit_textarea"><%=comment_dto_edit.getCocontent() %></textarea>
+			<button type="submit">수정완료</button>
+			<button type="button" onclick="close_modal()">취소</button>
+		</form>
+	</div>
+	<%} %>
+	
 	<script>
 		let contentArea = document.getElementById("contentArea");
 		for(i = 0; i < contentArea.children.length; i++){
 			contentArea.children[i].setAttribute("readonly", "true");
-		}
+		}		
+		function close_modal(){
+	           /* let edit_modal = document.querySelector(".edit_modal");
+	           edit_modal.setAttribute("display","none");  */
+	           history.back();
+	    }
+		
+		let 
 		
 	</script>
 </body>

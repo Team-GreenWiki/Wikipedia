@@ -99,5 +99,27 @@ public class CommentDAO extends JDBConnect{
 		return result;
 	}
 	
+	//수정할 댓글을 불러오는 메서드
+	public CommentDTO bring_origin_comment(String comnum) {
+		CommentDTO dto = new CommentDTO();
+		String query = " select * from comments where comnum = ? ";
+		try {
+			psmt  = con.prepareStatement(query);
+			psmt.setString(1, comnum);
+			rs = psmt.executeQuery();
+			rs.next();
+			
+			dto.setDoc_num(rs.getString("docnum"));
+			dto.setCocontent(rs.getString("cocontent"));
+			dto.setId(rs.getString("id"));
+			dto.setTag(rs.getString("tagname"));
+			dto.setComnum(rs.getString("comnum"));
+			dto.setWritedate(rs.getDate("writedate"));
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
 
 }
