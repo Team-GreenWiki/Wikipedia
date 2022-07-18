@@ -38,74 +38,83 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<link href="../css/FreeBoardList.css" rel="stylesheet" type="text/css" />
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page="./Link.jsp"></jsp:include>
+	<jsp:include page="../include/Header.jsp"></jsp:include>
 	
-	<h2> 목록 보기</h2>
-	<form method="get">
-		<table border ="1" width="90%">
-			<tr align="center">
+	<section class="FreeBoardList_1">
+		<h2> 목록 보기</h2>
+		<form method="get">
+			<table border ="1" width="90%">
+				<tr align="center">
+					<td>
+						<select name="searchField">
+							<option value="choice">선택하세요.</option>
+							<option value="title">제목</option>
+							<option value="content">내용</option>
+						</select>
+						<input type="text" name="searchWord">
+						<input type="submit" value="검색하기" id="search">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</section>
+	
+	<section class="FreeBoardList_2">
+		<!-- 게시물 목록 테이블  -->
+		<table border="1" width="90%">
+			<tr>
+				<th width="10%">번호</th>
+				<th width="50%">제목</th>
+				<th width="15%">작성자</th>
+				<th width="15%">작성일</th>
+			</tr>
+			
+			<%
+				if (FreeboardLists.isEmpty()) {
+					// 게시물이 하나도 없으면(=없다면)
+			%>
+					<tr>
+						<td colspan="5" align="center">
+							등록된 게시물이 없습니다.
+						</td>
+					</tr>
+			<%	
+				} else {
+					// 게시물이 있으면(=있다면)
+					int virtualNum = 0;
+					for (FreeBoardDTO dto : FreeboardLists) {
+						virtualNum = totalCount--;
+			%>
+						<tr align="center">
+							<td align="center"><%=virtualNum %></td> <!-- 게시물번호 -->
+							<td align="center"> <!-- 제목(하이퍼링크) -->
+								<a href="FreeBoardView.jsp?bnum=<%=dto.getBnum() %>"><%=dto.getBtitle() %></a>
+							</td>
+							<td align="center"> <%=dto.getId() %></td>
+							<td align="center"> <%=dto.getBwritedate() %></td>
+						</tr>
+			<%	
+					}
+					
+				}
+			%>
+		</table>
+	</section>
+	
+	<section class="FreeBoardList_3">
+		<table>
+			<tr>
 				<td>
-					<select name="searchField">
-						<option value="freeTitle">제목</option>
-						<option value="freeContent">내용</option>
-					</select>
-					<input type="text" name="searchWord">
-					<input type="submit" value="검색하기">
+					<button type="button" onclick="location.href='FreeBoardWrite.jsp'">작성하기</button>
 				</td>
 			</tr>
 		</table>
-	</form>
-	
-	<!-- 게시물 목록 테이블  -->
-	<table border="1" width="90%">
-		<tr>
-			<th width="10%">번호</th>
-			<th width="50%">제목</th>
-			<th width="15%">작성자</th>
-			<th width="15%">작성일</th>
-		</tr>
-		
-		<%
-			if (FreeboardLists.isEmpty()) {
-				// 게시물이 하나도 없으면(=없다면)
-		%>
-				<tr>
-					<td colspan="5" align="center">
-						등록된 게시물이 없습니다.
-					</td>
-				</tr>
-		<%	
-			} else {
-				// 게시물이 있으면(=있다면)
-				int virtualNum = 0;
-				for (FreeBoardDTO dto : FreeboardLists) {
-					virtualNum = totalCount--;
-		%>
-					<tr align="center">
-						<td align="center"><%=virtualNum %></td> <!-- 게시물번호 -->
-						<td align="center"> <!-- 제목(하이퍼링크) -->
-							<a href="FreeBoardView.jsp?bnum=<%=dto.getBnum() %>"><%=dto.getBtitle() %></a>
-						</td>
-						<td align="center"> <%=dto.getId() %></td>
-						<td align="center"> <%=dto.getBwritedate() %></td>
-					</tr>
-		<%	
-				}
-				
-			}
-		%>
-	</table>
-	
-	<table>
-		<tr>
-			<td>
-				<button type="button" onclick="location.href='FreeBoardWrite.jsp'">작성하기</button>
-			</td>
-		</tr>
-	</table>
+	</section>
 </body>
 </html>
 

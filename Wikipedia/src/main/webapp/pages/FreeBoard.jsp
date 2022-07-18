@@ -11,7 +11,7 @@
 	<link href="../css/FreeBoard.css" rel="stylesheet" type="text/css" />
 <body>
 
-	<%-- <jsp:include page="../include/Header.jsp"></jsp:include> --%>
+<%-- <jsp:include page="../include/Header.jsp"></jsp:include> --%>
 
 	<div>
 		<section id="board">

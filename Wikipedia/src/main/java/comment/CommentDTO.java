@@ -15,8 +15,8 @@ public class CommentDTO {
 		return doc_num;
 	}
 	
-	public void setDoc_num(String docnum) {
-		this.doc_num = docnum;
+	public void setDoc_num(String doc_num) {
+		this.doc_num = doc_num;
 	}
 	
 	public String getComnum() {
@@ -31,8 +31,8 @@ public class CommentDTO {
 		return tag;
 	}
 	
-	public void setTag(String tag) {
-		this.tag = tag;
+	public void setTag(String Tag) {
+		this.tag = Tag;
 	}
 	
 	public String getId() {

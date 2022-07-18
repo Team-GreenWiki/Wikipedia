@@ -161,9 +161,9 @@ public class FreeBoardDAO extends JDBConnect {
 			int result = 0;
 			
 			try {
-				String query = " UPDATE FREEBOARD "
-						 	+  " SET btitle =?, bcontent=? "
-						 	+  " Where bnum=?";
+				String query = "UPDATE FREEBOARD "
+						 	+  "SET btitle =?, bcontent=? "
+						 	+  "Where bnum=?";
 				
 				psmt = con.prepareStatement(query);
 				psmt.setString(1, dto.getBtitle());
@@ -181,8 +181,38 @@ public class FreeBoardDAO extends JDBConnect {
 		}
 		
 		
+		// 게시글의 데이터를 받아 DB에 저장된 내용을 수정
+		public int updatePost(FreeBoardDTO dto) {
+			
+			// 결과값을 담기 위한 변수 생성
+			int result = 0;
+			
+			try {
+				// 쿼리문 작성, 준비해서 인파라미터 채우고 쿼리 실행
+				String query = " UPDATE FREEBOARD "
+							 + " SET btitle=?, bcontent=? "
+							 + " WHERE bnum=?";
+				
+				psmt = con.prepareStatement(query);
+				psmt.setString(1, dto.getBtitle());
+				psmt.setString(2, dto.getBcontent());
+				psmt.setString(3, dto.getBnum());
+				
+				
+				result = psmt.executeUpdate();	// 동적 쿼리문 실행
+				
+			} catch (Exception e) {
+				System.out.println("게시글 수정 중 예외 발생");
+				e.printStackTrace();
+			}
+			
+			// 결과값 반환
+			return result;
+		}
+		
+		
 		// 지정한 게시글 삭제하기
-		public int deletePost(FreeBoardDTO dto) {
+		public int deleteFreeBoard(FreeBoardDTO dto) {
 			int result = 0;
 			
 			try {

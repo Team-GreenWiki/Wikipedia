@@ -3,7 +3,7 @@
 <%@page import="FreeBoard.FreeBoardDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- <%@ include file="./IsLoggedIn.jsp" %> --%>
+    
 
 <% 
 	// 수정한 내용 가져오기
@@ -25,7 +25,7 @@
 	
 	// 성공/실패 확인
 	if (affected == 1) {
-		response.sendRedirect("View.jsp?bnum=" + dto.getBnum());
+		response.sendRedirect("../pages/FreeBoardList.jsp?bnum=" + dto.getBnum());
 	} else {
 		JSFunction.alertBack("수정에 실패했어요 다시 시도하세요.", out);
 	}
