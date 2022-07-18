@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 <%@page import="java.util.List"%>
-=======
 <%@page import="comment.CommentDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="comment.CommentDAO"%>
->>>>>>> branch 'main' of https://github.com/Team-GreenWiki/Wikipedia.git
 <%@page import="document.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -41,63 +38,6 @@
 <title>Insert title here</title>
 <link href="../css/Doc_view.css" rel="stylesheet"></link>
 </head>
-<style>
-	#contentArea{
-		display: flex;
-		flex-direction: column;
-	}
-	/* 태그 버튼을 감싸는 td */
-	.comment_Tag{
-	background-color: gray;
-	}
-	
-	/* 댓글 입력창인 textarea */
-	.comment_textarea {
-			width: 70%;
-			height: 50px;
-			padding: 10px;
-			box-sizing: border-box;
-			border: solid 2px #1E90FF;
-			border-radius: 5px;
-			font-size: 16px;
-			resize: both;
-			margin-left:20px;
-			margin-top : 15px;
-		}
-		
-	/* 댓글 작성 버튼 */
-	.comment_write_btn{
-		width:60px;
-		height:50px;
-	}
-	
-	/* 댓글 입력창 전체를 감싸는 div */
-	.comment_input{
-		text-align:center;
-	}
-	
-	/* 댓글 리스트를 감싸는 div */
-	.comment_lists_box{
-		width:60%;
-		margin: 0 auto;
-		border:1px solid gray;
-		background-color:#fff;
-	}
-	
-	/* 하나의 댓글을 감싸는 div */
-	.comment_list_content{
-		border:3px solid gray;
-	}
-	
-	/* 하나의 댓글의 작성자 정보,작성일등의 정보를 감싸는 div */
-	.comment_list_content_info{
-		border-bottom:1px solid gray;
-	}
-	/* 하나의 댓글의 댓글내용을 감싸는 div */
-	.comment_list_content_text{
-		font-size:14px;
-	}
-</style>
 <body>
 	<%@ include file="../include/Header.jsp" %>
 
@@ -125,14 +65,12 @@
 				</td>
 			</tr>
 		</table>
-		
-		<%-- <%@ include file="../Comment_page/Comment_list.jsp" %>
-		<jsp:include page="../Comment_page/Comment_list.jsp"></jsp:include> --%>
-		
-	</section>
-	<%
+			
+		<%
 		String Tag = request.getParameter("Tag");
-		String edit_controller = request.getParameter("edit");
+		String edit_controller = request.getParameter("edit_controller");
+		String comnum = request.getParameter("comnum");
+		System.out.println("comnum : "+comnum);
 		
 		CommentDAO comment_dao = new CommentDAO(application);
 		List<CommentDTO> comment_Lists = null;
@@ -147,9 +85,10 @@
 		}
 		// 처음 로딩할때 all 불러오기 위한 if문 
 		
-		
-		if(edit_controller!=""){
-			comment_dto_edit  = new CommentDTO();
+		System.out.println("edit_controller : "+edit_controller);
+		if(edit_controller!=null){
+			System.out.println("컨트롤러 호출");
+			comment_dto_edit  = comment_dao.bring_origin_comment(comnum);
 			//수정하기 프로세스를 거쳐왔다는뜻 
 		}
 
@@ -199,28 +138,13 @@
 				<div class="comment_list_content_info">
 					<p> [<%=comment_dto.getTag() %>]  <%=comment_dto.getId() %>  <%= comment_dto.getWritedate() %>
 					<%if(comment_dto.getId().equals(session.getAttribute("userId"))) { %>
-					<button class="edit_delete_btn" onclick="location.href='../process/Comment_Delete_Process.jsp?comnum=<%=comment_dto.getComnum()%>'">x</button>
-					<button class="edit_delete_btn" onclick="location.href='../process/Comment_Edit_Process.jsp?comnum=<%=comment_dto.getComnum()%>&edit_controller=true'">수정하기</button>
+					<button class="edit_delete_btn" onclick="location.href='../process/Comment_Delete_Process.jsp?comnum=<%=comment_dto.getComnum()%>&doc_num=<%=comment_dto.getDoc_num()%>'">x</button>
+					<button class="edit_delete_btn" onclick="location.href='../process/Comment_Edit_Process.jsp?comnum=<%=comment_dto.getComnum()%>&edit_controller=true&doc_num=<%=doc_num%>'">수정하기</button>
 					</p>
 					<%} %>
 				</div>
 				<div class="comment_list_content_text">
-				<%if(edit_controller==null) {%>
 					<p><%= comment_dto.getCocontent() %></p>
-				<%}else{ %>
-				<form action="../process/Comment_Edit_Process.jsp?doc_num=<%=doc_num%>&Tag=choiced_Tag&edit_controller=false">
-					<select name="choiced_Tag">
-									<option>태그를 선택하세요.</option>
-									<option>PURPOSE</option>
-									<option>USING</option>
-									<option>MOREINFO</option>
-									<option>QNA</option>
-					</select>
-					<textarea class="comment_textarea" placeholder="댓글을 입력하세요" name="edit_textarea"><%=comment_dto_edit.getCocontent() %></textarea>
-					<button type="submit">수정완료</button>
-					<button type="reset">취소</button>
-				</form>
-				<% }%>
 				</div>
 			</div>
 		<%		} 
@@ -228,11 +152,44 @@
 		%>
 	</div>
 	
+	<!-- 댓글 수정하기 버튼을 누르면 만들어지는 댓글 수정 창 입니다. -->
+	<%if(edit_controller!=null){ 
+	System.out.println("edit_modal이 생성된 후 doc_num : "+doc_num);
+	System.out.println("edit_modal이 생성된 후 comnum : "+comnum);
+	%>
+	<div class="edit_modal">
+		<form method="post" action="../process/Comment_Edit_Process.jsp?doc_num=<%=doc_num%>&Tag=choiced_Tag&edit_controller=false&comnum=<%=comnum%>">
+			<p>댓글 수정 창</p>
+			<hr>
+			<p>[<%=comment_dto_edit.getTag() %>] <%=comment_dto_edit.getId() %>  <%= comment_dto_edit.getWritedate() %></p>
+			<hr>
+			<select name="choiced_Tag">
+				<option>태그를 선택하세요.</option>
+				<option>PURPOSE</option>
+				<option>USING</option>
+				<option>MOREINFO</option>
+				<option>QNA</option>
+			</select>
+			<textarea class="comment_textarea" placeholder="댓글을 입력하세요" name="edit_textarea"><%=comment_dto_edit.getCocontent() %></textarea>
+			<button type="submit">수정완료</button>
+			<button type="button" onclick="close_modal()">취소</button>
+		</form>
+	</div>
+	<%} %>
+		
+	</section>
+	
+	
 	<script>
 		let contentArea = document.getElementById("contentArea");
 		for(i = 0; i < contentArea.children.length; i++){
 			contentArea.children[i].setAttribute("readonly", "true");
-		}
+		}		
+		function close_modal(){
+	           history.back();
+	    }
+		
+		let 
 		
 	</script>
 </body>
