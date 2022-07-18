@@ -1,3 +1,4 @@
+<%@page import="utils.JSFunction"%>
 <%@page import="comment.CommentDAO"%>
 <%@page import="comment.CommentDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -34,6 +35,7 @@
 				System.out.println("댓글 수정에 성공하였습니다.");
 				response.sendRedirect("../pages/Doc_view.jsp?doc_num="+doc_num);
 			}else{
+				JSFunction.alertBack("태그를 선택해야 댓글 수정이 가능합니다", out);
 				System.out.println("댓글 수정에 실패하였습니다.");
 			}
     	}

@@ -18,6 +18,12 @@ public class CommentDAO extends JDBConnect{
 	
 	
 	// 현재 조회중인(보고있는) 글에서 태그별 댓글 개수 세기
+	public int count_all_comment() {
+		int totalcount = 0;
+		String query = "Select count(*) from comments where docnum =?";
+		return totalcount;
+	}
+	
 
 	// 태그를 누르면 해당 태그의 댓글 불러오기
 	//리스트를 오버로딩 해서 태그에 따라 그 태그를 불러오는 쿼리문을 별개로 작성해놓고 댓글을 불러와야함.
@@ -84,6 +90,10 @@ public class CommentDAO extends JDBConnect{
 	//댓글을 수정하는 메서드 
 	public int edit_comment(CommentDTO dto) {
 		int result = 0;
+	if(dto.getTag().equals("태그를 선택하세요.")){
+		System.out.println("태그를 선택해야 댓글 수정이 가능합니다.");
+		return -2;
+	}
 		String query = " UPDATE comments SET tagname= ? , cocontent = ? , writedate = sysdate "
 				+ " where comnum = ?";
 		try {
@@ -121,5 +131,21 @@ public class CommentDAO extends JDBConnect{
 		}
 		return dto;
 	}
+	
+	public int delete_comment (CommentDTO dto) {
+		int result = 0;
+		String query = "delete from comments where docnum = ? and comnum = ?  ";
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getDoc_num() );
+			psmt.setString(2, dto.getComnum());
+			result = psmt.executeUpdate();
+		}catch(Exception e) {
+			System.out.println("댓글 삭제중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 
 }
