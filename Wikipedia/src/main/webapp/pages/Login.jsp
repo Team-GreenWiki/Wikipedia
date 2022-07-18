@@ -11,7 +11,6 @@
     <link href="../css/Login.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<%@ include file="../include/Header.jsp" %>
     <div id="container">
         <div id="mainLogo">
             <h1><a href="../pages/Index.jsp"><img src="../img/HatchfulExport-All/MainLogoMini.png"></a></h1>

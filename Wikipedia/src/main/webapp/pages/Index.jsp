@@ -22,7 +22,7 @@
     <div class="container">
         <section class="main1">
             <h1><a href="Index.jsp" class="mainLogo"><img src="../img/HatchfulExport-All/MainLogoMini.png"></a></h1>
-            <form action="../process/SearchProcess.jsp" method="get">
+            <form action="../process/SearchProcess.jsp?type_search=doc_title" method="post">
             	<input type="text" class="input_search" name="input_search">
             	<button type="submit" class="searchBtn" /></button>
             </form>
@@ -31,7 +31,7 @@
             		<c:when test="${ sessionScope.userId == null }"><li><a href="../pages/Login.jsp">로그인</a></li></c:when>
             		<c:when test="${ sessionScope.userId != null }"><li><a href="../pages/My_info.jsp">내 정보</a></li></c:when>
             	</c:choose>
-            	<li><a href="#">I'm Feeling Lucky</a></li>
+            	<li><a href="../pages/Doc_view.jsp?doc_num=rnd">I'm Feeling Lucky</a></li>
             </ul>
         </section>
 
