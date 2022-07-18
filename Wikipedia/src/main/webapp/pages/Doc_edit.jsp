@@ -1,6 +1,9 @@
 <%@page import="document.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ include file="../process/LoginChecker.jsp" %>
+
 <%
 	// doc_num 저장
 	String doc_num = request.getParameter("doc_num");
@@ -47,6 +50,7 @@
 			<tr>
 				<td colspan="4">
 					<button type="button" onclick="return transport();">저장</button>
+					<button type="button" onclick="deleteDoc();">삭제</button>
 					<button type="button" onclick="location:history.back();">돌아가기</button>
 				</td>
 			</tr>
@@ -98,6 +102,13 @@
 			doc_content.value = content;
 			
 			frm.submit();
+		}
+		
+		function deleteDoc(){
+			let result = confirm("정말 삭제하시겠습니까?");
+			if(result){
+				location.href = "../Doc_deleteProcess.jsp?doc_num=<%= dto.getDoc_num() %>";
+			}
 		}
 	</script>
 </body>

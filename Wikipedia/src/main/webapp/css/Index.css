@@ -2,6 +2,7 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 a{
@@ -20,16 +21,19 @@ body{
 
 /* .container */
 .container{
+	position: fixed;
+	top: 250px;
+	left: 50%;
+	margin-left: -600px;
+	
     width: 1200px;
     height: auto;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
 }
 
 /* .main1 */
 .main1{
-	margin-top: 300px;
     text-align: center;
 }
 

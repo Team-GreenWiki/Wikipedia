@@ -69,7 +69,7 @@ public class DocumentDAO extends JDBConnect {
 	
 	// 해당 doc_num의 DocumentDTO 반환
 	public DocumentDTO getDocumentDTO(String doc_num) {
-		System.out.printf("%s번 DocumentDTO 반환 요청 : getDocumentDTO() in DocumentDAO", doc_num);
+		System.out.printf("%s번 DocumentDTO 반환 요청 : getDocumentDTO() in DocumentDAO\n", doc_num);
 		
 		DocumentDTO dto = new DocumentDTO();
 		
@@ -87,18 +87,47 @@ public class DocumentDAO extends JDBConnect {
 			dto.setGoodcount(rs.getString("goodcount"));
 			dto.setWritedate(rs.getDate("writedate"));
 			
-			System.out.printf("%s번 DocumentDTO 반환 완료 : getDocumentDTO() in DocumentDAO", doc_num);
+			System.out.printf("%s번 DocumentDTO 반환 완료 : getDocumentDTO() in DocumentDAO\n", doc_num);
 		} catch(Exception e) {
-			System.out.printf("%s번 DocumentDTO 반환 중 예외 발생 : getDocumentDTO() in DocumentDAO", doc_num);
+			System.out.printf("%s번 DocumentDTO 반환 중 예외 발생 : getDocumentDTO() in DocumentDAO\n", doc_num);
 			e.printStackTrace();
 		}
 		
 		return dto;
 	} // getDocumentDTO()
 	
+	// 문서 검색
+	public DocumentDTO searchDoc(String type_search, String input_search) {
+		System.out.printf("%s = %s 인 DocumentDTO 반환 요청 : searchDoc() in DocumentDAO\n", type_search, input_search);
+		
+		DocumentDTO dto = new DocumentDTO();
+		
+		try {
+			String sql = "SELECT * FROM document WHERE " + type_search + " LIKE '%" + input_search + "%'";
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			if(rs.next()) {
+				dto.setDoc_num(rs.getString("doc_num"));
+				dto.setId(rs.getString("id"));
+				dto.setDoc_title(rs.getString("doc_title"));
+				dto.setDoc_content(rs.getString("doc_content"));
+				dto.setGoodcount(rs.getString("goodcount"));
+				dto.setWritedate(rs.getDate("writedate"));
+			}
+			
+			System.out.printf("%s = %s 인 DocumentDTO 반환 완료 : searchDoc() in DocumentDAO\n", type_search, input_search);
+		} catch(Exception e) {
+			System.out.printf("%s = %s 인 DocumentDTO 반환 중 예외 발생 : searchDoc() in DocumentDAO\n", type_search, input_search);
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+	
 	// 기존 문서 수정
 	public int updateDoc(DocumentDTO dto) {
-		System.out.printf("%s번 문서 DB 수정 요청 : updateDoc() in DocumentDAO", dto.getDoc_num());
+		System.out.printf("%s번 문서 DB 수정 요청 : updateDoc() in DocumentDAO\n", dto.getDoc_num());
 		
 		int result = 0;
 		
@@ -110,11 +139,32 @@ public class DocumentDAO extends JDBConnect {
 			psmt.setString(3, dto.getDoc_num());
 			result = psmt.executeUpdate();
 			
-			System.out.printf("%s번 문서 DB 수정 완료 : updateDoc() in DocumentDAO", dto.getDoc_num());
+			System.out.printf("%s번 문서 DB 수정 완료 : updateDoc() in DocumentDAO\n", dto.getDoc_num());
 		} catch(Exception e) {
-			System.out.printf("%s번 문서 DB 수정 중 예외 발생 : updateDoc() in DocumentDAO", dto.getDoc_num());
+			System.out.printf("%s번 문서 DB 수정 중 예외 발생 : updateDoc() in DocumentDAO\n", dto.getDoc_num());
 		}
 		
 		return result;
 	} // updateDoc()
+	
+	// 해당 doc_num의 문서 삭제
+	public int deleteDoc(String doc_num) {
+		System.out.printf("%s번 문서 DB 삭제 요청 : updateDoc() in DocumentDAO\n", doc_num);
+		
+		int result = 0;
+		
+		try {
+			String sql = "DELETE FROM document WHERE doc_num = ?";
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, doc_num);
+			result = psmt.executeUpdate();
+			
+			System.out.printf("%s번 문서 DB 삭제 완료 : updateDoc() in DocumentDAO\n", doc_num);
+		} catch(Exception e) {
+			System.out.printf("%s번 문서 DB 삭제 중 예외 발생 : updateDoc() in DocumentDAO\n", doc_num);
+			e.printStackTrace();
+		}
+		
+		return result;
+	} // deleteDoc()
 } // class

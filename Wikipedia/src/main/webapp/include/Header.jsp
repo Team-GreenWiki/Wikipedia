@@ -19,7 +19,7 @@
 	<header>
 		<div class="header1">
 			<h1><a href="../pages/Index.jsp"><img src="../img/HatchfulExport-All/MainLogoMini.png"></a></h1>
-			<form action="../process/SearchProcess.jsp" method="get">
+			<form action="../process/SearchProcess.jsp?type_search=doc_title" method="post">
 	           	<input type="text" class="input_search" name="input_search">
 	           	<button type="submit" class="searchBtn" /></button>
 	       	</form>
@@ -30,8 +30,9 @@
 		</div>
 		<div class="header2">
 			<ul>
-				<li><a href="">I'm Feeling Lucky</a></li>
-				<li><a href="">자유게시판</a></li>
+				<li><a href="../pages/Doc_view.jsp?doc_num=rnd">I'm Feeling Lucky</a></li>
+				<li><a href="../pages/Doc_list.jsp">문서 목록 열람</a></li>
+				<li><a href="../pages/FreeBoard.jsp">자유게시판</a></li>
 			</ul>
 		</div>
 	</header>

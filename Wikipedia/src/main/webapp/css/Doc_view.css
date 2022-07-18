@@ -1,0 +1,42 @@
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	box-sizing: border-box;
+}
+
+.container{
+	position: fixed;
+	top: 200px;
+	left: 50%;
+	margin-left: -600px;
+	
+	width: 1200px;
+}
+
+.container table{
+	margin: 0 auto;
+	
+	width: 90%;
+}
+
+/* #contentArea */
+.container #contentArea .subtitle{
+	padding: 5px;
+	
+	border: none;
+	border-bottom: 1px solid #4b2b30;
+	
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.container #contentArea .content{
+	padding : 10px;
+	
+	height: auto;
+	
+	border: none;
+	resize: none;
+}
