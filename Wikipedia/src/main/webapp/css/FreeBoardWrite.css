@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+* {
+	margin: 0 auto;
+}
+
 body{
     background-color: #4b2b3010;
 }
@@ -14,7 +18,7 @@ body{
 
 .FreeBoardWrite table {
 	position: fixed;
-	top: 220px;
+	top: 250px;
 	left: 50%;
 	width: 1200px;
 	margin-left: -600px;
