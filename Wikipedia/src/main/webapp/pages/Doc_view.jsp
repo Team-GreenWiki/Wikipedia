@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 <%@page import="java.util.List"%>
-=======
 <%@page import="comment.CommentDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="comment.CommentDAO"%>
->>>>>>> branch 'main' of https://github.com/Team-GreenWiki/Wikipedia.git
 <%@page import="document.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -232,6 +229,11 @@
 		let contentArea = document.getElementById("contentArea");
 		for(i = 0; i < contentArea.children.length; i++){
 			contentArea.children[i].setAttribute("readonly", "true");
+		}
+		
+		let content = document.getElementsByClassName("content");
+		for(i = 0; i < content.length; i++){
+			content[i].style.height = content[i].scrollHeight + "px";
 		}
 		
 	</script>

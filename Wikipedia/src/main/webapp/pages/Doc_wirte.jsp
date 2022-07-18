@@ -32,10 +32,7 @@
 			</tr>
 			<tr>
 				<td colspan="4">
-					<div id="inputArea">
-						<input type="text" class="subtitle">
-						<textarea class="content"></textarea>
-					</div>
+					<div id="inputArea"></div>
 				</td>
 			</tr>
 			<tr>
@@ -52,7 +49,8 @@
 		let doc_title = document.getElementById("doc_title");
 		let inputArea = document.getElementById("inputArea");
 		let doc_content = document.getElementById("doc_content");
-	
+		
+		// 부제 추가
 		function addSubtitle(){
 			let newSubtitle = document.createElement("input");
 			newSubtitle.setAttribute("type", "text");
@@ -61,18 +59,24 @@
 			inputArea.appendChild(newSubtitle);
 		}
 		
+		// 내용 추가
 		function addContent(){
 			let newContent = document.createElement("textarea");
 			newContent.setAttribute("class", "content");
 			
 			inputArea.appendChild(newContent);
+			
+			newContent.addEventListener("onKeyDown", resizeContent());
+			newContent.addEventListener("onKeyUp", resizeContent());
 		}
 		
+		// 마지막 요소 제거
 		function removeLast(){
 			if(inputArea.firstElementChild)
 			inputArea.removeChild(inputArea.lastChild);
 		}
 		
+		// 입력완료
 		function transport(){
 			if(doc_title.value == ""){
 				alert("문서 제목은 필수입력사항입니다.");
@@ -92,6 +96,14 @@
 			
 			frm.submit();
 		}
+		
+		function resizeContent(){
+			this.height = this.scrollHeight + "px";
+		}
+		
+		// 기본 입력부 추가
+		addSubtitle();
+		addContent();
 	</script>
 </body>
 </html>
