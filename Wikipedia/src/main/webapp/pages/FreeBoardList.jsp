@@ -57,7 +57,7 @@
 							<option value="content">내용</option>
 						</select>
 						<input type="text" name="searchWord">
-						<input type="submit" value="검색하기" id="search">
+						<input type="button" value="검색하기" id="search" onclick="btn();">
 					</td>
 				</tr>
 			</table>
@@ -115,11 +115,11 @@
 			</tr>
 		</table>
 	</section>
+	
+	<script>
+	function btn() {
+	    alert('검색어를 입력하세요.');
+	}
+</script>
 </body>
 </html>
-
-
-
-
-
-
