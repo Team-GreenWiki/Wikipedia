@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="comment.CommentDTO"%>
 <%@page import="java.util.List"%>
@@ -92,7 +93,12 @@
 			//수정하기 프로세스를 거쳐왔다는뜻 
 		}
 
-		
+		int total_tag = comment_dao.count_all_comment(doc_num);
+		ArrayList<Integer> tag_count_list = comment_dao.count_Tags(doc_num);
+		int purpose_tag = tag_count_list.get(0);
+		int using_tag = tag_count_list.get(1);
+		int moreinfo_tag = tag_count_list.get(2);
+		int qna_tag = tag_count_list.get(3);
 		
 		
 		comment_dao.close();
@@ -103,11 +109,11 @@
 		<form action="../process/Comment_Write_Process.jsp?doc_num=<%=doc_num %>" method="post" name="comment_write_form">
 			<table border='1' width="60%" align="center">
 				<tr>
-					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=ALL&doc_num=<%=doc_num %>'" type="button">ALL</button></td>
-					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=PURPOSE&doc_num=<%=doc_num %>'" type="button">PURPOSE</button></td>
-					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=USING&doc_num=<%=doc_num %>'" type="button">USING</button></td>
-					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=MOREINFO&doc_num=<%=doc_num %>'" type="button">MOREINFO</button></td>
-					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=QNA&doc_num=<%=doc_num %>'" type="button">QNA</button></td>
+					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=ALL&doc_num=<%=doc_num %>'" type="button">ALL(<%=total_tag %>)</button></td>
+					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=PURPOSE&doc_num=<%=doc_num %>'" type="button">PURPOSE(<%=purpose_tag %>)</button></td>
+					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=USING&doc_num=<%=doc_num %>'" type="button">USING(<%=using_tag %>)</button></td>
+					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=MOREINFO&doc_num=<%=doc_num %>'" type="button">MOREINFO(<%=moreinfo_tag %>)</button></td>
+					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=QNA&doc_num=<%=doc_num %>'" type="button">QNA(<%=qna_tag %>)</button></td>
 					
 				</tr>
 				<tr>
