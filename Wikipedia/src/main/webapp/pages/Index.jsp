@@ -16,7 +16,7 @@
     <link href="../css/Index.css" rel="stylesheet" type="text/css" />
     <link href="../css/Header.css" rel="stylesheet" type="text/css" />
 </head>
-<body>
+<body class="Index_body">
 	<%@ include file="../include/Header.jsp" %>
 
     <div class="container">

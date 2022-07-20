@@ -109,11 +109,11 @@
 		<form action="../process/Comment_Write_Process.jsp?doc_num=<%=doc_num %>" method="post" name="comment_write_form">
 			<table border='1' width="60%" align="center">
 				<tr>
-					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=ALL&doc_num=<%=doc_num %>'" type="button">ALL(<%=total_tag %>)</button></td>
-					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=PURPOSE&doc_num=<%=doc_num %>'" type="button">PURPOSE(<%=purpose_tag %>)</button></td>
-					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=USING&doc_num=<%=doc_num %>'" type="button">USING(<%=using_tag %>)</button></td>
-					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=MOREINFO&doc_num=<%=doc_num %>'" type="button">MOREINFO(<%=moreinfo_tag %>)</button></td>
-					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=QNA&doc_num=<%=doc_num %>'" type="button">QNA(<%=qna_tag %>)</button></td>
+					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=ALL&doc_num=<%=doc_num %>'" type="button" >ALL (<%=total_tag %>)</button></td>
+					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=PURPOSE&doc_num=<%=doc_num %>'" type="button">PURPOSE (<%=purpose_tag %>)</button></td>
+					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=USING&doc_num=<%=doc_num %>'" type="button">USING (<%=using_tag %>)</button></td>
+					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=MOREINFO&doc_num=<%=doc_num %>'" type="button">MOREINFO (<%=moreinfo_tag %>)</button></td>
+					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=QNA&doc_num=<%=doc_num %>'" type="button">QNA (<%=qna_tag %>)</button></td>
 					
 				</tr>
 				<tr>
@@ -136,7 +136,9 @@
 	</div>
 	<div class="comment_lists_box">
 		<%if(comment_Lists.isEmpty()) {%>
-				<p>아직 댓글이 없습니다.</p>
+			<div class="comment_list_content" >
+				<div class="comment_list_content_text">아직 댓글이 없습니다.</div>
+			</div>
 		<%}else{ 
 			for(CommentDTO comment_dto : comment_Lists){
 		%>
