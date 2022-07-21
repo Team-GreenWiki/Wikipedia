@@ -32,7 +32,7 @@
 			<ul>
 				<li><a href="../pages/Doc_view.jsp?doc_num=rnd">I'm Feeling Lucky</a></li>
 				<li><a href="../pages/Doc_list.jsp">문서 목록 열람</a></li>
-				<li><a href="../pages/FreeBoard.jsp">자유게시판</a></li>
+				<li><a href="../pages/FreeBoardList.jsp">자유게시판</a></li>
 			</ul>
 		</div>
 	</header>

@@ -20,7 +20,8 @@
 </head>
 <body>
 
-	<jsp:include page="./Link.jsp"></jsp:include>
+	<%@ include file="../include/Header.jsp" %>
+	
 	<script>
 		function deletePost(){
 			let confirmed = confirm("정말로 삭제하시겠어요?");
@@ -36,7 +37,7 @@
 
 
 	<section class="FreeBoardView">
-		<h2>자유 게시판 - 상세보기</h2>
+		<h2>자유게시판</h2>
 	
 		<form name ="writeFrm">
 		
