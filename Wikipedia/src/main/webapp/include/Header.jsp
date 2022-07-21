@@ -25,7 +25,10 @@
 	       	</form>
 			<c:choose>
 				<c:when test="${ sessionScope.userId == null }"><p><a href="../pages/Login.jsp">로그인</a></p></c:when>
-				<c:when test="${ sessionScope.userId != null }"><p><a href="../pages/My_Info.jsp">내 정보</a></p></c:when>
+				<c:when test="${ sessionScope.userId != null }">
+					<p><a href="../pages/My_Info.jsp">내 정보</a></p>
+					<p><a href="../process/LogoutProcess"></a></p>
+				</c:when>
 			</c:choose>
 		</div>
 		<div class="header2">
