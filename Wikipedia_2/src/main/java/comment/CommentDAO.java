@@ -1,6 +1,5 @@
 package comment;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
@@ -17,62 +16,13 @@ public class CommentDAO extends JDBConnect{
 	}// 데이터베이스를 연결하기 위해 JDBConnect 상속
 	
 	
-	// 현재 조회중인(보고있는) 글에서 총 댓글 개수 세기
-	public int count_all_comment(String doc_num) {
+	
+	// 현재 조회중인(보고있는) 글에서 태그별 댓글 개수 세기
+	public int count_all_comment() {
 		int totalcount = 0;
-		String query = "Select count(*) total from comments where docnum =? ";
-		try {
-			psmt = con.prepareStatement(query);
-			psmt.setString(1,doc_num);
-			rs = psmt.executeQuery();
-			rs.next();
-			totalcount = Integer.parseInt(rs.getString("total"));
-		}catch(Exception e) {
-			System.out.println("전체 댓글 개수 조회중 예외 발생");
-			e.printStackTrace();
-		}
+		String query = "Select count(*) from comments where docnum =?";
 		return totalcount;
 	}
-	
-	//현재 조회중인 글의 태그별 개수 세기 
-	public ArrayList count_Tags(String doc_num) {
-		ArrayList<Integer> tag_count_list = new ArrayList<Integer>();
-		String query = "SELECT COUNT(*) count FROM COMMENTS WHERE TAGNAME = ? and docnum = ? ";
-		String Tag = "";
-		try {
-			
-		psmt = con.prepareStatement(query);
-		
-		for(int i = 1; i<=4; i++) {
-			if(i==1) {
-				Tag = "PURPOSE";
-				}
-			if(i==2) {
-				Tag = "USING";
-				}
-			if(i==3) {
-				Tag = "MOREINFO";
-				}
-			if(i==4) {
-				Tag = "QNA";
-				}
-			psmt.setString(1, Tag);
-			psmt.setString(2, doc_num);
-			rs = psmt.executeQuery();
-			rs.next();
-			tag_count_list.add(Integer.parseInt(rs.getString("count")));
-			}
-		
-		}catch(Exception e) {
-			System.out.println("태그별 갯수 조회 중 예외 발생");
-			e.printStackTrace();
-		}
-		return tag_count_list;
-	}
-	
-	
-	
-	
 	
 
 	// 태그를 누르면 해당 태그의 댓글 불러오기

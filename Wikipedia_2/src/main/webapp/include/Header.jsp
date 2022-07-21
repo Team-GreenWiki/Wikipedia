@@ -28,6 +28,7 @@
 				<c:when test="${ sessionScope.userId != null }">
 					<p><a href="../pages/My_info.jsp">내 정보</a></p>
 					<p><a href="../process/LogoutProcess.jsp">로그아웃</a></p>
+				
 				</c:when>
 			</c:choose>
 		</div>
@@ -35,7 +36,7 @@
 			<ul>
 				<li><a href="../pages/Doc_view.jsp?doc_num=rnd">I'm Feeling Lucky</a></li>
 				<li><a href="../pages/Doc_list.jsp">문서 목록 열람</a></li>
-				<li><a href="../pages/FreeBoard.jsp">자유게시판</a></li>
+				<li><a href="../pages/FreeBoardList.jsp">자유게시판</a></li>
 			</ul>
 		</div>
 	</header>

@@ -5,13 +5,13 @@
 	list-style: none;
 	box-sizing: border-box;
 }
+
 .container{
-	/* position: fixed;
+	position: fixed;
 	top: 200px;
-	left: 50%; */
-	/* 스크롤 사라지는 현상이 있어 수정중 원래 코드 주석처리했음 */
-	margin:0 auto;
-	margin-top:200px;
+	left: 50%;
+	margin-left: -600px;
+	
 	width: 1200px;
 }
 
@@ -30,7 +30,6 @@
 	
 	font-size: 15px;
 	font-weight: bold;
-	background-color:transparent;
 }
 
 .container #contentArea .content{
@@ -40,8 +39,6 @@
 	
 	border: none;
 	resize: none;
-	
-	background-color:transparent;
 }
 
 #contentArea{
@@ -50,19 +47,7 @@
 	}
 	/* 태그 버튼을 감싸는 td */
 	.comment_Tag{
-	width:20%;
-	height:45px;
-	text-align:center;
-	}
-	.comment_Tag>button{
-	background-color: grey;
-	color:white;
-	width:80%;
-	line-height:80%;
-	height:80%;
-	border:1px solid black;
-	border-radius:3px;
-	
+	background-color: gray;
 	}
 	
 	/* 댓글 입력창인 textarea */
@@ -71,13 +56,12 @@
 			height: 50px;
 			padding: 10px;
 			box-sizing: border-box;
-			border: solid 2px black;
+			border: solid 2px #1E90FF;
 			border-radius: 5px;
 			font-size: 16px;
-			resize: none;
+			resize: both;
 			margin-left:20px;
 			margin-top : 15px;
-			background-color:transparent;
 		}
 		
 	/* 댓글 작성 버튼 */
@@ -89,43 +73,28 @@
 	/* 댓글 입력창 전체를 감싸는 div */
 	.comment_input{
 		text-align:center;
-		background-color:transparent;
-		align-content: center;
-	}
-	
-	.comment_input>*{
-		margin: auto 0;
 	}
 	
 	/* 댓글 리스트를 감싸는 div */
 	.comment_lists_box{
-		width:90%;
+		width:60%;
 		margin: 0 auto;
-		border:1px double black;
+		border:1px solid gray;
 		background-color:#fff;
-		padding:1px;
-		background-color:transparent;
 	}
 	
 	/* 하나의 댓글을 감싸는 div */
 	.comment_list_content{
-		border:1px solid black;
-		margin:1px;
-		background-color:transparent;
+		border:3px solid gray;
 	}
 	
 	/* 하나의 댓글의 작성자 정보,작성일등의 정보를 감싸는 div */
 	.comment_list_content_info{
-		border-bottom:1px solid black;
-		padding:5px 30px;
-		margin:1px;
-		background-color:transparent;
+		border-bottom:1px solid gray;
 	}
 	/* 하나의 댓글의 댓글내용을 감싸는 div */
 	.comment_list_content_text{
 		font-size:14px;
-		padding:5px 30px;
-		margin:1px;
 	}
 	/* 댓글 수정하는 모달창 */
 	.edit_modal{
