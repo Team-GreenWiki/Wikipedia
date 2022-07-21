@@ -10,7 +10,7 @@
 
 	// 문서 목록 불러오기
 	DocumentDAO dao = new DocumentDAO(application);
-	List<DocumentDTO> list = dao.searchDocList(search_type, search_word);
+	List<DocumentDTO> list = dao.searchDoc(search_type, search_word);
 	dao.close();
 %>
 <!DOCTYPE html>

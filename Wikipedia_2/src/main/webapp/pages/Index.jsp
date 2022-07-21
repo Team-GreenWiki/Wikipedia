@@ -22,8 +22,8 @@
     <div class="container">
         <section class="main1">
             <h1><a href="Index.jsp" class="mainLogo"><img src="../img/HatchfulExport-All/MainLogoMini.png"></a></h1>
-            <form action="../process/SearchProcess.jsp?search_type=doc_title" method="post">
-            	<input type="text" class="input_search" name="search_word">
+            <form action="../process/SearchProcess.jsp?type_search=doc_title" method="post">
+            	<input type="text" class="input_search" name="input_search">
             	<button type="submit" class="searchBtn" /></button>
             </form>
             <ul class="navMenu">

@@ -5,12 +5,12 @@
     pageEncoding="UTF-8"%>
 <%
 	// 검색어 저장
-	String search_type = request.getParameter("search_type");
-	String search_word = request.getParameter("search_word");
+	String type_search = request.getParameter("type_search");
+	String input_search = request.getParameter("input_search");
 
 	// DAO를 통해 해당 문서를 찾고 DTO반환
 	DocumentDAO dao = new DocumentDAO(application);
-	DocumentDTO dto = dao.searchDoc(search_type, search_word);
+	DocumentDTO dto = dao.searchDoc(type_search, input_search);
 	
 	String doc_num = dto.getDoc_num();
 	
