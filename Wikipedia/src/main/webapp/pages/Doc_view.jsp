@@ -118,15 +118,12 @@
 			</tr>
 			<tr>
 				<td colspan="6" align="center">
+					<button type="button" onclick="location.href='../process/GoodcountUpProcess.jsp?doc_num=<%= doc_num %>'">추천</button>
 					<button type="button" onclick="location.href='../pages/Doc_edit.jsp?doc_num=<%= doc_num %>'">수정 / 삭제</button>
 					<button type="button" onclick="location.href='../pages/Doc_list.jsp'">돌아가기</button>
 				</td>
 			</tr>
 		</table>
-		
-		<%-- <%@ include file="../Comment_page/Comment_list.jsp" %>
-		<jsp:include page="../Comment_page/Comment_list.jsp"></jsp:include> --%>
-		
 	</section>
 	<%
 		String Tag = request.getParameter("Tag");

@@ -127,7 +127,7 @@ public class DocumentDAO extends JDBConnect {
 	
 	// 문서 목록 검색
 	public List<DocumentDTO> searchDocList(String search_type, String search_word) {
-		System.out.printf("%s = %s 인 DocumentDTO 목록 반환 요청 : searchDoc() in DocumentDAO\n", search_type, search_word);
+		System.out.printf("%s = %s 인 DocumentDTO 목록 반환 요청 : searchDocList() in DocumentDAO\n", search_type, search_word);
 		
 		List<DocumentDTO> list = new Vector<>();
 		
@@ -153,9 +153,9 @@ public class DocumentDAO extends JDBConnect {
 				list.add(dto);
 			}
 			
-			System.out.printf("%s = %s 인 DocumentDTO 목록 반환 완료 : searchDoc() in DocumentDAO\n", search_type, search_word);
+			System.out.printf("%s = %s 인 DocumentDTO 목록 반환 완료 : searchDocList() in DocumentDAO\n", search_type, search_word);
 		} catch(Exception e) {
-			System.out.printf("%s = %s 인 DocumentDTO 목록 반환 중 예외 발생 : searchDoc() in DocumentDAO\n", search_type, search_word);
+			System.out.printf("%s = %s 인 DocumentDTO 목록 반환 중 예외 발생 : searchDocList() in DocumentDAO\n", search_type, search_word);
 			e.printStackTrace();
 		}
 		
@@ -204,4 +204,24 @@ public class DocumentDAO extends JDBConnect {
 		
 		return result;
 	} // deleteDoc()
+	
+	// 추천수 증가
+	public int upGoodcount(String doc_num) {
+		System.out.printf("%s번 문서 추천수 증가 요청 : upGoodcount() in DocumentDAO\n", doc_num);
+		
+		int result = 0;
+		
+		try {
+			String sql = "UPDATE document SET document.goodcount = document.goodcount + 1";
+			stmt = con.createStatement();
+			result = stmt.executeUpdate(sql);
+			
+			System.out.printf("%s번 문서 추천수 증가 완료 : upGoodcount() in DocumentDAO\n", doc_num);
+		} catch(Exception e) {
+			System.out.printf("%s번 문서 추천수 증가 중 예외 발생 : upGoodcount() in DocumentDAO\n", doc_num);
+			e.printStackTrace();
+		}
+		
+		return result;
+	} // upGoodcount()
 } // class
