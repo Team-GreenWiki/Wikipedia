@@ -67,14 +67,7 @@
 				</td>
 			</tr>
 		</table>
-<<<<<<< HEAD
-	</section>
 	<%
-=======
-		
-		
-		<%
->>>>>>> branch 'main' of https://github.com/Team-GreenWiki/Wikipedia.git
 		String Tag = request.getParameter("Tag");
 		String edit_controller = request.getParameter("edit");
 		
