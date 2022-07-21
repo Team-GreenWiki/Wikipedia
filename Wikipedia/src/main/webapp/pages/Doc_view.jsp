@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="comment.CommentDTO"%>
 <%@page import="java.util.List"%>
@@ -61,15 +62,16 @@
 			</tr>
 			<tr>
 				<td colspan="6" align="center">
-					<button type="button" onclick="location.href='../process/GoodcountUpProcess.jsp?doc_num=<%= doc_num %>'">추천</button>
-					<button type="button" onclick="location.href='../pages/Doc_edit.jsp?doc_num=<%= doc_num %>'">수정 / 삭제</button>
-					<button type="button" onclick="location.href='../pages/Doc_list.jsp'">돌아가기</button>
+					<button type="button" onclick="location.href='../pages/Doc_edit.jsp?doc_num=<%= doc_num %>'">수정하기</button>
 				</td>
 			</tr>
 		</table>
-	<%
+			
+		<%
 		String Tag = request.getParameter("Tag");
-		String edit_controller = request.getParameter("edit");
+		String edit_controller = request.getParameter("edit_controller");
+		String comnum = request.getParameter("comnum");
+		System.out.println("comnum : "+comnum);
 		
 		CommentDAO comment_dao = new CommentDAO(application);
 		List<CommentDTO> comment_Lists = null;
@@ -84,13 +86,19 @@
 		}
 		// 처음 로딩할때 all 불러오기 위한 if문 
 		
-		
-		if(edit_controller!=""){
-			comment_dto_edit  = new CommentDTO();
+		System.out.println("edit_controller : "+edit_controller);
+		if(edit_controller!=null){
+			System.out.println("컨트롤러 호출");
+			comment_dto_edit  = comment_dao.bring_origin_comment(comnum);
 			//수정하기 프로세스를 거쳐왔다는뜻 
 		}
 
-		
+		int total_tag = comment_dao.count_all_comment(doc_num);
+		ArrayList<Integer> tag_count_list = comment_dao.count_Tags(doc_num);
+		int purpose_tag = tag_count_list.get(0);
+		int using_tag = tag_count_list.get(1);
+		int moreinfo_tag = tag_count_list.get(2);
+		int qna_tag = tag_count_list.get(3);
 		
 		
 		comment_dao.close();
@@ -101,11 +109,11 @@
 		<form action="../process/Comment_Write_Process.jsp?doc_num=<%=doc_num %>" method="post" name="comment_write_form">
 			<table border='1' width="60%" align="center">
 				<tr>
-					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=ALL&doc_num=<%=doc_num %>'" type="button">ALL</button></td>
-					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=PURPOSE&doc_num=<%=doc_num %>'" type="button">PURPOSE</button></td>
-					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=USING&doc_num=<%=doc_num %>'" type="button">USING</button></td>
-					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=MOREINFO&doc_num=<%=doc_num %>'" type="button">MOREINFO</button></td>
-					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=QNA&doc_num=<%=doc_num %>'" type="button">QNA</button></td>
+					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=ALL&doc_num=<%=doc_num %>'" type="button" >ALL (<%=total_tag %>)</button></td>
+					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=PURPOSE&doc_num=<%=doc_num %>'" type="button">PURPOSE (<%=purpose_tag %>)</button></td>
+					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=USING&doc_num=<%=doc_num %>'" type="button">USING (<%=using_tag %>)</button></td>
+					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=MOREINFO&doc_num=<%=doc_num %>'" type="button">MOREINFO (<%=moreinfo_tag %>)</button></td>
+					<td class="comment_Tag"><button onclick="location.href='../process/Comment_Process.jsp?Tag=QNA&doc_num=<%=doc_num %>'" type="button">QNA (<%=qna_tag %>)</button></td>
 					
 				</tr>
 				<tr>
@@ -128,7 +136,9 @@
 	</div>
 	<div class="comment_lists_box">
 		<%if(comment_Lists.isEmpty()) {%>
-				<p>아직 댓글이 없습니다.</p>
+			<div class="comment_list_content" >
+				<div class="comment_list_content_text">아직 댓글이 없습니다.</div>
+			</div>
 		<%}else{ 
 			for(CommentDTO comment_dto : comment_Lists){
 		%>
@@ -136,35 +146,44 @@
 				<div class="comment_list_content_info">
 					<p> [<%=comment_dto.getTag() %>]  <%=comment_dto.getId() %>  <%= comment_dto.getWritedate() %>
 					<%if(comment_dto.getId().equals(session.getAttribute("userId"))) { %>
-					<button class="edit_delete_btn" onclick="location.href='../process/Comment_Delete_Process.jsp?comnum=<%=comment_dto.getComnum()%>'">x</button>
-					<button class="edit_delete_btn" onclick="location.href='../process/Comment_Edit_Process.jsp?comnum=<%=comment_dto.getComnum()%>&edit_controller=true'">수정하기</button>
+					<button class="edit_delete_btn" onclick="location.href='../process/Comment_Delete_Process.jsp?comnum=<%=comment_dto.getComnum()%>&doc_num=<%=comment_dto.getDoc_num()%>'">x</button>
+					<button class="edit_delete_btn" onclick="location.href='../process/Comment_Edit_Process.jsp?comnum=<%=comment_dto.getComnum()%>&edit_controller=true&doc_num=<%=doc_num%>'">수정하기</button>
 					</p>
 					<%} %>
 				</div>
 				<div class="comment_list_content_text">
-				<%if(edit_controller==null) {%>
 					<p><%= comment_dto.getCocontent() %></p>
-				<%}else{ %>
-				<form action="../process/Comment_Edit_Process.jsp?doc_num=<%=doc_num%>&Tag=choiced_Tag&edit_controller=false">
-					<select name="choiced_Tag">
-									<option>태그를 선택하세요.</option>
-									<option>PURPOSE</option>
-									<option>USING</option>
-									<option>MOREINFO</option>
-									<option>QNA</option>
-					</select>
-					<textarea class="comment_textarea" placeholder="댓글을 입력하세요" name="edit_textarea"><%=comment_dto_edit.getCocontent() %></textarea>
-					<button type="submit">수정완료</button>
-					<button type="reset">취소</button>
-				</form>
-				<% }%>
 				</div>
 			</div>
 		<%		} 
 		  }
 		%>
 	</div>
-		
+	
+	<!-- 댓글 수정하기 버튼을 누르면 만들어지는 댓글 수정 창 입니다. -->
+	<%if(edit_controller!=null){ 
+	System.out.println("edit_modal이 생성된 후 doc_num : "+doc_num);
+	System.out.println("edit_modal이 생성된 후 comnum : "+comnum);
+	%>
+	<div class="edit_modal">
+		<form method="post" action="../process/Comment_Edit_Process.jsp?doc_num=<%=doc_num%>&Tag=choiced_Tag&edit_controller=false&comnum=<%=comnum%>">
+			<p>댓글 수정 창</p>
+			<hr>
+			<p>[<%=comment_dto_edit.getTag() %>] <%=comment_dto_edit.getId() %>  <%= comment_dto_edit.getWritedate() %></p>
+			<hr>
+			<select name="choiced_Tag">
+				<option>태그를 선택하세요.</option>
+				<option>PURPOSE</option>
+				<option>USING</option>
+				<option>MOREINFO</option>
+				<option>QNA</option>
+			</select>
+			<textarea class="comment_textarea" placeholder="댓글을 입력하세요" name="edit_textarea"><%=comment_dto_edit.getCocontent() %></textarea>
+			<button type="submit">수정완료</button>
+			<button type="button" onclick="close_modal()">취소</button>
+		</form>
+	</div>
+	<%} %>
 		
 	</section>
 	
@@ -173,12 +192,11 @@
 		let contentArea = document.getElementById("contentArea");
 		for(i = 0; i < contentArea.children.length; i++){
 			contentArea.children[i].setAttribute("readonly", "true");
-		}
+		}		
+		function close_modal(){
+	           history.back();
+	    }
 		
-		let content = document.getElementsByClassName("content");
-		for(i = 0; i < content.length; i++){
-			content[i].style.height = content[i].scrollHeight + "px";
-		}
 		
 	</script>
 </body>
