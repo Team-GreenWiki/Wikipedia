@@ -1,56 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String fullUri = request.getRequestURI();
+	String path = fullUri.substring(fullUri.lastIndexOf('/') + 1);
+	boolean result = path.equals("Index.jsp");
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    /* 헤더를 감싸는 div  */
-    .header_wrap{
-      display: flex;
-      width: 900px;
-      height: 40px;
-      margin: 0 auto;
-    }
-    /* 헤더의 메인 로고 */
-    .header_main_logo{
-      width: 90px;
-      height: 22px;
-      margin-top: 8px;
-    }
-
-    /* 헤더의 검색창 */
-    .head_search_input{
-      width: 450px;
-      height: 30px;
-      margin-left: 10px;
-      border-radius: 15px;
-      border: 2px solid #4b2b30;
-    }
-
-    /* 헤더의 계정만들기 버튼(span) */
-    .header_signup{
-      margin-left: 10px;
-      line-height: 30px;
-    }
-    /* 더보기 버튼 (p태그) */
-    .header_addition_btn{
-      width: 50px;
-      display: inline-block;
-      transform: rotate(90deg);
-      font-size: 20px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="../css/Header.css" />
 </head>
 <body>
-  <div class="header_wrap">
-  <img src="../img/HatchfulExport-All/MainLogoMini.png" alt="" class="header_main_logo">
-  <input type="text" class="head_search_input">
-  <span class="header_signup">계정 만들기</span>
-  <p class="header_addition_btn">...</p>
-  </div>
+	<header>
+		<div class="header1">
+			<h1><a href="../pages/Index.jsp"><img src="../img/HatchfulExport-All/MainLogoMini.png"></a></h1>
+			<form action="../process/SearchProcess.jsp?type_search=doc_title" method="post">
+	           	<input type="text" class="input_search" name="input_search">
+	           	<button type="submit" class="searchBtn" /></button>
+	       	</form>
+			<c:choose>
+				<c:when test="${ sessionScope.userId == null }"><p><a href="../pages/Login.jsp">로그인</a></p></c:when>
+				<c:when test="${ sessionScope.userId != null }"><p><a href="../pages/My_Info.jsp">내 정보</a></p></c:when>
+			</c:choose>
+		</div>
+		<div class="header2">
+			<ul>
+				<li><a href="../pages/Doc_view.jsp?doc_num=rnd">I'm Feeling Lucky</a></li>
+				<li><a href="../pages/Doc_list.jsp">문서 목록 열람</a></li>
+				<li><a href="../pages/FreeBoard.jsp">자유게시판</a></li>
+			</ul>
+		</div>
+	</header>
 </body>
 </html>
