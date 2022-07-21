@@ -2,6 +2,7 @@ package document;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import javax.servlet.ServletContext;
 
@@ -97,32 +98,40 @@ public class DocumentDAO extends JDBConnect {
 	} // getDocumentDTO()
 	
 	// 문서 검색
-	public DocumentDTO searchDoc(String type_search, String input_search) {
-		System.out.printf("%s = %s 인 DocumentDTO 반환 요청 : searchDoc() in DocumentDAO\n", type_search, input_search);
+	public List<DocumentDTO> searchDoc(String search_type, String search_word) {
+		System.out.printf("%s = %s 인 DocumentDTO 목록 반환 요청 : searchDoc() in DocumentDAO\n", search_type, search_word);
 		
-		DocumentDTO dto = new DocumentDTO();
+		List<DocumentDTO> list = new Vector<>();
 		
 		try {
-			String sql = "SELECT * FROM document WHERE " + type_search + " LIKE '%" + input_search + "%'";
+			String sql = "";
+			if(search_word == null || search_word.equals(null)) {
+				sql = "SELECT * FROM document";
+			} else {
+				sql = "SELECT * FROM document WHERE " + search_type + " LIKE '%" + search_word + "%'";
+			}
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			
-			if(rs.next()) {
+			while(rs.next()) {
+				DocumentDTO dto = new DocumentDTO();
 				dto.setDoc_num(rs.getString("doc_num"));
 				dto.setId(rs.getString("id"));
 				dto.setDoc_title(rs.getString("doc_title"));
 				dto.setDoc_content(rs.getString("doc_content"));
 				dto.setGoodcount(rs.getString("goodcount"));
 				dto.setWritedate(rs.getDate("writedate"));
+				
+				list.add(dto);
 			}
 			
-			System.out.printf("%s = %s 인 DocumentDTO 반환 완료 : searchDoc() in DocumentDAO\n", type_search, input_search);
+			System.out.printf("%s = %s 인 DocumentDTO 목록 반환 완료 : searchDoc() in DocumentDAO\n", search_type, search_word);
 		} catch(Exception e) {
-			System.out.printf("%s = %s 인 DocumentDTO 반환 중 예외 발생 : searchDoc() in DocumentDAO\n", type_search, input_search);
+			System.out.printf("%s = %s 인 DocumentDTO 목록 반환 중 예외 발생 : searchDoc() in DocumentDAO\n", search_type, search_word);
 			e.printStackTrace();
 		}
 		
-		return dto;
+		return list;
 	}
 	
 	// 기존 문서 수정

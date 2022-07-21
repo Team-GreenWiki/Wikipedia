@@ -16,7 +16,7 @@
 	
 	// 결과
 	if(result == 1){
-		JSFunction.alertLocation("문서가 성공적으로 삭제되었습니다", "../pages/", out);
+		JSFunction.alertLocation("문서가 성공적으로 삭제되었습니다", "../pages/Doc_list.jsp", out);
 	} else {
 		JSFunction.alertBack("문서 삭제 중 문제가 발생했습니다", out);
 	}

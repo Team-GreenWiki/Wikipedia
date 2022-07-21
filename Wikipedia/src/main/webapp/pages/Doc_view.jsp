@@ -118,7 +118,8 @@
 			</tr>
 			<tr>
 				<td colspan="6" align="center">
-					<button type="button" onclick="location.href='../pages/Doc_edit.jsp?doc_num=<%= doc_num %>'">수정하기</button>
+					<button type="button" onclick="location.href='../pages/Doc_edit.jsp?doc_num=<%= doc_num %>'">수정 / 삭제</button>
+					<button type="button" onclick="location.href='../pages/Doc_list.jsp'">돌아가기</button>
 				</td>
 			</tr>
 		</table>

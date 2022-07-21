@@ -107,7 +107,7 @@
 		function deleteDoc(){
 			let result = confirm("정말 삭제하시겠습니까?");
 			if(result){
-				location.href = "../Doc_deleteProcess.jsp?doc_num=<%= dto.getDoc_num() %>";
+				location.href = "../process/Doc_deleteProcess.jsp?doc_num=<%= dto.getDoc_num() %>";
 			}
 		}
 	</script>
