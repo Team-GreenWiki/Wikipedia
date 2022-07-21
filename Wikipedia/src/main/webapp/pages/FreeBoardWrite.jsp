@@ -25,9 +25,10 @@
 	</script>
 
 
-	<jsp:include page="./Link.jsp"></jsp:include>
+	<%@ include file="../include/Header.jsp" %>
+	
 	<section class="FreeBoardWrite">
-	<h2>당신의 꿈을 펼처보아요 !</h2>
+	<h2>당신의 꿈을 마음껏 펼쳐보세요 !</h2>
 	
 		<form action ="../process/FreeBoardWriteProcess.jsp" name="writeFrm" method="post" onsubmit="return validateForm(this);">
 		

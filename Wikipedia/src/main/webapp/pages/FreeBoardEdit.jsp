@@ -45,11 +45,12 @@
 			}
 		}
 	</script>
-	<jsp:include page="./Link.jsp"></jsp:include>
+	
+	<%@ include file="../include/Header.jsp" %>
 	
 	<section class="FreeBoardEdit">
 	
-		<h2>자유 게시판 - 수정하기</h2>
+		<h2>자유게시판</h2>
 		
 		<form action ="../process/FreeBoardEditProcess.jsp" name="writeFrm" method="post" onsubmit="return validateForm(this);">
 			<input type="hidden" name="bnum" value="<%=dto.getBnum() %>">

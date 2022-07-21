@@ -25,14 +25,17 @@
 	       	</form>
 			<c:choose>
 				<c:when test="${ sessionScope.userId == null }"><p><a href="../pages/Login.jsp">로그인</a></p></c:when>
-				<c:when test="${ sessionScope.userId != null }"><p><a href="../pages/My_Info.jsp">내 정보</a></p></c:when>
+				<c:when test="${ sessionScope.userId != null }">
+					<p><a href="../pages/My_Info.jsp">내 정보</a></p>
+					<p><a href="../process/LogoutProcess">로그아웃</a></p>
+				</c:when>
 			</c:choose>
 		</div>
 		<div class="header2">
 			<ul>
 				<li><a href="../pages/Doc_view.jsp?doc_num=rnd">I'm Feeling Lucky</a></li>
 				<li><a href="../pages/Doc_list.jsp">문서 목록 열람</a></li>
-				<li><a href="../pages/FreeBoard.jsp">자유게시판</a></li>
+				<li><a href="../pages/FreeBoardList.jsp">자유게시판</a></li>
 			</ul>
 		</div>
 	</header>
