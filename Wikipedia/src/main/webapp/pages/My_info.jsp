@@ -74,39 +74,7 @@
           </table>
       </div>
       <div class="long_bar"></div>
-      <h4 class="main_text">내가 쓴 댓글</h4>
-      <div class="my_info_comment">
-        <table border="1px solid" class="my_info_comment_table">
-          <tr>
-            <th style="width:100px">번호</th>
-            <th style="width:100px">제목</th>
-            <th style="width:100px">작성자</th>
-            <th style="width:100px">조회수</th>
-            <th style="width:100px">작성일</th>
-          </tr>
-          <tr>
-            <td>null</td>
-            <td>null</td>
-            <td>null</td>
-            <td>null</td>
-            <td>null</td>
-          </tr>
-          <tr>
-            <td>null</td>
-            <td>null</td>
-            <td>null</td>
-            <td>null</td>
-            <td>null</td>
-          </tr><tr>
-            <td>null</td>
-            <td>null</td>
-            <td>null</td>
-            <td>null</td>
-            <td>null</td>
-          </tr>
-        </table>
-      </div>
-      <div class="long_bar"></div>
+     
     </div>
 </body>
 </html>

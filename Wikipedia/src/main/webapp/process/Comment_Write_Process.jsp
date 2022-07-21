@@ -9,7 +9,7 @@
 	String doc_num = request.getParameter("doc_num");
 	String Tag = request.getParameter("choiced_Tag");
 	String Id = session.getAttribute("userId").toString();
-	if(Id ==null){
+	if(Id ==""){
 		JSFunction.alertBack("댓글작성은 로그인 후 이용 가능합니다.", out);
 	}
 	
