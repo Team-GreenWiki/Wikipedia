@@ -38,63 +38,6 @@
 <title>Insert title here</title>
 <link href="../css/Doc_view.css" rel="stylesheet"></link>
 </head>
-<style>
-	#contentArea{
-		display: flex;
-		flex-direction: column;
-	}
-	/* 태그 버튼을 감싸는 td */
-	.comment_Tag{
-	background-color: gray;
-	}
-	
-	/* 댓글 입력창인 textarea */
-	.comment_textarea {
-			width: 70%;
-			height: 50px;
-			padding: 10px;
-			box-sizing: border-box;
-			border: solid 2px #1E90FF;
-			border-radius: 5px;
-			font-size: 16px;
-			resize: both;
-			margin-left:20px;
-			margin-top : 15px;
-		}
-		
-	/* 댓글 작성 버튼 */
-	.comment_write_btn{
-		width:60px;
-		height:50px;
-	}
-	
-	/* 댓글 입력창 전체를 감싸는 div */
-	.comment_input{
-		text-align:center;
-	}
-	
-	/* 댓글 리스트를 감싸는 div */
-	.comment_lists_box{
-		width:60%;
-		margin: 0 auto;
-		border:1px solid gray;
-		background-color:#fff;
-	}
-	
-	/* 하나의 댓글을 감싸는 div */
-	.comment_list_content{
-		border:3px solid gray;
-	}
-	
-	/* 하나의 댓글의 작성자 정보,작성일등의 정보를 감싸는 div */
-	.comment_list_content_info{
-		border-bottom:1px solid gray;
-	}
-	/* 하나의 댓글의 댓글내용을 감싸는 div */
-	.comment_list_content_text{
-		font-size:14px;
-	}
-</style>
 <body>
 	<%@ include file="../include/Header.jsp" %>
 
@@ -124,11 +67,8 @@
 			</tr>
 		</table>
 		
-		<%-- <%@ include file="../Comment_page/Comment_list.jsp" %>
-		<jsp:include page="../Comment_page/Comment_list.jsp"></jsp:include> --%>
 		
-	</section>
-	<%
+		<%
 		String Tag = request.getParameter("Tag");
 		String edit_controller = request.getParameter("edit");
 		
@@ -225,6 +165,10 @@
 		  }
 		%>
 	</div>
+		
+		
+	</section>
+	
 	
 	<script>
 		let contentArea = document.getElementById("contentArea");
