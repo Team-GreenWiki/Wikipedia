@@ -10,6 +10,6 @@
 	session.invalidate();
 	
 	//속성을 삭제 하고 페이지 이동
-	response.sendRedirect("Login.jsp");
+	response.sendRedirect("index.jsp");
 
 %>
