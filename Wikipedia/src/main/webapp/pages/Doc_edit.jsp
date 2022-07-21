@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ include file="../process/LoginChecker.jsp" %>
+<%@ include file="../include/LoginChecker.jsp" %>
 
 <%
 	// doc_num 저장
