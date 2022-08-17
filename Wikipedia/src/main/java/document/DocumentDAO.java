@@ -51,7 +51,7 @@ public class DocumentDAO extends JDBConnect {
 				DocumentDTO dto = new DocumentDTO();
 				
 				dto.setDoc_num(rs.getString("doc_num"));
-				dto.setId(rs.getString("id"));
+				dto.setId(rs.getString("doc_id"));
 				dto.setDoc_title(rs.getString("doc_title"));
 				dto.setDoc_content(rs.getString("doc_content"));
 				dto.setGoodcount(rs.getString("goodcount"));
@@ -82,7 +82,7 @@ public class DocumentDAO extends JDBConnect {
 			// DocumentDTO에 해당값 저장
 			rs.next();
 			dto.setDoc_num(rs.getString("doc_num"));
-			dto.setId(rs.getString("id"));
+			dto.setId(rs.getString("doc_id"));
 			dto.setDoc_title(rs.getString("doc_title"));
 			dto.setDoc_content(rs.getString("doc_content"));
 			dto.setGoodcount(rs.getString("goodcount"));
@@ -110,7 +110,7 @@ public class DocumentDAO extends JDBConnect {
 			
 			if(rs.next()) {
 				dto.setDoc_num(rs.getString("doc_num"));
-				dto.setId(rs.getString("id"));
+				dto.setId(rs.getString("doc_id"));
 				dto.setDoc_title(rs.getString("doc_title"));
 				dto.setDoc_content(rs.getString("doc_content"));
 				dto.setGoodcount(rs.getString("goodcount"));
@@ -144,7 +144,7 @@ public class DocumentDAO extends JDBConnect {
 			while(rs.next()) {
 				DocumentDTO dto = new DocumentDTO();
 				dto.setDoc_num(rs.getString("doc_num"));
-				dto.setId(rs.getString("id"));
+				dto.setId(rs.getString("doc_id"));
 				dto.setDoc_title(rs.getString("doc_title"));
 				dto.setDoc_content(rs.getString("doc_content"));
 				dto.setGoodcount(rs.getString("goodcount"));
